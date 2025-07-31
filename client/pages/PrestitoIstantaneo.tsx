@@ -325,15 +325,15 @@ const PrestitoIstantaneo: React.FC = () => {
               <div className="space-y-4">
                 {requirements.map((requirement, index) => (
                   <div key={index} className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-orange-500 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="h-6 w-6 text-secondary mr-3 mt-1 flex-shrink-0" />
                     <span className="text-gray-700 text-lg">{requirement}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-orange-50 rounded-xl border border-orange-200">
-                <h4 className="font-bold text-orange-800 mb-2">⚡ Suggerimento Veloce</h4>
-                <p className="text-orange-700">
+              <div className="mt-8 p-6 bg-secondary/10 rounded-xl border border-secondary/20">
+                <h4 className="font-bold text-secondary mb-2">⚡ Suggerimento Veloce</h4>
+                <p className="text-gray-700">
                   Tieni pronto il documento d'identità e il numero del tuo IBAN per 
                   completare la richiesta in tempo record.
                 </p>
@@ -370,7 +370,7 @@ const PrestitoIstantaneo: React.FC = () => {
                   </select>
                 </div>
                 
-                <button className="w-full bg-orange-500 text-white py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors">
+                <button className="w-full bg-primary text-white py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors">
                   Richiedi in 15 Minuti
                 </button>
                 
@@ -400,22 +400,22 @@ const PrestitoIstantaneo: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-yellow-500">
+      <section className="py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Non Aspettare, Agisci Ora!
           </h2>
-          <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
             Ogni minuto conta quando hai bisogno di liquidità immediata. 
             Richiedi il tuo prestito istantaneo e ottieni i soldi in tempo record.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-orange-500 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+            <button className="bg-white text-secondary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
               <Zap className="mr-2 h-5 w-5" />
               Richiedi Istantaneo
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-orange-500 transition-all inline-flex items-center justify-center">
+            <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-secondary transition-all inline-flex items-center justify-center">
               <Clock className="mr-2 h-5 w-5" />
               Solo 15 Minuti
             </button>
