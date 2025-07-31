@@ -35,13 +35,13 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({ className = '', variant
 
   if (variant === 'compact') {
     return (
-      <div className={`bg-white rounded-xl shadow-lg p-6 ${className}`}>
+      <div className={`bg-white rounded-xl shadow-lg p-4 md:p-6 ${className}`}>
         <div className="flex items-center mb-4">
-          <Calculator className="h-6 w-6 text-primary mr-2" />
-          <h3 className="text-xl font-bold text-primary">Calcolatore Prestito</h3>
+          <Calculator className="h-5 w-5 md:h-6 md:w-6 text-primary mr-2" />
+          <h3 className="text-lg md:text-xl font-bold text-primary">Calcolatore Prestito</h3>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Importo (€)
@@ -55,7 +55,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({ className = '', variant
               onChange={(e) => setAmount(parseInt(e.target.value))}
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
             />
-            <div className="text-center text-lg font-bold text-primary mt-2">
+            <div className="text-center text-base md:text-lg font-bold text-primary mt-2">
               {formatCurrency(amount)}
             </div>
           </div>
@@ -72,16 +72,16 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({ className = '', variant
               onChange={(e) => setDuration(parseInt(e.target.value))}
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
             />
-            <div className="text-center text-lg font-bold text-primary mt-2">
+            <div className="text-center text-base md:text-lg font-bold text-primary mt-2">
               {duration} mesi
             </div>
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-4 mt-6">
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-3 md:p-4 mt-4 md:mt-6">
           <div className="text-center">
             <div className="text-sm text-gray-600">Rata Mensile</div>
-            <div className="text-2xl font-bold text-primary">
+            <div className="text-xl md:text-2xl font-bold text-primary">
               {formatCurrency(monthlyPayment)}
             </div>
           </div>
