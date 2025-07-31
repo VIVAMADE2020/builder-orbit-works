@@ -52,7 +52,7 @@ const HeroCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-screen overflow-hidden bg-white">
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -60,27 +60,19 @@ const HeroCarousel: React.FC = () => {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div className="absolute inset-0">
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/40"></div>
-          </div>
-
-          <div className="relative z-10 h-full flex items-center">
+          <div className="relative z-10 h-full flex items-center bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="text-white space-y-6">
+                {/* Text Content */}
+                <div className="text-gray-900 space-y-6 order-2 lg:order-1">
                   <div className="space-y-4">
-                    <h1 className={`text-5xl lg:text-6xl font-bold leading-tight ${isTypewriting && index === currentSlide ? 'typewriter' : ''}`}>
+                    <h1 className={`text-5xl lg:text-6xl font-bold leading-tight text-primary ${isTypewriting && index === currentSlide ? 'typewriter' : ''}`}>
                       {slide.title}
                     </h1>
                     <h2 className="text-2xl lg:text-3xl font-semibold text-secondary">
                       {slide.subtitle}
                     </h2>
-                    <p className="text-xl text-gray-200 leading-relaxed max-w-2xl">
+                    <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
                       {slide.description}
                     </p>
                   </div>
@@ -89,7 +81,7 @@ const HeroCarousel: React.FC = () => {
                     <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg">
                       {slide.cta}
                     </button>
-                    <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary transition-all">
+                    <button className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-all">
                       Calcolatore Prestito
                     </button>
                   </div>
@@ -100,56 +92,39 @@ const HeroCarousel: React.FC = () => {
                       <div className="flex items-center justify-center mb-2">
                         <CheckCircle className="h-8 w-8 text-secondary" />
                       </div>
-                      <div className="text-3xl font-bold">98%</div>
-                      <div className="text-sm text-gray-300">Approvazioni</div>
+                      <div className="text-3xl font-bold text-primary">98%</div>
+                      <div className="text-sm text-gray-600">Approvazioni</div>
                     </div>
                     <div className="text-center">
                       <div className="flex items-center justify-center mb-2">
                         <TrendingUp className="h-8 w-8 text-secondary" />
                       </div>
-                      <div className="text-3xl font-bold">€2M+</div>
-                      <div className="text-sm text-gray-300">Erogati</div>
+                      <div className="text-3xl font-bold text-primary">€15M+</div>
+                      <div className="text-sm text-gray-600">Erogati</div>
                     </div>
                     <div className="text-center">
                       <div className="flex items-center justify-center mb-2">
                         <Users className="h-8 w-8 text-secondary" />
                       </div>
-                      <div className="text-3xl font-bold">5.000+</div>
-                      <div className="text-sm text-gray-300">Clienti Felici</div>
+                      <div className="text-3xl font-bold text-primary">8.500+</div>
+                      <div className="text-sm text-gray-600">Clienti Felici</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="hidden lg:block">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                    <div className="text-center text-white mb-6">
-                      <h3 className="text-2xl font-bold mb-2">Calcolo Rapido</h3>
-                      <p className="text-gray-200">Scopri subito la tua rata</p>
+                {/* Image Content */}
+                <div className="order-1 lg:order-2">
+                  <div className="relative">
+                    <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+                      <img
+                        src={slide.image}
+                        alt={slide.title}
+                        className="w-full h-80 object-cover rounded-xl shadow-lg"
+                      />
                     </div>
-                    
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-white text-sm font-medium mb-2">Importo</label>
-                        <select className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white placeholder-gray-300">
-                          <option value="">€10.000</option>
-                          <option value="">€20.000</option>
-                          <option value="">€50.000</option>
-                        </select>
-                      </div>
-                      
-                      <div>
-                        <label className="block text-white text-sm font-medium mb-2">Durata</label>
-                        <select className="w-full p-3 rounded-lg bg-white/20 border border-white/30 text-white">
-                          <option value="">36 mesi</option>
-                          <option value="">60 mesi</option>
-                          <option value="">120 mesi</option>
-                        </select>
-                      </div>
-                      
-                      <button className="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors">
-                        Calcola Rata
-                      </button>
-                    </div>
+                    {/* Decorative elements */}
+                    <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full"></div>
+                    <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full"></div>
                   </div>
                 </div>
               </div>
