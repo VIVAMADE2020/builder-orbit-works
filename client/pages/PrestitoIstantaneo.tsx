@@ -106,11 +106,11 @@ const PrestitoIstantaneo: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-50 to-yellow-50">
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <div className="inline-flex items-center bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold mb-6">
                 <Zap className="h-4 w-4 mr-2" />
                 Approvazione in 15 minuti
               </div>
@@ -133,10 +133,10 @@ const PrestitoIstantaneo: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors">
+                <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors">
                   Richiedi Subito
                 </button>
-                <button className="border-2 border-orange-500 text-orange-500 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-500 hover:text-white transition-all">
+                <button className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-all">
                   Calcola Rata
                 </button>
               </div>
@@ -150,8 +150,8 @@ const PrestitoIstantaneo: React.FC = () => {
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
               </div>
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-orange-400/20 rounded-full"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-yellow-400/20 rounded-full"></div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full"></div>
             </div>
           </div>
         </div>
