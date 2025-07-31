@@ -99,38 +99,40 @@ const ChiSiamo: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
+      <section className="relative py-12 md:py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl font-bold text-primary mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4 md:mb-6">
                 Chi Siamo
               </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Soluzione Rapida è una società finanziaria privata fondata nel 2011 a Bruxelles, 
-                specializzata in prestiti personalizzati per privati e aziende. La nostra missione 
+              <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-6 md:mb-8 leading-relaxed">
+                Soluzione Rapida è una società finanziaria privata fondata nel 2011 a Bruxelles,
+                specializzata in prestiti personalizzati per privati e aziende. La nostra missione
                 è fornire soluzioni finanziarie rapide, trasparenti e su misura per ogni esigenza.
               </p>
-              
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-3xl font-bold text-primary mb-2">13+</div>
-                  <div className="text-sm text-gray-600">Anni di Esperienza</div>
+
+              <div className="grid grid-cols-2 gap-4 md:gap-6">
+                <div className="text-center p-3 md:p-4 bg-white rounded-lg shadow-sm">
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1 md:mb-2">13+</div>
+                  <div className="text-xs md:text-sm text-gray-600">Anni di Esperienza</div>
                 </div>
-                <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                  <div className="text-3xl font-bold text-secondary mb-2">8.500+</div>
-                  <div className="text-sm text-gray-600">Clienti Serviti</div>
+                <div className="text-center p-3 md:p-4 bg-white rounded-lg shadow-sm">
+                  <div className="text-2xl md:text-3xl font-bold text-secondary mb-1 md:mb-2">8.500+</div>
+                  <div className="text-xs md:text-sm text-gray-600">Clienti Serviti</div>
                 </div>
               </div>
             </div>
-            
-            <div className="relative">
-              <img 
-                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" 
-                alt="Team Soluzione Rapida"
-                className="rounded-2xl shadow-xl w-full h-96 object-cover"
-              />
-              <div className="absolute inset-0 bg-primary/20 rounded-2xl"></div>
+
+            <div className="relative order-1 md:order-2">
+              <div className="bg-white rounded-xl md:rounded-2xl shadow-xl p-4 md:p-6 border border-gray-100">
+                <img
+                  src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg"
+                  alt="Team Soluzione Rapida"
+                  className="rounded-lg md:rounded-xl shadow-lg w-full h-48 md:h-64 lg:h-80 object-cover"
+                />
+              </div>
+              <div className="hidden md:block absolute inset-0 bg-primary/10 rounded-2xl -z-10 transform translate-x-2 translate-y-2"></div>
             </div>
           </div>
         </div>
