@@ -331,6 +331,50 @@ const Index: React.FC = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-primary mb-4">Domande Frequenti</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Risposte alle domande più comuni sui nostri prestiti
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            <div className="bg-white p-6 rounded-xl shadow-lg">
+              <h4 className="text-lg font-bold text-primary mb-3">Quanto tempo serve per l'approvazione?</h4>
+              <p className="text-gray-600">Il nostro processo di approvazione richiede generalmente 24 ore lavorative. Per prestiti istantanei, la risposta arriva in soli 15 minuti.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg">
+              <h4 className="text-lg font-bold text-primary mb-3">Qual è il tasso di interesse?</h4>
+              <p className="text-gray-600">Applichiamo un tasso fisso del 2% annuo per tutti i tipi di prestito, senza commissioni nascoste.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg">
+              <h4 className="text-lg font-bold text-primary mb-3">Posso estinguere anticipatamente?</h4>
+              <p className="text-gray-600">Sì, è possibile estinguere o ridurre il prestito in qualsiasi momento senza penali.</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg">
+              <h4 className="text-lg font-bold text-primary mb-3">Quali documenti servono?</h4>
+              <p className="text-gray-600">Documento d'identità, ultime buste paga o dichiarazione redditi, estratti conto degli ultimi 3 mesi.</p>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/faq"
+              className="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors text-lg"
+            >
+              Vedi tutte le FAQ
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-secondary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
