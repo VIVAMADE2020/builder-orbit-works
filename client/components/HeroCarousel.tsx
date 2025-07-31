@@ -37,6 +37,20 @@ const HeroCarousel: React.FC = () => {
     return () => clearInterval(timer);
   }, [slides.length]);
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
   useEffect(() => {
     setIsTypewriting(true);
     const timer = setTimeout(() => setIsTypewriting(false), 100);

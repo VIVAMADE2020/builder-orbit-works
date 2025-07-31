@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, User, Euro, Building, Home, Car, CreditCard, Shield, Clock, CheckCircle } from 'lucide-react';
+import { sendEmail } from '../services/emailService';
 
 const RichiestaPrestito: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,9 @@ const RichiestaPrestito: React.FC = () => {
     consensoPrivacy: false,
     consensoMarketing: false
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const loanTypes = [
     { id: 'personale', label: 'Prestito Personale', icon: <User className="h-6 w-6" />, color: 'bg-blue-500' },
@@ -48,10 +52,43 @@ const RichiestaPrestito: React.FC = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+
+    try {
+      const success = await sendEmail(formData, 'loan-request');
+      if (success) {
+        setSubmitted(true);
+        // Reset form
+        setFormData({
+          nome: '',
+          cognome: '',
+          email: '',
+          telefono: '',
+          dataNascita: '',
+          indirizzo: '',
+          citta: '',
+          cap: '',
+          paese: '',
+          tipoPrestito: '',
+          importo: '',
+          durata: '',
+          motivazione: '',
+          occupazione: '',
+          redditoMensile: '',
+          messaggio: '',
+          consensoPrivacy: false,
+          consensoMarketing: false
+        });
+      } else {
+        alert('Errore nell\'invio della richiesta. Riprova più tardi.');
+      }
+    } catch (error) {
+      alert('Errore nell\'invio della richiesta. Riprova più tardi.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const calculateEstimatedPayment = () => {
@@ -65,6 +102,26 @@ const RichiestaPrestito: React.FC = () => {
     }
     return 0;
   };
+
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-12 flex items-center justify-center">
+        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8 text-center">
+          <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
+          <h2 className="text-2xl font-bold text-primary mb-4">Richiesta Inviata!</h2>
+          <p className="text-gray-600 mb-6">
+            Grazie per la tua richiesta. La nostra équipe ti contatterà entro 24 ore con una proposta personalizzata.
+          </p>
+          <button
+            onClick={() => setSubmitted(false)}
+            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Invia un'altra richiesta
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -407,11 +464,11 @@ const RichiestaPrestito: React.FC = () => {
             <div className="text-center pt-6">
               <button
                 type="submit"
-                disabled={!formData.consensoPrivacy}
+                disabled={!formData.consensoPrivacy || isSubmitting}
                 className="w-full md:w-auto px-12 py-4 bg-primary text-white rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
                 <Send className="mr-2 h-5 w-5" />
-                Invia Richiesta Prestito
+                {isSubmitting ? 'Invio in corso...' : 'Invia Richiesta Prestito'}
               </button>
               <p className="text-sm text-gray-500 mt-3">
                 Riceverai una risposta entro 24 ore lavorative
