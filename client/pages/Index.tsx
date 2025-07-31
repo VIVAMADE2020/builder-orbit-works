@@ -56,19 +56,19 @@ const Index: React.FC = () => {
     {
       name: 'Alessandro Conti',
       role: 'Direttore Generale',
-      image: 'https://images.pexels.com/photos/5816286/pexels-photo-5816286.jpeg',
+      icon: <Building className="h-16 w-16 text-secondary" />,
       experience: '15+ anni nel settore finanziario'
     },
     {
       name: 'Maria Alberti',
       role: 'Responsabile Crediti',
-      image: 'https://images.pexels.com/photos/7414273/pexels-photo-7414273.jpeg',
+      icon: <TrendingUp className="h-16 w-16 text-secondary" />,
       experience: '12+ anni in analisi creditizia'
     },
     {
       name: 'Roberto Ferri',
       role: 'Consulente Senior',
-      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg',
+      icon: <Users className="h-16 w-16 text-secondary" />,
       experience: '10+ anni in consulenza finanziaria'
     }
   ];
