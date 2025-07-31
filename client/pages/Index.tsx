@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, Clock, TrendingUp, Users, CheckCircle, Star, Quote, ChevronRight, Euro, Calendar, Calculator } from 'lucide-react';
+import { ArrowRight, Shield, Clock, TrendingUp, Users, CheckCircle, Star, Quote, ChevronRight, Euro, Calendar, Calculator, Building } from 'lucide-react';
 import HeroCarousel from '../components/HeroCarousel';
 import LoanCalculator from '../components/LoanCalculator';
 
