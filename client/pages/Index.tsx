@@ -180,37 +180,37 @@ const Index: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <div className="text-center text-white">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-4">
-                <TrendingUp className="h-8 w-8" />
+              <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-secondary rounded-full mb-3 md:mb-4">
+                <TrendingUp className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <div className="text-4xl font-bold mb-2">€15M+</div>
-              <div className="text-gray-300">Prestiti Erogati</div>
+              <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">€15M+</div>
+              <div className="text-gray-300 text-sm md:text-base">Prestiti Erogati</div>
             </div>
 
             <div className="text-center text-white">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-4">
-                <Users className="h-8 w-8" />
+              <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-secondary rounded-full mb-3 md:mb-4">
+                <Users className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <div className="text-4xl font-bold mb-2">8.500+</div>
-              <div className="text-gray-300">Clienti Soddisfatti</div>
+              <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">8.500+</div>
+              <div className="text-gray-300 text-sm md:text-base">Clienti Soddisfatti</div>
             </div>
 
             <div className="text-center text-white">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-4">
-                <CheckCircle className="h-8 w-8" />
+              <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-secondary rounded-full mb-3 md:mb-4">
+                <CheckCircle className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <div className="text-4xl font-bold mb-2">98%</div>
-              <div className="text-gray-300">Tasso Approvazione</div>
+              <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">98%</div>
+              <div className="text-gray-300 text-sm md:text-base">Tasso Approvazione</div>
             </div>
 
             <div className="text-center text-white">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary rounded-full mb-4">
-                <Clock className="h-8 w-8" />
+              <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-secondary rounded-full mb-3 md:mb-4">
+                <Clock className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <div className="text-4xl font-bold mb-2">24h</div>
-              <div className="text-gray-300">Approvazione Media</div>
+              <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">24h</div>
+              <div className="text-gray-300 text-sm md:text-base">Approvazione Media</div>
             </div>
           </div>
         </div>
