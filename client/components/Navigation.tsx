@@ -116,23 +116,23 @@ const Navigation: React.FC = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden border-t border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link 
-                to="/" 
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary"
+          <div className="lg:hidden border-t border-gray-200 bg-white">
+            <div className="px-2 pt-2 pb-4 space-y-1 max-h-screen overflow-y-auto">
+              <Link
+                to="/"
+                className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
-              
+
               <div className="space-y-1">
                 <div className="px-3 py-2 text-base font-medium text-gray-600">I Nostri Prestiti</div>
                 {loanTypes.map((loan) => (
                   <Link
                     key={loan.path}
                     to={loan.path}
-                    className="block px-6 py-2 text-sm text-gray-500 hover:text-primary"
+                    className="block px-6 py-2 text-sm text-gray-500 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {loan.name}
@@ -140,25 +140,25 @@ const Navigation: React.FC = () => {
                 ))}
               </div>
 
-              <Link 
-                to="/chi-siamo" 
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary"
+              <Link
+                to="/chi-siamo"
+                className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Chi Siamo
               </Link>
 
-              <Link 
-                to="/calcolatore" 
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary"
+              <Link
+                to="/calcolatore"
+                className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Calcolatore
               </Link>
 
-              <Link 
-                to="/faq" 
-                className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-primary"
+              <Link
+                to="/faq"
+                className="block px-3 py-3 text-base font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded-lg transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
@@ -166,7 +166,7 @@ const Navigation: React.FC = () => {
 
               <Link
                 to="/richiesta-prestito"
-                className="block mx-3 mt-4 bg-primary text-white px-6 py-3 rounded-lg text-center font-medium hover:bg-primary/90"
+                className="block mx-3 mt-4 bg-primary text-white px-6 py-3 rounded-lg text-center font-medium hover:bg-primary/90 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 Richiedi Prestito
