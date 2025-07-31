@@ -121,40 +121,40 @@ const Index: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {loanTypes.map((loan, index) => (
-              <div 
+              <div
                 key={index}
                 className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={loan.image} 
+                <div className="relative h-36 md:h-48 overflow-hidden">
+                  <img
+                    src={loan.image}
                     alt={loan.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/30 transition-all duration-300"></div>
                 </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-primary mb-3">{loan.title}</h3>
-                  <p className="text-gray-600 mb-4">{loan.description}</p>
-                  
-                  <ul className="space-y-2 mb-6">
+
+                <div className="p-4 md:p-6">
+                  <h3 className="text-lg md:text-xl font-bold text-primary mb-2 md:mb-3">{loan.title}</h3>
+                  <p className="text-sm md:text-base text-gray-600 mb-3 md:mb-4">{loan.description}</p>
+
+                  <ul className="space-y-1 md:space-y-2 mb-4 md:mb-6">
                     {loan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="h-4 w-4 text-secondary mr-2 flex-shrink-0" />
+                      <li key={idx} className="flex items-center text-xs md:text-sm text-gray-600">
+                        <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-secondary mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  
-                  <Link 
+
+                  <Link
                     to={loan.path}
-                    className="inline-flex items-center text-primary font-semibold hover:text-secondary transition-colors"
+                    className="inline-flex items-center text-sm md:text-base text-primary font-semibold hover:text-secondary transition-colors"
                   >
                     Scopri di più
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4" />
                   </Link>
                 </div>
               </div>
