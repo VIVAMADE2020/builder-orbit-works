@@ -1,6 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, CheckCircle, TrendingUp, Users, Clock } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  CheckCircle,
+  TrendingUp,
+  Users,
+  Clock,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,26 +17,32 @@ const HeroCarousel: React.FC = () => {
 
   const slides = [
     {
-      image: 'https://images.pexels.com/photos/7979605/pexels-photo-7979605.jpeg',
-      title: 'Prestiti Veloci e Sicuri',
-      subtitle: 'La soluzione rapida per le tue esigenze finanziarie',
-      description: 'Ottieni il prestito che meriti con tassi competitivi e approvazione rapida. Siamo qui per aiutarti a realizzare i tuoi progetti.',
-      cta: 'Richiedi Ora'
+      image:
+        "https://images.pexels.com/photos/7979605/pexels-photo-7979605.jpeg",
+      title: "Prestiti Veloci e Sicuri",
+      subtitle: "La soluzione rapida per le tue esigenze finanziarie",
+      description:
+        "Ottieni il prestito che meriti con tassi competitivi e approvazione rapida. Siamo qui per aiutarti a realizzare i tuoi progetti.",
+      cta: "Richiedi Ora",
     },
     {
-      image: 'https://images.pexels.com/photos/8293768/pexels-photo-8293768.jpeg',
-      title: 'Prestiti Aziendali',
-      subtitle: 'Fai crescere la tua attività',
-      description: 'Supportiamo le imprese con soluzioni di finanziamento flessibili. Investi nel futuro della tua azienda con i nostri prestiti dedicati.',
-      cta: 'Scopri di Più'
+      image:
+        "https://images.pexels.com/photos/8293768/pexels-photo-8293768.jpeg",
+      title: "Prestiti Aziendali",
+      subtitle: "Fai crescere la tua attività",
+      description:
+        "Supportiamo le imprese con soluzioni di finanziamento flessibili. Investi nel futuro della tua azienda con i nostri prestiti dedicati.",
+      cta: "Scopri di Più",
     },
     {
-      image: 'https://images.pexels.com/photos/7415122/pexels-photo-7415122.jpeg',
-      title: 'Mutui Casa',
-      subtitle: 'Realizza il sogno della casa propria',
-      description: 'Mutui immobiliari con condizioni vantaggiose per acquistare o ristrutturare la tua casa. Il tuo futuro inizia qui.',
-      cta: 'Calcola Rata'
-    }
+      image:
+        "https://images.pexels.com/photos/7415122/pexels-photo-7415122.jpeg",
+      title: "Mutui Casa",
+      subtitle: "Realizza il sogno della casa propria",
+      description:
+        "Mutui immobiliari con condizioni vantaggiose per acquistare o ristrutturare la tua casa. Il tuo futuro inizia qui.",
+      cta: "Calcola Rata",
+    },
   ];
 
   useEffect(() => {
@@ -42,15 +56,15 @@ const HeroCarousel: React.FC = () => {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         prevSlide();
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === "ArrowRight") {
         nextSlide();
       }
     };
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
   }, []);
 
   useEffect(() => {
@@ -73,7 +87,7 @@ const HeroCarousel: React.FC = () => {
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-100' : 'opacity-0'
+            index === currentSlide ? "opacity-100" : "opacity-0"
           }`}
         >
           <div className="relative z-10 h-full flex items-center bg-white">
@@ -82,7 +96,9 @@ const HeroCarousel: React.FC = () => {
                 {/* Text Content */}
                 <div className="text-gray-900 space-y-4 md:space-y-6 order-2 md:order-1">
                   <div className="space-y-3 md:space-y-4">
-                    <h1 className={`text-3xl md:text-4xl lg:text-6xl font-bold leading-tight text-primary ${isTypewriting && index === currentSlide ? 'typewriter' : ''}`}>
+                    <h1
+                      className={`text-3xl md:text-4xl lg:text-6xl font-bold leading-tight text-primary ${isTypewriting && index === currentSlide ? "typewriter" : ""}`}
+                    >
                       {slide.title}
                     </h1>
                     <h2 className="text-lg md:text-xl lg:text-3xl font-semibold text-secondary">
@@ -95,13 +111,13 @@ const HeroCarousel: React.FC = () => {
 
                   <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
                     <button
-                      onClick={() => navigate('/richiesta-prestito')}
+                      onClick={() => navigate("/richiesta-prestito")}
                       className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg"
                     >
                       {slide.cta}
                     </button>
                     <button
-                      onClick={() => navigate('/calcolatore')}
+                      onClick={() => navigate("/calcolatore")}
                       className="border-2 border-primary text-primary px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary hover:text-white transition-all"
                     >
                       Calcolatore Prestito
@@ -114,22 +130,34 @@ const HeroCarousel: React.FC = () => {
                       <div className="flex items-center justify-center mb-1 md:mb-2">
                         <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-secondary" />
                       </div>
-                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">98%</div>
-                      <div className="text-xs md:text-sm text-gray-600">Approvazioni</div>
+                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">
+                        98%
+                      </div>
+                      <div className="text-xs md:text-sm text-gray-600">
+                        Approvazioni
+                      </div>
                     </div>
                     <div className="text-center">
                       <div className="flex items-center justify-center mb-1 md:mb-2">
                         <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-secondary" />
                       </div>
-                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">€15M+</div>
-                      <div className="text-xs md:text-sm text-gray-600">Erogati</div>
+                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">
+                        €15M+
+                      </div>
+                      <div className="text-xs md:text-sm text-gray-600">
+                        Erogati
+                      </div>
                     </div>
                     <div className="text-center">
                       <div className="flex items-center justify-center mb-1 md:mb-2">
                         <Users className="h-6 w-6 md:h-8 md:w-8 text-secondary" />
                       </div>
-                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">8.500+</div>
-                      <div className="text-xs md:text-sm text-gray-600">Clienti Felici</div>
+                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">
+                        8.500+
+                      </div>
+                      <div className="text-xs md:text-sm text-gray-600">
+                        Clienti Felici
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -177,7 +205,7 @@ const HeroCarousel: React.FC = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlide ? 'bg-secondary scale-125' : 'bg-gray-300'
+              index === currentSlide ? "bg-secondary scale-125" : "bg-gray-300"
             }`}
           />
         ))}
@@ -185,10 +213,14 @@ const HeroCarousel: React.FC = () => {
 
       <style jsx>{`
         @keyframes typewriter {
-          from { width: 0; }
-          to { width: 100%; }
+          from {
+            width: 0;
+          }
+          to {
+            width: 100%;
+          }
         }
-        
+
         .typewriter {
           overflow: hidden;
           white-space: nowrap;

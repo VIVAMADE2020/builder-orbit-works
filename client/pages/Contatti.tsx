@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
-import { Mail, MapPin, Clock, Send, User, Euro, Calendar, FileText, Phone, CheckCircle } from 'lucide-react';
-import { sendEmail } from '../services/emailService';
+import React, { useState } from "react";
+import {
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  User,
+  Euro,
+  Calendar,
+  FileText,
+  Phone,
+  CheckCircle,
+} from "lucide-react";
+import { sendEmail } from "../services/emailService";
 
 const Contatti: React.FC = () => {
   const [formData, setFormData] = useState({
-    nome: '',
-    cognome: '',
-    email: '',
-    telefono: '',
-    tipoPrestito: '',
-    importo: '',
-    durata: '',
-    reddito: '',
-    occupazione: '',
-    messaggio: ''
+    nome: "",
+    cognome: "",
+    email: "",
+    telefono: "",
+    tipoPrestito: "",
+    importo: "",
+    durata: "",
+    reddito: "",
+    occupazione: "",
+    messaggio: "",
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -21,11 +32,15 @@ const Contatti: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -34,28 +49,28 @@ const Contatti: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const success = await sendEmail(formData, 'contact');
+      const success = await sendEmail(formData, "contact");
       if (success) {
         setSubmitted(true);
         // Reset form
         setFormData({
-          nome: '',
-          cognome: '',
-          email: '',
-          telefono: '',
-          tipoPrestito: '',
-          importo: '',
-          durata: '',
-          reddito: '',
-          occupazione: '',
-          messaggio: ''
+          nome: "",
+          cognome: "",
+          email: "",
+          telefono: "",
+          tipoPrestito: "",
+          importo: "",
+          durata: "",
+          reddito: "",
+          occupazione: "",
+          messaggio: "",
         });
         setCurrentStep(1);
       } else {
-        alert('Errore nell\'invio del messaggio. Riprova più tardi.');
+        alert("Errore nell'invio del messaggio. Riprova più tardi.");
       }
     } catch (error) {
-      alert('Errore nell\'invio del messaggio. Riprova più tardi.');
+      alert("Errore nell'invio del messaggio. Riprova più tardi.");
     } finally {
       setIsSubmitting(false);
     }
@@ -78,8 +93,10 @@ const Contatti: React.FC = () => {
       case 1:
         return (
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-primary mb-6">Informazioni Personali</h3>
-            
+            <h3 className="text-2xl font-bold text-primary mb-6">
+              Informazioni Personali
+            </h3>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -94,7 +111,7 @@ const Contatti: React.FC = () => {
                   required
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Cognome *
@@ -142,8 +159,10 @@ const Contatti: React.FC = () => {
       case 2:
         return (
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-primary mb-6">Dettagli del Prestito</h3>
-            
+            <h3 className="text-2xl font-bold text-primary mb-6">
+              Dettagli del Prestito
+            </h3>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Tipo di Prestito *
@@ -184,9 +203,11 @@ const Contatti: React.FC = () => {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary"
                   required
                 />
-                <p className="text-sm text-gray-500 mt-1">Minimo €5.000 - Massimo €100.000</p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Minimo €5.000 - Massimo €100.000
+                </p>
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Durata (mesi) *
@@ -210,8 +231,10 @@ const Contatti: React.FC = () => {
       case 3:
         return (
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-primary mb-6">Informazioni Finanziarie</h3>
-            
+            <h3 className="text-2xl font-bold text-primary mb-6">
+              Informazioni Finanziarie
+            </h3>
+
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Reddito Mensile Netto (€) *
@@ -244,7 +267,9 @@ const Contatti: React.FC = () => {
                 <option value="autonomo">Lavoratore Autonomo</option>
                 <option value="pensionato">Pensionato</option>
                 <option value="imprenditore">Imprenditore</option>
-                <option value="libero-professionista">Libero Professionista</option>
+                <option value="libero-professionista">
+                  Libero Professionista
+                </option>
                 <option value="altro">Altro</option>
               </select>
             </div>
@@ -275,9 +300,12 @@ const Contatti: React.FC = () => {
       <div className="min-h-screen bg-gray-50 py-20 flex items-center justify-center">
         <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8 text-center">
           <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-primary mb-4">Messaggio Inviato!</h2>
+          <h2 className="text-2xl font-bold text-primary mb-4">
+            Messaggio Inviato!
+          </h2>
           <p className="text-gray-600 mb-6">
-            Grazie per il tuo messaggio. La nostra équipe ti contatter�� entro 24 ore.
+            Grazie per il tuo messaggio. La nostra équipe ti contatter�� entro
+            24 ore.
           </p>
           <button
             onClick={() => setSubmitted(false)}
@@ -299,8 +327,9 @@ const Contatti: React.FC = () => {
             Richiedi il Tuo Prestito
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Compila il modulo per ricevere una valutazione gratuita della tua richiesta. 
-            Ti risponderemo entro 24 ore con una proposta personalizzata.
+            Compila il modulo per ricevere una valutazione gratuita della tua
+            richiesta. Ti risponderemo entro 24 ore con una proposta
+            personalizzata.
           </p>
         </div>
 
@@ -318,9 +347,9 @@ const Contatti: React.FC = () => {
                     {Math.round((currentStep / totalSteps) * 100)}% Completato
                   </span>
                 </div>
-                
+
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div 
+                  <div
                     className="bg-primary h-2 rounded-full transition-all duration-300"
                     style={{ width: `${(currentStep / totalSteps) * 100}%` }}
                   ></div>
@@ -359,7 +388,7 @@ const Contatti: React.FC = () => {
                       disabled={isSubmitting}
                       className="px-8 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? 'Invio in corso...' : 'Invia Richiesta'}
+                      {isSubmitting ? "Invio in corso..." : "Invia Richiesta"}
                       <Send className="ml-2 h-4 w-4" />
                     </button>
                   )}
@@ -372,15 +401,17 @@ const Contatti: React.FC = () => {
           <div className="space-y-8">
             {/* Contact Details */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-primary mb-6">Informazioni di Contatto</h3>
-              
+              <h3 className="text-xl font-bold text-primary mb-6">
+                Informazioni di Contatto
+              </h3>
+
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium text-gray-900">Email</div>
-                    <a 
-                      href="mailto:contatto@soluzionerapida.com" 
+                    <a
+                      href="mailto:contatto@soluzionerapida.com"
                       className="text-secondary hover:underline"
                     >
                       contatto@soluzionerapida.com
@@ -410,7 +441,7 @@ const Contatti: React.FC = () => {
             {/* Process Info */}
             <div className="bg-primary text-white rounded-xl p-6">
               <h3 className="text-xl font-bold mb-4">Come Funziona</h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start">
                   <div className="w-6 h-6 bg-secondary rounded-full flex items-center justify-center text-sm font-bold mr-3 mt-1 flex-shrink-0">
@@ -418,7 +449,9 @@ const Contatti: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-medium">Compila il Modulo</div>
-                    <div className="text-gray-200 text-sm">Fornisci le informazioni richieste</div>
+                    <div className="text-gray-200 text-sm">
+                      Fornisci le informazioni richieste
+                    </div>
                   </div>
                 </div>
 
@@ -428,7 +461,9 @@ const Contatti: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-medium">Valutazione</div>
-                    <div className="text-gray-200 text-sm">Analizziamo la tua richiesta</div>
+                    <div className="text-gray-200 text-sm">
+                      Analizziamo la tua richiesta
+                    </div>
                   </div>
                 </div>
 
@@ -438,7 +473,9 @@ const Contatti: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-medium">Risposta</div>
-                    <div className="text-gray-200 text-sm">Ricevi la proposta entro 24h</div>
+                    <div className="text-gray-200 text-sm">
+                      Ricevi la proposta entro 24h
+                    </div>
                   </div>
                 </div>
 
@@ -448,7 +485,9 @@ const Contatti: React.FC = () => {
                   </div>
                   <div>
                     <div className="font-medium">Erogazione</div>
-                    <div className="text-gray-200 text-sm">Ricevi i fondi in 2-3 giorni</div>
+                    <div className="text-gray-200 text-sm">
+                      Ricevi i fondi in 2-3 giorni
+                    </div>
                   </div>
                 </div>
               </div>
@@ -456,8 +495,10 @@ const Contatti: React.FC = () => {
 
             {/* Trust Indicators */}
             <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-primary mb-4">Perché Fidarsi</h3>
-              
+              <h3 className="text-lg font-bold text-primary mb-4">
+                Perché Fidarsi
+              </h3>
+
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center">
                   <FileText className="h-4 w-4 text-secondary mr-2" />
