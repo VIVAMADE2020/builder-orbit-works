@@ -17,23 +17,26 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
       <div className="relative">
         <svg
           className={`${sizeClasses[size]} text-primary`}
-          viewBox="0 0 60 60"
+          viewBox="0 0 80 60"
           fill="none"
         >
-          {/* Outer circle with gradient effect */}
-          <circle cx="30" cy="30" r="28" fill="currentColor" fillOpacity="0.1"/>
-          <circle cx="30" cy="30" r="24" fill="currentColor" fillOpacity="0.2"/>
-          <circle cx="30" cy="30" r="20" fill="currentColor"/>
+          {/* Main circle */}
+          <circle cx="40" cy="30" r="25" fill="currentColor"/>
 
-          {/* SR monogram */}
-          <text x="30" y="38" textAnchor="middle" className="fill-white font-bold" fontSize="18" fontFamily="Arial, sans-serif">
-            SR
+          {/* Euro symbol in center */}
+          <text x="40" y="38" textAnchor="middle" className="fill-white font-bold" fontSize="24" fontFamily="Arial, sans-serif">
+            €
           </text>
 
-          {/* Speed lines for "rapid" effect */}
-          <path d="M45 25 L55 20" stroke="hsl(165, 53%, 38%)" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M45 30 L52 30" stroke="hsl(165, 53%, 38%)" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M45 35 L55 40" stroke="hsl(165, 53%, 38%)" strokeWidth="2" strokeLinecap="round"/>
+          {/* Lightning flashes for speed */}
+          <path d="M15 15 L8 8 M12 20 L5 13 M18 12 L11 5" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
+          <path d="M65 15 L72 8 M68 20 L75 13 M62 12 L69 5" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
+          <path d="M15 45 L8 52 M12 40 L5 47 M18 48 L11 55" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
+          <path d="M65 45 L72 52 M68 40 L75 47 M62 48 L69 55" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
+
+          {/* Additional speed lines */}
+          <path d="M20 30 L5 30" stroke="hsl(165, 53%, 38%)" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M60 30 L75 30" stroke="hsl(165, 53%, 38%)" strokeWidth="2" strokeLinecap="round"/>
         </svg>
       </div>
       <div className="flex flex-col">
