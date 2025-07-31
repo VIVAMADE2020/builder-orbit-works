@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Clock, Send, User, Euro, Calendar, FileText, Phone } from 'lucide-react';
+import { Mail, MapPin, Clock, Send, User, Euro, Calendar, FileText, Phone, CheckCircle } from 'lucide-react';
+import { sendEmail } from '../services/emailService';
 
 const Contatti: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,8 @@ const Contatti: React.FC = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -26,10 +29,36 @@ const Contatti: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+
+    try {
+      const success = await sendEmail(formData, 'contact');
+      if (success) {
+        setSubmitted(true);
+        // Reset form
+        setFormData({
+          nome: '',
+          cognome: '',
+          email: '',
+          telefono: '',
+          tipoPrestito: '',
+          importo: '',
+          durata: '',
+          reddito: '',
+          occupazione: '',
+          messaggio: ''
+        });
+        setCurrentStep(1);
+      } else {
+        alert('Errore nell\'invio del messaggio. Riprova più tardi.');
+      }
+    } catch (error) {
+      alert('Errore nell\'invio del messaggio. Riprova più tardi.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const nextStep = () => {
@@ -241,6 +270,26 @@ const Contatti: React.FC = () => {
     }
   };
 
+  if (submitted) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-20 flex items-center justify-center">
+        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8 text-center">
+          <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
+          <h2 className="text-2xl font-bold text-primary mb-4">Messaggio Inviato!</h2>
+          <p className="text-gray-600 mb-6">
+            Grazie per il tuo messaggio. La nostra équipe ti contatter�� entro 24 ore.
+          </p>
+          <button
+            onClick={() => setSubmitted(false)}
+            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+          >
+            Invia un altro messaggio
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -307,9 +356,10 @@ const Contatti: React.FC = () => {
                   ) : (
                     <button
                       type="submit"
-                      className="px-8 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors flex items-center"
+                      disabled={isSubmitting}
+                      className="px-8 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/90 transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Invia Richiesta
+                      {isSubmitting ? 'Invio in corso...' : 'Invia Richiesta'}
                       <Send className="ml-2 h-4 w-4" />
                     </button>
                   )}
