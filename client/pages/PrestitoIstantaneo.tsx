@@ -143,12 +143,10 @@ const PrestitoIstantaneo: React.FC = () => {
             </div>
             
             <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-                <img 
-                  src="https://images.pexels.com/photos/7621138/pexels-photo-7621138.jpeg" 
-                  alt="Prestito Istantaneo"
-                  className="w-full h-80 object-cover rounded-xl shadow-lg"
-                />
+              <div className="bg-white rounded-2xl shadow-2xl p-12 border border-gray-100 text-center">
+                <Zap className="h-32 w-32 text-secondary mx-auto mb-6" />
+                <h3 className="text-2xl font-bold text-primary mb-4">Prestito Veloce</h3>
+                <p className="text-gray-600">Approvazione in 15 minuti</p>
               </div>
               <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full"></div>
               <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full"></div>
