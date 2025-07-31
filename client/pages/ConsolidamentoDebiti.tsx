@@ -236,7 +236,7 @@ const ConsolidamentoDebiti: React.FC = () => {
                 <h3 className="text-2xl font-bold text-red-600 mb-6">Situazione Attuale</h3>
                 <div className="space-y-4">
                   {currentDebts.map((debt, index) => (
-                    <div key={index} className="bg-red-50 p-4 rounded-lg border border-red-200">
+                    <div key={index} className="bg-primary/5 p-4 rounded-lg border border-primary/20">
                       <div className="flex justify-between items-center">
                         <span className="font-semibold">{debt.type}</span>
                         <span className="text-primary font-bold">€{debt.payment}/mese</span>
