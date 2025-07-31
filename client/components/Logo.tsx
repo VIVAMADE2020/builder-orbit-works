@@ -17,26 +17,36 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
       <div className="relative">
         <svg
           className={`${sizeClasses[size]} text-primary`}
-          viewBox="0 0 80 60"
+          viewBox="0 0 100 60"
           fill="none"
         >
-          {/* Main circle */}
-          <circle cx="40" cy="30" r="25" fill="currentColor"/>
+          {/* Modern gradient background circle */}
+          <defs>
+            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="currentColor" />
+              <stop offset="100%" stopColor="hsl(165, 53%, 38%)" />
+            </linearGradient>
+            <filter id="shadow">
+              <feDropShadow dx="2" dy="2" stdDeviation="3" floodOpacity="0.3"/>
+            </filter>
+          </defs>
 
-          {/* Euro symbol in center */}
-          <text x="40" y="38" textAnchor="middle" className="fill-white font-bold" fontSize="24" fontFamily="Arial, sans-serif">
+          {/* Main modern shape */}
+          <path d="M20 15 L65 15 Q75 15 75 25 L75 35 Q75 45 65 45 L20 45 Q10 45 10 35 L10 25 Q10 15 20 15 Z" fill="url(#logoGradient)" filter="url(#shadow)"/>
+
+          {/* Euro symbol with modern styling */}
+          <text x="42" y="38" textAnchor="middle" className="fill-white font-bold" fontSize="22" fontFamily="system-ui, -apple-system, sans-serif">
             €
           </text>
 
-          {/* Lightning flashes for speed */}
-          <path d="M15 15 L8 8 M12 20 L5 13 M18 12 L11 5" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M65 15 L72 8 M68 20 L75 13 M62 12 L69 5" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M15 45 L8 52 M12 40 L5 47 M18 48 L11 55" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
-          <path d="M65 45 L72 52 M68 40 L75 47 M62 48 L69 55" stroke="hsl(165, 53%, 38%)" strokeWidth="3" strokeLinecap="round"/>
+          {/* Modern speed indicators - subtle arrows */}
+          <path d="M77 20 L85 25 L77 30 M77 25 L85 25" stroke="hsl(165, 53%, 38%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/>
+          <path d="M77 35 L85 40 L77 45 M77 40 L85 40" stroke="hsl(165, 53%, 38%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6"/>
 
-          {/* Additional speed lines */}
-          <path d="M20 30 L5 30" stroke="hsl(165, 53%, 38%)" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M60 30 L75 30" stroke="hsl(165, 53%, 38%)" strokeWidth="2" strokeLinecap="round"/>
+          {/* Subtle accent dots */}
+          <circle cx="15" cy="25" r="2" fill="hsl(165, 53%, 38%)" opacity="0.7"/>
+          <circle cx="15" cy="35" r="2" fill="hsl(165, 53%, 38%)" opacity="0.5"/>
+          <circle cx="90" cy="25" r="1.5" fill="hsl(165, 53%, 38%)" opacity="0.4"/>
         </svg>
       </div>
       <div className="flex flex-col">
