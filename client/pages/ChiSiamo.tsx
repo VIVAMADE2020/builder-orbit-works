@@ -8,50 +8,42 @@ const ChiSiamo: React.FC = () => {
     {
       year: '2011',
       title: 'Fondazione',
-      description: 'Nasce Soluzione Rapida a Bruxelles con la missione di democratizzare l\'accesso al credito.',
-      icon: '🎯'
+      description: 'Nasce Soluzione Rapida a Bruxelles con la missione di democratizzare l\'accesso al credito.'
     },
     {
       year: '2013',
       title: 'Primo Milione',
-      description: 'Raggiungiamo il primo milione di euro erogati, servendo oltre 200 clienti.',
-      icon: '💰'
+      description: 'Raggiungiamo il primo milione di euro erogati, servendo oltre 200 clienti.'
     },
     {
       year: '2015',
       title: 'Espansione Europa',
-      description: 'Estendiamo i nostri servizi in Germania e Slovacchia, ampliando il team.',
-      icon: '🌍'
+      description: 'Estendiamo i nostri servizi in Germania e Slovacchia, ampliando il team.'
     },
     {
       year: '2017',
       title: 'Innovazione Digitale',
-      description: 'Lanciamo la piattaforma digitale per richieste online e approvazioni rapide.',
-      icon: '💻'
+      description: 'Lanciamo la piattaforma digitale per richieste online e approvazioni rapide.'
     },
     {
       year: '2019',
       title: 'Certificazioni',
-      description: 'Otteniamo le principali certificazioni di qualità e sicurezza europea.',
-      icon: '🏆'
+      description: 'Otteniamo le principali certificazioni di qualità e sicurezza europea.'
     },
     {
       year: '2021',
       title: '10 Milioni Erogati',
-      description: 'Superiamo i 10 milioni di euro erogati con oltre 3.000 clienti soddisfatti.',
-      icon: '📈'
+      description: 'Superiamo i 10 milioni di euro erogati con oltre 3.000 clienti soddisfatti.'
     },
     {
       year: '2023',
       title: 'Partnership Bancarie',
-      description: 'Stringiamo accordi con le principali banche europee per offerte ancora più competitive.',
-      icon: '🤝'
+      description: 'Stringiamo accordi con le principali banche europee per offerte ancora più competitive.'
     },
     {
       year: '2024',
       title: 'Oggi',
-      description: 'Oltre 8.500 clienti serviti, 15 milioni erogati e leadership nel settore dei prestiti rapidi.',
-      icon: '🚀'
+      description: 'Oltre 8.500 clienti serviti, 15 milioni erogati e leadership nel settore dei prestiti rapidi.'
     }
   ];
 
