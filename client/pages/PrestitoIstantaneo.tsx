@@ -237,7 +237,7 @@ const PrestitoIstantaneo: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {useCases.map((useCase, index) => (
-              <div key={index} className="bg-white p-8 rounded-xl shadow-lg border-l-4 border-orange-500">
+              <div key={index} className="bg-white p-8 rounded-xl shadow-lg border-l-4 border-secondary">
                 <div className="flex items-center mb-4">
                   {useCase.icon}
                   <h3 className="text-xl font-bold text-primary ml-3">{useCase.title}</h3>
@@ -250,13 +250,13 @@ const PrestitoIstantaneo: React.FC = () => {
       </section>
 
       {/* Quick Calculator */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-orange-600">
+      <section className="py-20 bg-gradient-to-r from-primary to-secondary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-white mb-4">
               Calcolatore Rapido
             </h2>
-            <p className="text-xl text-orange-100 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
               Scopri subito quanto puoi ottenere e in quanto tempo
             </p>
           </div>
@@ -274,11 +274,11 @@ const PrestitoIstantaneo: React.FC = () => {
                   step="500"
                   value={loanAmount}
                   onChange={(e) => setLoanAmount(parseInt(e.target.value))}
-                  className="w-full h-3 bg-orange-200 rounded-lg appearance-none cursor-pointer"
+                  className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                 />
                 <div className="flex justify-between text-sm text-gray-500 mt-2">
                   <span>€500</span>
-                  <span className="text-2xl font-bold text-orange-500">€{loanAmount.toLocaleString()}</span>
+                  <span className="text-2xl font-bold text-secondary">€{loanAmount.toLocaleString()}</span>
                   <span>€15.000</span>
                 </div>
               </div>
@@ -291,7 +291,7 @@ const PrestitoIstantaneo: React.FC = () => {
                     return (
                       <div key={duration.months} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
                         <span className="font-medium">{duration.months} mesi</span>
-                        <span className="text-lg font-bold text-orange-500">
+                        <span className="text-lg font-bold text-secondary">
                           €{installment.toFixed(2)}/mese
                         </span>
                       </div>
@@ -302,7 +302,7 @@ const PrestitoIstantaneo: React.FC = () => {
             </div>
 
             <div className="text-center mt-8">
-              <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors">
+              <button className="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
                 Richiedi €{loanAmount.toLocaleString()} Ora
               </button>
             </div>
