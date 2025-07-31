@@ -198,7 +198,7 @@ const PrestitoIstantaneo: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-lg text-center relative">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white">
+                <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                   {step.icon}
                 </div>
                 <div className="absolute -top-3 -right-3 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold text-sm">
@@ -208,14 +208,14 @@ const PrestitoIstantaneo: React.FC = () => {
                 <p className="text-gray-600">{step.description}</p>
                 
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-orange-300"></div>
+                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-secondary/30"></div>
                 )}
               </div>
             ))}
           </div>
 
           <div className="text-center mt-12">
-            <div className="inline-flex items-center bg-green-100 text-green-800 px-6 py-3 rounded-full text-lg font-semibold">
+            <div className="inline-flex items-center bg-secondary/10 text-secondary px-6 py-3 rounded-full text-lg font-semibold">
               <Clock className="h-5 w-5 mr-2" />
               Tempo totale: 15-30 minuti
             </div>
