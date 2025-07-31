@@ -39,9 +39,7 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
             €
           </text>
 
-          {/* Modern speed indicators - subtle arrows */}
-          <path d="M77 20 L85 25 L77 30 M77 25 L85 25" stroke="hsl(165, 53%, 38%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.8"/>
-          <path d="M77 35 L85 40 L77 45 M77 40 L85 40" stroke="hsl(165, 53%, 38%)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.6"/>
+
 
           {/* Subtle accent dots */}
           <circle cx="15" cy="25" r="2" fill="hsl(165, 53%, 38%)" opacity="0.7"/>

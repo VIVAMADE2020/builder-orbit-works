@@ -29,12 +29,12 @@ const TerminiCondizioni: React.FC = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-primary mb-4">3. Requisiti per i Prestiti</h2>
+            <h2 className="text-2xl font-bold text-primary mb-4">3. Condizioni Generali per i Prestiti</h2>
             <ul className="list-disc pl-6 text-gray-700">
-              <li>Età minima 18 anni</li>
+              <li>Avere almeno 18 anni</li>
+              <li>Essere finanziariamente stabili</li>
+              <li>Avere redditi stabili</li>
               <li>Residenza in Italia, Germania, Slovacchia o Belgio</li>
-              <li>Reddito dimostrabile</li>
-              <li>Conto corrente intestato al richiedente</li>
               <li>Documentazione completa e veritiera</li>
             </ul>
           </section>

@@ -118,10 +118,18 @@
   .gtranslate_wrapper {
     bottom: 80px !important;
     right: 10px !important;
+    z-index: 10000 !important;
   }
 
   .gtranslate_wrapper .gt_selector {
     font-size: 14px !important;
+    min-height: 40px !important;
+    min-width: 60px !important;
+  }
+
+  .gtranslate_wrapper * {
+    visibility: visible !important;
+    display: block !important;
   }
 }
 

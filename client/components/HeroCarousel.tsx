@@ -7,7 +7,7 @@ const HeroCarousel: React.FC = () => {
 
   const slides = [
     {
-      image: 'https://images.pexels.com/photos/7841821/pexels-photo-7841821.jpeg',
+      image: 'https://images.pexels.com/photos/7979605/pexels-photo-7979605.jpeg',
       title: 'Prestiti Veloci e Sicuri',
       subtitle: 'La soluzione rapida per le tue esigenze finanziarie',
       description: 'Ottieni il prestito che meriti con tassi competitivi e approvazione rapida. Siamo qui per aiutarti a realizzare i tuoi progetti.',
