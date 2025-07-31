@@ -104,3 +104,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Google Translate Widget Styles */
+.gtranslate_wrapper {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+}
+
+/* Mobile responsive for Google Translate */
+@media (max-width: 768px) {
+  .gtranslate_wrapper {
+    bottom: 80px !important;
+    right: 10px !important;
+  }
+
+  .gtranslate_wrapper .gt_selector {
+    font-size: 14px !important;
+  }
+}
+
+/* Ensure the widget is always visible */
+.gtranslate_wrapper * {
+  box-sizing: border-box !important;
+}
