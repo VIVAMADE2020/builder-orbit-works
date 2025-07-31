@@ -221,7 +221,7 @@ const ChiSiamo: React.FC = () => {
               >
                 {/* Timeline Dot */}
                 <div className="relative z-10 flex items-center justify-center w-16 h-16 bg-primary rounded-full text-white font-bold text-lg shadow-lg">
-                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-white font-bold">{item.year}</span>
                 </div>
 
                 {/* Content */}
