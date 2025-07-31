@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Play, CheckCircle, TrendingUp, Users, Clock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const HeroCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTypewriting, setIsTypewriting] = useState(false);
+  const navigate = useNavigate();
 
   const slides = [
     {
@@ -92,10 +94,16 @@ const HeroCarousel: React.FC = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
-                    <button className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg">
+                    <button
+                      onClick={() => navigate('/richiesta-prestito')}
+                      className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg"
+                    >
                       {slide.cta}
                     </button>
-                    <button className="border-2 border-primary text-primary px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary hover:text-white transition-all">
+                    <button
+                      onClick={() => navigate('/calcolatore')}
+                      className="border-2 border-primary text-primary px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary hover:text-white transition-all"
+                    >
                       Calcolatore Prestito
                     </button>
                   </div>
