@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle, Home, Key, Calculator, Shield, TrendingUp, MapPin, Users, Euro, Clock } from 'lucide-react';
+import { CheckCircle, Home, Key, Calculator, Shield, TrendingUp, MapPin, Users, Euro, Clock, Building } from 'lucide-react';
 import LoanCalculator from '../components/LoanCalculator';
 
 const MutuoImmobiliare: React.FC = () => {
