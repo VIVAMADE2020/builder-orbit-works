@@ -25,18 +25,18 @@ const Navigation: React.FC = () => {
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
+        <div className="flex justify-between h-16 md:h-20">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
-              <Logo size="md" />
+              <Logo size={isOpen ? "sm" : "md"} />
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <Link 
-              to="/" 
-              className={`px-3 py-2 text-sm font-medium transition-colors ${
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <Link
+              to="/"
+              className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
                 isActivePath('/') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
               }`}
             >
@@ -54,12 +54,12 @@ const Navigation: React.FC = () => {
               </button>
               
               {activeDropdown === 'prestiti' && (
-                <div className="absolute top-full left-0 w-64 bg-white shadow-lg rounded-lg border mt-1">
+                <div className="absolute top-full left-0 w-56 xl:w-64 bg-white shadow-lg rounded-lg border mt-1">
                   {loanTypes.map((loan) => (
                     <Link
                       key={loan.path}
                       to={loan.path}
-                      className="block px-4 py-3 text-sm text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors"
+                      className="block px-3 xl:px-4 py-2 xl:py-3 text-xs xl:text-sm text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors"
                     >
                       {loan.name}
                     </Link>
@@ -68,27 +68,27 @@ const Navigation: React.FC = () => {
               )}
             </div>
 
-            <Link 
-              to="/chi-siamo" 
-              className={`px-3 py-2 text-sm font-medium transition-colors ${
+            <Link
+              to="/chi-siamo"
+              className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
                 isActivePath('/chi-siamo') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
               }`}
             >
               Chi Siamo
             </Link>
 
-            <Link 
-              to="/calcolatore" 
-              className={`px-3 py-2 text-sm font-medium transition-colors ${
+            <Link
+              to="/calcolatore"
+              className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
                 isActivePath('/calcolatore') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
               }`}
             >
               Calcolatore
             </Link>
 
-            <Link 
-              to="/faq" 
-              className={`px-3 py-2 text-sm font-medium transition-colors ${
+            <Link
+              to="/faq"
+              className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
                 isActivePath('/faq') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
               }`}
             >
@@ -97,7 +97,7 @@ const Navigation: React.FC = () => {
 
             <Link
               to="/richiesta-prestito"
-              className="bg-primary text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
+              className="bg-primary text-white px-4 xl:px-6 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               Richiedi Prestito
             </Link>
