@@ -106,66 +106,60 @@
 }
 
 /* Google Translate Widget Styles */
-#google_translate_element {
+.gtranslate_wrapper {
   position: fixed !important;
   bottom: 20px !important;
   right: 20px !important;
   z-index: 9999 !important;
-  background: white !important;
-  border-radius: 8px !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-  padding: 8px !important;
-}
-
-/* Hide Google Translate banner and iframe */
-.goog-te-banner-frame {
-  display: none !important;
-}
-
-.goog-te-ftab {
-  display: none !important;
-}
-
-body {
-  top: 0 !important;
-}
-
-/* Style the dropdown */
-.goog-te-combo {
-  background: #263959 !important;
-  color: white !important;
-  border: none !important;
-  border-radius: 6px !important;
-  padding: 8px 12px !important;
-  font-size: 14px !important;
-  cursor: pointer !important;
-  outline: none !important;
-}
-
-.goog-te-combo:hover {
-  background: #2d947a !important;
 }
 
 /* Mobile responsive for Google Translate */
 @media (max-width: 768px) {
-  #google_translate_element {
+  .gtranslate_wrapper {
     bottom: 80px !important;
     right: 10px !important;
     z-index: 10000 !important;
   }
 
-  .goog-te-combo {
-    font-size: 12px !important;
-    padding: 6px 10px !important;
-    min-width: 80px !important;
+  .gtranslate_wrapper .gt_selector {
+    font-size: 14px !important;
+    min-height: 40px !important;
+    min-width: 60px !important;
+  }
+
+  /* Fix mobile popup and flag issues */
+  .gtranslate_wrapper .gt_float_switcher {
+    background: rgba(255,255,255,0.95) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+  }
+
+  .gtranslate_wrapper .gt_switcher_popup {
+    background: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+  }
+
+  .gtranslate_wrapper .gt_option {
+    padding: 10px !important;
+    border-bottom: 1px solid #eee !important;
+  }
+
+  .gtranslate_wrapper .gt_option:hover {
+    background: #f5f5f5 !important;
+  }
+
+  .gtranslate_wrapper .gt_option img {
+    width: 16px !important;
+    height: 12px !important;
+    margin-right: 8px !important;
   }
 }
 
-/* Ensure proper styling */
-.goog-te-gadget {
+/* Ensure the widget is always visible */
+.gtranslate_wrapper * {
+  box-sizing: border-box !important;
   font-family: inherit !important;
-}
-
-.goog-te-gadget .goog-te-combo {
-  margin: 0 !important;
 }
