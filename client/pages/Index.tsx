@@ -289,18 +289,18 @@ const Index: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center group">
-                <div className="relative mb-6">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-gray-100 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow group-hover:bg-gray-200">
+                <div className="relative mb-4 md:mb-6">
+                  <div className="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full bg-gray-100 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow group-hover:bg-gray-200">
                     {member.icon}
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-primary mb-2">{member.name}</h3>
-                <p className="text-secondary font-semibold mb-2">{member.role}</p>
-                <p className="text-gray-600">{member.experience}</p>
+                <h3 className="text-lg md:text-xl font-bold text-primary mb-2">{member.name}</h3>
+                <p className="text-secondary font-semibold mb-2 text-sm md:text-base">{member.role}</p>
+                <p className="text-gray-600 text-sm md:text-base">{member.experience}</p>
               </div>
             ))}
           </div>
