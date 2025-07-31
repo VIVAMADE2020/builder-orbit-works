@@ -95,8 +95,8 @@ const Navigation: React.FC = () => {
               FAQ
             </Link>
 
-            <Link 
-              to="/contatti" 
+            <Link
+              to="/richiesta-prestito"
               className="bg-primary text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors"
             >
               Richiedi Prestito
@@ -164,8 +164,8 @@ const Navigation: React.FC = () => {
                 FAQ
               </Link>
 
-              <Link 
-                to="/contatti" 
+              <Link
+                to="/richiesta-prestito"
                 className="block mx-3 mt-4 bg-primary text-white px-6 py-3 rounded-lg text-center font-medium hover:bg-primary/90"
                 onClick={() => setIsOpen(false)}
               >
