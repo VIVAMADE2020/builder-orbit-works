@@ -211,22 +211,7 @@ const HeroCarousel: React.FC = () => {
         ))}
       </div>
 
-      <style jsx>{`
-        @keyframes typewriter {
-          from {
-            width: 0;
-          }
-          to {
-            width: 100%;
-          }
-        }
 
-        .typewriter {
-          overflow: hidden;
-          white-space: nowrap;
-          animation: typewriter 2s steps(40, end);
-        }
-      `}</style>
     </div>
   );
 };
