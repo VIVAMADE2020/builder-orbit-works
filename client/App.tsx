@@ -68,22 +68,7 @@ const App = () => (
           <Footer />
         </div>
         
-        {/* Google Translate Script */}
-        <div className="gtranslate_wrapper"></div>
-        <script 
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.gtranslateSettings = {
-                "default_language":"it",
-                "languages":["it","sk","de"],
-                "wrapper_selector":".gtranslate_wrapper",
-                "horizontal_position":"right",
-                "vertical_position":"bottom"
-              };
-            `
-          }}
-        />
-        <script src="https://cdn.gtranslate.net/widgets/latest/popup.js" defer></script>
+
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
