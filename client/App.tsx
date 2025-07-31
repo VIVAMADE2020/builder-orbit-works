@@ -26,6 +26,7 @@ import ConsolidamentoDebiti from "./pages/ConsolidamentoDebiti";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TerminiCondizioni from "./pages/TerminiCondizioni";
 import Segnalazioni from "./pages/Segnalazioni";
+import RichiestaPrestito from "./pages/RichiestaPrestito";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
               <Route path="/calcolatore" element={<Calcolatore />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/contatti" element={<Contatti />} />
+              <Route path="/richiesta-prestito" element={<RichiestaPrestito />} />
               
               {/* Loan Types */}
               <Route path="/prestito-personale" element={<PrestitoPersonale />} />
