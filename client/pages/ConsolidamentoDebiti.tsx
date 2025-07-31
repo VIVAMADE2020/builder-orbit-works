@@ -47,21 +47,21 @@ const ConsolidamentoDebiti: React.FC = () => {
       icon: <CreditCard className="h-8 w-8" />,
       description: 'Consolida i saldi delle carte di credito con tassi elevati',
       avgRate: '12-18%',
-      color: 'bg-red-500'
+      color: 'bg-primary'
     },
     {
       type: 'Prestiti Personali',
       icon: <DollarSign className="h-8 w-8" />,
       description: 'Unifica diversi prestiti personali esistenti',
       avgRate: '6-12%',
-      color: 'bg-blue-500'
+      color: 'bg-secondary'
     },
     {
       type: 'Finanziamenti',
       icon: <PieChart className="h-8 w-8" />,
       description: 'Consolida finanziamenti auto, elettrodomestici, ecc.',
       avgRate: '5-10%',
-      color: 'bg-green-500'
+      color: 'bg-primary/80'
     }
   ];
 
@@ -111,7 +111,7 @@ const ConsolidamentoDebiti: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -150,8 +150,8 @@ const ConsolidamentoDebiti: React.FC = () => {
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
               </div>
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-blue-400/20 rounded-full"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-indigo-400/20 rounded-full"></div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full"></div>
             </div>
           </div>
         </div>
@@ -239,7 +239,7 @@ const ConsolidamentoDebiti: React.FC = () => {
                     <div key={index} className="bg-red-50 p-4 rounded-lg border border-red-200">
                       <div className="flex justify-between items-center">
                         <span className="font-semibold">{debt.type}</span>
-                        <span className="text-red-600 font-bold">€{debt.payment}/mese</span>
+                        <span className="text-primary font-bold">€{debt.payment}/mese</span>
                       </div>
                       <div className="text-sm text-gray-600 mt-1">
                         €{debt.amount.toLocaleString()} al {debt.rate}% annuo
@@ -247,10 +247,10 @@ const ConsolidamentoDebiti: React.FC = () => {
                     </div>
                   ))}
                   
-                  <div className="bg-red-100 p-4 rounded-lg border-2 border-red-300">
+                  <div className="bg-primary/10 p-4 rounded-lg border-2 border-primary/30">
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-lg">TOTALE MENSILE</span>
-                      <span className="text-red-700 font-bold text-xl">€{totals.totalPayment.toFixed(0)}</span>
+                      <span className="text-primary font-bold text-xl">€{totals.totalPayment.toFixed(0)}</span>
                     </div>
                     <div className="text-sm text-gray-600">
                       Debito totale: €{totals.totalAmount.toLocaleString()} - Tasso medio: {totals.weightedRate.toFixed(1)}%
@@ -269,10 +269,10 @@ const ConsolidamentoDebiti: React.FC = () => {
               <div className="lg:col-span-1">
                 <h3 className="text-2xl font-bold text-green-600 mb-6">Con Consolidamento</h3>
                 <div className="space-y-4">
-                  <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                  <div className="bg-secondary/10 p-6 rounded-lg border border-secondary/20">
                     <div className="text-center">
-                      <div className="text-lg font-semibold text-green-800 mb-2">UN\'UNICA RATA</div>
-                      <div className="text-3xl font-bold text-green-600 mb-2">
+                      <div className="text-lg font-semibold text-secondary mb-2">UN\'UNICA RATA</div>
+                      <div className="text-3xl font-bold text-secondary mb-2">
                         €{totals.consolidatedPayment.toFixed(0)}/mese
                       </div>
                       <div className="text-sm text-gray-600">
@@ -281,10 +281,10 @@ const ConsolidamentoDebiti: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="bg-green-100 p-6 rounded-lg border-2 border-green-300">
+                  <div className="bg-secondary/20 p-6 rounded-lg border-2 border-secondary/30">
                     <div className="text-center">
-                      <div className="text-lg font-semibold text-green-800 mb-2">RISPARMIO MENSILE</div>
-                      <div className="text-3xl font-bold text-green-600 mb-2">
+                      <div className="text-lg font-semibold text-secondary mb-2">RISPARMIO MENSILE</div>
+                      <div className="text-3xl font-bold text-secondary mb-2">
                         €{totals.savings.toFixed(0)}
                       </div>
                       <div className="text-sm text-gray-600">
@@ -294,7 +294,7 @@ const ConsolidamentoDebiti: React.FC = () => {
                   </div>
 
                   <div className="text-center">
-                    <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                    <button className="bg-secondary text-white px-8 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors">
                       Richiedi Consolidamento
                     </button>
                   </div>
@@ -364,9 +364,9 @@ const ConsolidamentoDebiti: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-200">
-                <h4 className="font-bold text-blue-800 mb-2">💡 Consulenza Gratuita</h4>
-                <p className="text-blue-700">
+              <div className="mt-8 p-6 bg-secondary/10 rounded-xl border border-secondary/20">
+                <h4 className="font-bold text-secondary mb-2">💡 Consulenza Gratuita</h4>
+                <p className="text-gray-700">
                   I nostri esperti valutano gratuitamente la tua situazione e ti consigliano 
                   la soluzione migliore per il consolidamento dei tuoi debiti.
                 </p>
