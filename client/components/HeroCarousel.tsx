@@ -136,14 +136,14 @@ const HeroCarousel: React.FC = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-all shadow-lg"
       >
         <ChevronLeft className="h-6 w-6" />
       </button>
-      
+
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-primary text-white p-3 rounded-full hover:bg-primary/90 transition-all shadow-lg"
       >
         <ChevronRight className="h-6 w-6" />
       </button>
@@ -155,7 +155,7 @@ const HeroCarousel: React.FC = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlide ? 'bg-secondary scale-125' : 'bg-white/50'
+              index === currentSlide ? 'bg-secondary scale-125' : 'bg-gray-300'
             }`}
           />
         ))}
