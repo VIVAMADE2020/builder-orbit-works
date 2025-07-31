@@ -293,16 +293,11 @@ const Index: React.FC = () => {
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center group">
                 <div className="relative mb-6">
-                  <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+                  <div className="w-32 h-32 mx-auto rounded-full bg-gray-100 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow group-hover:bg-gray-200">
+                    {member.icon}
                   </div>
-                  <div className="absolute inset-0 w-48 h-48 mx-auto rounded-full bg-primary/20 group-hover:bg-primary/30 transition-all duration-300"></div>
                 </div>
-                
+
                 <h3 className="text-xl font-bold text-primary mb-2">{member.name}</h3>
                 <p className="text-secondary font-semibold mb-2">{member.role}</p>
                 <p className="text-gray-600">{member.experience}</p>
