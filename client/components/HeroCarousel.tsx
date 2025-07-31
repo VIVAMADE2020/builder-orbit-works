@@ -62,69 +62,69 @@ const HeroCarousel: React.FC = () => {
         >
           <div className="relative z-10 h-full flex items-center bg-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
                 {/* Text Content */}
-                <div className="text-gray-900 space-y-6 order-2 lg:order-1">
-                  <div className="space-y-4">
-                    <h1 className={`text-5xl lg:text-6xl font-bold leading-tight text-primary ${isTypewriting && index === currentSlide ? 'typewriter' : ''}`}>
+                <div className="text-gray-900 space-y-4 md:space-y-6 order-2 md:order-1">
+                  <div className="space-y-3 md:space-y-4">
+                    <h1 className={`text-3xl md:text-4xl lg:text-6xl font-bold leading-tight text-primary ${isTypewriting && index === currentSlide ? 'typewriter' : ''}`}>
                       {slide.title}
                     </h1>
-                    <h2 className="text-2xl lg:text-3xl font-semibold text-secondary">
+                    <h2 className="text-lg md:text-xl lg:text-3xl font-semibold text-secondary">
                       {slide.subtitle}
                     </h2>
-                    <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
+                    <p className="text-base md:text-lg lg:text-xl text-gray-600 leading-relaxed">
                       {slide.description}
                     </p>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 pt-6">
-                    <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg">
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 md:pt-6">
+                    <button className="bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg">
                       {slide.cta}
                     </button>
-                    <button className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-all">
+                    <button className="border-2 border-primary text-primary px-6 md:px-8 py-3 md:py-4 rounded-lg text-base md:text-lg font-semibold hover:bg-primary hover:text-white transition-all">
                       Calcolatore Prestito
                     </button>
                   </div>
 
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-6 pt-8">
+                  {/* Stats - Responsive grid */}
+                  <div className="grid grid-cols-3 gap-3 md:gap-6 pt-6 md:pt-8">
                     <div className="text-center">
-                      <div className="flex items-center justify-center mb-2">
-                        <CheckCircle className="h-8 w-8 text-secondary" />
+                      <div className="flex items-center justify-center mb-1 md:mb-2">
+                        <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-secondary" />
                       </div>
-                      <div className="text-3xl font-bold text-primary">98%</div>
-                      <div className="text-sm text-gray-600">Approvazioni</div>
+                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">98%</div>
+                      <div className="text-xs md:text-sm text-gray-600">Approvazioni</div>
                     </div>
                     <div className="text-center">
-                      <div className="flex items-center justify-center mb-2">
-                        <TrendingUp className="h-8 w-8 text-secondary" />
+                      <div className="flex items-center justify-center mb-1 md:mb-2">
+                        <TrendingUp className="h-6 w-6 md:h-8 md:w-8 text-secondary" />
                       </div>
-                      <div className="text-3xl font-bold text-primary">€15M+</div>
-                      <div className="text-sm text-gray-600">Erogati</div>
+                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">€15M+</div>
+                      <div className="text-xs md:text-sm text-gray-600">Erogati</div>
                     </div>
                     <div className="text-center">
-                      <div className="flex items-center justify-center mb-2">
-                        <Users className="h-8 w-8 text-secondary" />
+                      <div className="flex items-center justify-center mb-1 md:mb-2">
+                        <Users className="h-6 w-6 md:h-8 md:w-8 text-secondary" />
                       </div>
-                      <div className="text-3xl font-bold text-primary">8.500+</div>
-                      <div className="text-sm text-gray-600">Clienti Felici</div>
+                      <div className="text-xl md:text-2xl lg:text-3xl font-bold text-primary">8.500+</div>
+                      <div className="text-xs md:text-sm text-gray-600">Clienti Felici</div>
                     </div>
                   </div>
                 </div>
 
-                {/* Image Content */}
-                <div className="order-1 lg:order-2">
+                {/* Image Content - Responsive sizing */}
+                <div className="order-1 md:order-2">
                   <div className="relative">
-                    <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+                    <div className="bg-white rounded-xl md:rounded-2xl shadow-xl md:shadow-2xl p-4 md:p-8 border border-gray-100">
                       <img
                         src={slide.image}
                         alt={slide.title}
-                        className="w-full h-80 object-cover rounded-xl shadow-lg"
+                        className="w-full h-48 md:h-64 lg:h-80 object-cover rounded-lg md:rounded-xl shadow-lg"
                       />
                     </div>
-                    {/* Decorative elements */}
-                    <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full"></div>
-                    <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full"></div>
+                    {/* Decorative elements - Hidden on mobile */}
+                    <div className="hidden md:block absolute -top-4 -right-4 w-16 h-16 lg:w-20 lg:h-20 bg-secondary/20 rounded-full"></div>
+                    <div className="hidden md:block absolute -bottom-4 -left-4 w-12 h-12 lg:w-16 lg:h-16 bg-primary/20 rounded-full"></div>
                   </div>
                 </div>
               </div>
