@@ -20,12 +20,17 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "hsl(218, 40%, 25%)", // #263959
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "hsl(165, 53%, 38%)", // #2d947a
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        brand: {
+          blue: "hsl(218, 40%, 25%)", // #263959
+          teal: "hsl(165, 53%, 38%)", // #2d947a
+          text: "hsl(51, 11%, 88%)", // #e3e2dc
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
