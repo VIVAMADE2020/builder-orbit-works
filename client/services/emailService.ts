@@ -19,13 +19,23 @@ export const sendEmail = async (
       }),
     });
 
+    // Read the response body only once
+    const responseText = await response.text();
+
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Email API Error:", response.status, errorText);
-      throw new Error(`Failed to send email: ${response.status} - ${errorText}`);
+      console.error("Email API Error:", response.status, responseText);
+      throw new Error(`Failed to send email: ${response.status} - ${responseText}`);
     }
 
-    const result = await response.json();
+    // Parse the successful response
+    let result;
+    try {
+      result = JSON.parse(responseText);
+    } catch (parseError) {
+      console.warn("Could not parse response as JSON:", responseText);
+      result = { message: responseText };
+    }
+
     console.log("Email sent successfully:", result);
     return true;
   } catch (error) {
