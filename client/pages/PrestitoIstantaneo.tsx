@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { CheckCircle, Zap, Clock, CreditCard, Smartphone, Shield, TrendingUp, Euro, AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 
 const PrestitoIstantaneo: React.FC = () => {
+  const navigate = useNavigate();
   const [loanAmount, setLoanAmount] = useState(5000);
 
   const features = [

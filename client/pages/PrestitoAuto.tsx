@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { CheckCircle, Car, Zap, Shield, Clock, Euro, TrendingUp, Fuel, Settings } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 
 const PrestitoAuto: React.FC = () => {
+  const navigate = useNavigate();
   const [activeVehicle, setActiveVehicle] = useState('auto');
 
   const features = [

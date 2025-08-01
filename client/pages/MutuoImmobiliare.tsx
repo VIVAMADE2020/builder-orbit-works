@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { CheckCircle, Home, Key, Calculator, Shield, TrendingUp, MapPin, Users, Euro, Clock, Building } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 
 const MutuoImmobiliare: React.FC = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('acquisto');
 
   const features = [

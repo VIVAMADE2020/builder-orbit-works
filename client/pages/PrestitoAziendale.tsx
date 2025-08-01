@@ -1,8 +1,10 @@
 import React from 'react';
 import { CheckCircle, TrendingUp, Users, Building, PieChart, Clock, Shield, Euro } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 
 const PrestitoAziendale: React.FC = () => {
+  const navigate = useNavigate();
   const features = [
     'Importi da €10.000 a €500.000',
     'Durata da 6 a 240 mesi',
