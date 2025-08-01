@@ -12,6 +12,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { sendEmail } from "../services/emailService";
+import CongratulationsPopup from "../components/CongratulationsPopup";
 
 const RichiestaPrestito: React.FC = () => {
   const [formData, setFormData] = useState({
