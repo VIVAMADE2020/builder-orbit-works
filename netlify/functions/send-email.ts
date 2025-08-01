@@ -129,9 +129,26 @@ const handler: Handler = async (event, context) => {
     };
   } catch (error) {
     console.error("Error sending email:", error);
+
+    // Return more detailed error information
+    let errorMessage = "Failed to send email";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    }
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Failed to send email" }),
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
+      },
+      body: JSON.stringify({
+        error: "Failed to send email",
+        message: errorMessage,
+        timestamp: new Date().toISOString()
+      }),
     };
   }
 };
