@@ -26,23 +26,31 @@ export const sendEmail = async (
     console.log("Response status:", response.status);
     console.log("Response headers:", Object.fromEntries(response.headers.entries()));
 
-    // Handle response with fallback for body stream issues
+    // Clone response immediately to avoid body stream consumption issues
+    const responseClone = response.clone();
     let responseData;
 
     try {
-      // Try to read as JSON first (most common case)
-      responseData = await response.json();
-    } catch (jsonError) {
+      // Always read as text first to avoid stream issues
+      const textResponse = await response.text();
+
+      // Try to parse as JSON
       try {
-        // If JSON fails, clone the response and try as text
-        const responseClone = response.clone();
-        const textResponse = await responseClone.text();
+        responseData = JSON.parse(textResponse);
+      } catch (parseError) {
+        // If not valid JSON, wrap in message object
         responseData = { message: textResponse };
-      } catch (textError) {
-        // If both fail, create a generic response
-        console.warn("Could not read response body:", jsonError, textError);
+      }
+    } catch (textError) {
+      // Fallback to clone if original fails
+      try {
+        const fallbackText = await responseClone.text();
+        responseData = { message: fallbackText };
+      } catch (cloneError) {
+        // Last resort - create generic response
+        console.warn("All response reading methods failed:", textError, cloneError);
         responseData = {
-          message: "Response received but could not be parsed",
+          message: "Response received but could not be read",
           status: response.status
         };
       }
