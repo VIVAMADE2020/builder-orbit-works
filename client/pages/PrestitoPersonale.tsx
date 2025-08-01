@@ -1,8 +1,10 @@
 import React from 'react';
 import { CheckCircle, Euro, Clock, Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 
 const PrestitoPersonale: React.FC = () => {
+  const navigate = useNavigate();
   const features = [
     'Importi da €5.000 a €75.000',
     'Durata da 1 a 240 mesi',
@@ -54,8 +56,11 @@ const PrestitoPersonale: React.FC = () => {
               ))}
             </div>
 
-            <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors">
-              Richiedi Ora
+            <button
+              onClick={() => navigate('/richiesta-prestito')}
+              className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Fare una Demanda di Prestito
             </button>
           </div>
           
@@ -112,11 +117,17 @@ const PrestitoPersonale: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
-              Richiedi Prestito
+            <button
+              onClick={() => navigate('/richiesta-prestito')}
+              className="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
+              Fare una Demanda di Prestito
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary transition-all">
-              Maggiori Informazioni
+            <button
+              onClick={() => navigate('/contatti')}
+              className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary transition-all"
+            >
+              Contattaci
             </button>
           </div>
         </section>
