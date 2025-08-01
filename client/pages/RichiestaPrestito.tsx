@@ -193,428 +193,433 @@ const RichiestaPrestito: React.FC = () => {
 
       <div className="min-h-screen bg-gray-50 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-primary mb-4">
-            Richiesta Prestito
-          </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Compila il modulo per ricevere una valutazione gratuita della tua
-            richiesta di prestito. Ti risponderemo entro 24 ore.
-          </p>
-        </div>
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-primary mb-4">
+              Richiesta Prestito
+            </h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Compila il modulo per ricevere una valutazione gratuita della tua
+              richiesta di prestito. Ti risponderemo entro 24 ore.
+            </p>
+          </div>
 
-        {/* Form */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Personal Information */}
-            <div>
-              <h2 className="text-2xl font-bold text-primary mb-6">
-                Informazioni Personali
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Nome *
-                  </label>
-                  <input
-                    type="text"
-                    name="nome"
-                    value={formData.nome}
-                    onChange={handleInputChange}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Cognome *
-                  </label>
-                  <input
-                    type="text"
-                    name="cognome"
-                    value={formData.cognome}
-                    onChange={handleInputChange}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Telefono *
-                  </label>
-                  <input
-                    type="tel"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleInputChange}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Data di Nascita *
-                  </label>
-                  <input
-                    type="date"
-                    name="dataNascita"
-                    value={formData.dataNascita}
-                    onChange={handleInputChange}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Paese *
-                  </label>
-                  <select
-                    name="paese"
-                    value={formData.paese}
-                    onChange={handleInputChange}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  >
-                    <option value="">Seleziona paese</option>
-                    <option value="IT">Italia</option>
-                    <option value="DE">Germania</option>
-                    <option value="SK">Slovacchia</option>
-                    <option value="BE">Belgio</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Indirizzo Completo *
-                </label>
-                <input
-                  type="text"
-                  name="indirizzo"
-                  value={formData.indirizzo}
-                  onChange={handleInputChange}
-                  placeholder="Via, numero civico, città, CAP"
-                  className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Loan Information */}
-            <div>
-              <h2 className="text-2xl font-bold text-primary mb-6">
-                Dettagli del Prestito
-              </h2>
-
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-4">
-                  Tipo di Prestito *
-                </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {loanTypes.map((type) => (
-                    <div
-                      key={type.id}
-                      onClick={() =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          tipoPrestito: type.id,
-                        }))
-                      }
-                      className={`cursor-pointer p-4 rounded-xl border-2 transition-all hover:shadow-lg ${
-                        formData.tipoPrestito === type.id
-                          ? "border-primary bg-primary/5"
-                          : "border-gray-200 hover:border-primary/50"
-                      }`}
-                    >
-                      <div
-                        className={`w-10 h-10 ${type.color} rounded-lg flex items-center justify-center text-white mb-3`}
-                      >
-                        {type.icon}
-                      </div>
-                      <h3 className="font-semibold text-gray-900 text-sm">
-                        {type.label}
-                      </h3>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Importo Richiesto (€) *
-                  </label>
-                  <input
-                    type="number"
-                    name="importo"
-                    value={formData.importo}
-                    onChange={handleInputChange}
-                    min="5000"
-                    max="500000"
-                    step="1000"
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                  <p className="text-sm text-gray-500 mt-1">Minimo €5.000</p>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Durata (mesi) *
-                  </label>
-                  <select
-                    name="durata"
-                    value={formData.durata}
-                    onChange={handleInputChange}
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  >
-                    <option value="">Seleziona durata</option>
-                    <option value="12">12 mesi</option>
-                    <option value="24">24 mesi</option>
-                    <option value="36">36 mesi</option>
-                    <option value="48">48 mesi</option>
-                    <option value="60">60 mesi</option>
-                    <option value="84">84 mesi</option>
-                    <option value="120">120 mesi</option>
-                    <option value="240">240 mesi</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Motivazione del Prestito *
-                </label>
-                <select
-                  name="motivazione"
-                  value={formData.motivazione}
-                  onChange={handleInputChange}
-                  className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                  required
-                >
-                  <option value="">Seleziona motivazione</option>
-                  <option value="casa">Acquisto/Ristrutturazione Casa</option>
-                  <option value="auto">Acquisto Veicolo</option>
-                  <option value="consolidamento">Consolidamento Debiti</option>
-                  <option value="matrimonio">Matrimonio</option>
-                  <option value="viaggio">Viaggio</option>
-                  <option value="spese-mediche">Spese Mediche</option>
-                  <option value="investimento">Investimento</option>
-                  <option value="emergenza">Emergenza</option>
-                  <option value="altro">Altro</option>
-                </select>
-              </div>
-
-              {formData.importo && formData.durata && (
-                <div className="mt-6 bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-xl">
-                  <h4 className="font-bold text-primary mb-3">
-                    Anteprima Prestito
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                    <div>
-                      <div className="text-sm text-gray-600">Importo</div>
-                      <div className="text-xl font-bold text-primary">
-                        €{parseInt(formData.importo).toLocaleString()}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-600">Durata</div>
-                      <div className="text-xl font-bold text-primary">
-                        {formData.durata} mesi
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-600">Rata Stimata*</div>
-                      <div className="text-xl font-bold text-secondary">
-                        €
-                        {Math.round(
-                          calculateEstimatedPayment(),
-                        ).toLocaleString()}
-                      </div>
-                    </div>
+          {/* Form */}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Personal Information */}
+              <div>
+                <h2 className="text-2xl font-bold text-primary mb-6">
+                  Informazioni Personali
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Nome *
+                    </label>
+                    <input
+                      type="text"
+                      name="nome"
+                      value={formData.nome}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
                   </div>
-                  <p className="text-xs text-gray-500 text-center mt-3">
-                    *Calcolo indicativo con tasso 2% annuo
-                  </p>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Cognome *
+                    </label>
+                    <input
+                      type="text"
+                      name="cognome"
+                      value={formData.cognome}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Telefono *
+                    </label>
+                    <input
+                      type="tel"
+                      name="telefono"
+                      value={formData.telefono}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Data di Nascita *
+                    </label>
+                    <input
+                      type="date"
+                      name="dataNascita"
+                      value={formData.dataNascita}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Paese *
+                    </label>
+                    <select
+                      name="paese"
+                      value={formData.paese}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    >
+                      <option value="">Seleziona paese</option>
+                      <option value="IT">Italia</option>
+                      <option value="DE">Germania</option>
+                      <option value="SK">Slovacchia</option>
+                      <option value="BE">Belgio</option>
+                    </select>
+                  </div>
                 </div>
-              )}
-            </div>
 
-            {/* Financial Information */}
-            <div>
-              <h2 className="text-2xl font-bold text-primary mb-6">
-                Situazione Finanziaria
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
+                <div className="mt-6">
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Occupazione *
+                    Indirizzo Completo *
+                  </label>
+                  <input
+                    type="text"
+                    name="indirizzo"
+                    value={formData.indirizzo}
+                    onChange={handleInputChange}
+                    placeholder="Via, numero civico, città, CAP"
+                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    required
+                  />
+                </div>
+              </div>
+
+              {/* Loan Information */}
+              <div>
+                <h2 className="text-2xl font-bold text-primary mb-6">
+                  Dettagli del Prestito
+                </h2>
+
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-4">
+                    Tipo di Prestito *
+                  </label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {loanTypes.map((type) => (
+                      <div
+                        key={type.id}
+                        onClick={() =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            tipoPrestito: type.id,
+                          }))
+                        }
+                        className={`cursor-pointer p-4 rounded-xl border-2 transition-all hover:shadow-lg ${
+                          formData.tipoPrestito === type.id
+                            ? "border-primary bg-primary/5"
+                            : "border-gray-200 hover:border-primary/50"
+                        }`}
+                      >
+                        <div
+                          className={`w-10 h-10 ${type.color} rounded-lg flex items-center justify-center text-white mb-3`}
+                        >
+                          {type.icon}
+                        </div>
+                        <h3 className="font-semibold text-gray-900 text-sm">
+                          {type.label}
+                        </h3>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Importo Richiesto (€) *
+                    </label>
+                    <input
+                      type="number"
+                      name="importo"
+                      value={formData.importo}
+                      onChange={handleInputChange}
+                      min="5000"
+                      max="500000"
+                      step="1000"
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                    <p className="text-sm text-gray-500 mt-1">Minimo €5.000</p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Durata (mesi) *
+                    </label>
+                    <select
+                      name="durata"
+                      value={formData.durata}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    >
+                      <option value="">Seleziona durata</option>
+                      <option value="12">12 mesi</option>
+                      <option value="24">24 mesi</option>
+                      <option value="36">36 mesi</option>
+                      <option value="48">48 mesi</option>
+                      <option value="60">60 mesi</option>
+                      <option value="84">84 mesi</option>
+                      <option value="120">120 mesi</option>
+                      <option value="240">240 mesi</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="mt-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Motivazione del Prestito *
                   </label>
                   <select
-                    name="occupazione"
-                    value={formData.occupazione}
+                    name="motivazione"
+                    value={formData.motivazione}
                     onChange={handleInputChange}
                     className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                     required
                   >
-                    <option value="">Seleziona occupazione</option>
-                    <option value="dipendente-tempo-indeterminato">
-                      Dipendente Tempo Indeterminato
+                    <option value="">Seleziona motivazione</option>
+                    <option value="casa">Acquisto/Ristrutturazione Casa</option>
+                    <option value="auto">Acquisto Veicolo</option>
+                    <option value="consolidamento">
+                      Consolidamento Debiti
                     </option>
-                    <option value="dipendente-tempo-determinato">
-                      Dipendente Tempo Determinato
-                    </option>
-                    <option value="lavoratore-autonomo">
-                      Lavoratore Autonomo
-                    </option>
-                    <option value="libero-professionista">
-                      Libero Professionista
-                    </option>
-                    <option value="imprenditore">Imprenditore</option>
-                    <option value="pensionato">Pensionato</option>
+                    <option value="matrimonio">Matrimonio</option>
+                    <option value="viaggio">Viaggio</option>
+                    <option value="spese-mediche">Spese Mediche</option>
+                    <option value="investimento">Investimento</option>
+                    <option value="emergenza">Emergenza</option>
                     <option value="altro">Altro</option>
                   </select>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Reddito Mensile Netto (€) *
-                  </label>
-                  <input
-                    type="number"
-                    name="redditoMensile"
-                    value={formData.redditoMensile}
-                    onChange={handleInputChange}
-                    min="0"
-                    step="100"
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
+                {formData.importo && formData.durata && (
+                  <div className="mt-6 bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-xl">
+                    <h4 className="font-bold text-primary mb-3">
+                      Anteprima Prestito
+                    </h4>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                      <div>
+                        <div className="text-sm text-gray-600">Importo</div>
+                        <div className="text-xl font-bold text-primary">
+                          €{parseInt(formData.importo).toLocaleString()}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-600">Durata</div>
+                        <div className="text-xl font-bold text-primary">
+                          {formData.durata} mesi
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-sm text-gray-600">
+                          Rata Stimata*
+                        </div>
+                        <div className="text-xl font-bold text-secondary">
+                          €
+                          {Math.round(
+                            calculateEstimatedPayment(),
+                          ).toLocaleString()}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-xs text-gray-500 text-center mt-3">
+                      *Calcolo indicativo con tasso 2% annuo
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Financial Information */}
+              <div>
+                <h2 className="text-2xl font-bold text-primary mb-6">
+                  Situazione Finanziaria
+                </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Occupazione *
+                    </label>
+                    <select
+                      name="occupazione"
+                      value={formData.occupazione}
+                      onChange={handleInputChange}
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    >
+                      <option value="">Seleziona occupazione</option>
+                      <option value="dipendente-tempo-indeterminato">
+                        Dipendente Tempo Indeterminato
+                      </option>
+                      <option value="dipendente-tempo-determinato">
+                        Dipendente Tempo Determinato
+                      </option>
+                      <option value="lavoratore-autonomo">
+                        Lavoratore Autonomo
+                      </option>
+                      <option value="libero-professionista">
+                        Libero Professionista
+                      </option>
+                      <option value="imprenditore">Imprenditore</option>
+                      <option value="pensionato">Pensionato</option>
+                      <option value="altro">Altro</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Reddito Mensile Netto (€) *
+                    </label>
+                    <input
+                      type="number"
+                      name="redditoMensile"
+                      value={formData.redditoMensile}
+                      onChange={handleInputChange}
+                      min="0"
+                      step="100"
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Additional Message */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Messaggio Aggiuntivo (opzionale)
-              </label>
-              <textarea
-                name="messaggio"
-                value={formData.messaggio}
-                onChange={handleInputChange}
-                rows={4}
-                className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                placeholder="Aggiungi qualsiasi informazione che ritieni utile per la valutazione..."
-              />
-            </div>
-
-            {/* Consent */}
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <input
-                  type="checkbox"
-                  name="consensoPrivacy"
-                  checked={formData.consensoPrivacy}
-                  onChange={handleInputChange}
-                  className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary"
-                  required
-                />
-                <label className="ml-3 text-sm text-gray-700">
-                  Accetto la{" "}
-                  <a
-                    href="/privacy-policy"
-                    className="text-primary hover:underline"
-                  >
-                    Privacy Policy
-                  </a>{" "}
-                  e i{" "}
-                  <a
-                    href="/termini-condizioni"
-                    className="text-primary hover:underline"
-                  >
-                    Termini e Condizioni
-                  </a>{" "}
-                  *
+              {/* Additional Message */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Messaggio Aggiuntivo (opzionale)
                 </label>
+                <textarea
+                  name="messaggio"
+                  value={formData.messaggio}
+                  onChange={handleInputChange}
+                  rows={4}
+                  className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                  placeholder="Aggiungi qualsiasi informazione che ritieni utile per la valutazione..."
+                />
               </div>
 
-              <div className="flex items-start">
-                <input
-                  type="checkbox"
-                  name="consensoMarketing"
-                  checked={formData.consensoMarketing}
-                  onChange={handleInputChange}
-                  className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary"
-                />
-                <label className="ml-3 text-sm text-gray-700">
-                  Acconsento a ricevere comunicazioni commerciali e promozionali
-                </label>
+              {/* Consent */}
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <input
+                    type="checkbox"
+                    name="consensoPrivacy"
+                    checked={formData.consensoPrivacy}
+                    onChange={handleInputChange}
+                    className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary"
+                    required
+                  />
+                  <label className="ml-3 text-sm text-gray-700">
+                    Accetto la{" "}
+                    <a
+                      href="/privacy-policy"
+                      className="text-primary hover:underline"
+                    >
+                      Privacy Policy
+                    </a>{" "}
+                    e i{" "}
+                    <a
+                      href="/termini-condizioni"
+                      className="text-primary hover:underline"
+                    >
+                      Termini e Condizioni
+                    </a>{" "}
+                    *
+                  </label>
+                </div>
+
+                <div className="flex items-start">
+                  <input
+                    type="checkbox"
+                    name="consensoMarketing"
+                    checked={formData.consensoMarketing}
+                    onChange={handleInputChange}
+                    className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary"
+                  />
+                  <label className="ml-3 text-sm text-gray-700">
+                    Acconsento a ricevere comunicazioni commerciali e
+                    promozionali
+                  </label>
+                </div>
               </div>
-            </div>
 
-            {/* Submit Button */}
-            <div className="text-center pt-6">
-              <button
-                type="submit"
-                disabled={!formData.consensoPrivacy || isSubmitting}
-                className="w-full md:w-auto px-12 py-4 bg-primary text-white rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-              >
-                <Send className="mr-2 h-5 w-5" />
-                {isSubmitting
-                  ? "Invio in corso..."
-                  : "Invia Richiesta Prestito"}
-              </button>
-              <p className="text-sm text-gray-500 mt-3">
-                Riceverai una risposta entro 24 ore lavorative
-              </p>
-            </div>
-          </form>
-        </div>
-
-        {/* Trust Indicators */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center">
-            <Clock className="h-12 w-12 text-secondary mx-auto mb-4" />
-            <h3 className="font-bold text-primary mb-2">Risposta Rapida</h3>
-            <p className="text-gray-600 text-sm">Valutazione entro 24 ore</p>
+              {/* Submit Button */}
+              <div className="text-center pt-6">
+                <button
+                  type="submit"
+                  disabled={!formData.consensoPrivacy || isSubmitting}
+                  className="w-full md:w-auto px-12 py-4 bg-primary text-white rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                >
+                  <Send className="mr-2 h-5 w-5" />
+                  {isSubmitting
+                    ? "Invio in corso..."
+                    : "Invia Richiesta Prestito"}
+                </button>
+                <p className="text-sm text-gray-500 mt-3">
+                  Riceverai una risposta entro 24 ore lavorative
+                </p>
+              </div>
+            </form>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center">
-            <Shield className="h-12 w-12 text-secondary mx-auto mb-4" />
-            <h3 className="font-bold text-primary mb-2">Dati Sicuri</h3>
-            <p className="text-gray-600 text-sm">Crittografia SSL 256-bit</p>
-          </div>
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+              <Clock className="h-12 w-12 text-secondary mx-auto mb-4" />
+              <h3 className="font-bold text-primary mb-2">Risposta Rapida</h3>
+              <p className="text-gray-600 text-sm">Valutazione entro 24 ore</p>
+            </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-lg text-center">
-            <CheckCircle className="h-12 w-12 text-secondary mx-auto mb-4" />
-            <h3 className="font-bold text-primary mb-2">Senza Impegno</h3>
-            <p className="text-gray-600 text-sm">Valutazione gratuita</p>
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+              <Shield className="h-12 w-12 text-secondary mx-auto mb-4" />
+              <h3 className="font-bold text-primary mb-2">Dati Sicuri</h3>
+              <p className="text-gray-600 text-sm">Crittografia SSL 256-bit</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-lg text-center">
+              <CheckCircle className="h-12 w-12 text-secondary mx-auto mb-4" />
+              <h3 className="font-bold text-primary mb-2">Senza Impegno</h3>
+              <p className="text-gray-600 text-sm">Valutazione gratuita</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

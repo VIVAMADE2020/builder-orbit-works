@@ -133,7 +133,7 @@ const PrestitoAziendale: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={() => navigate('/richiesta-prestito')}
+                  onClick={() => navigate("/richiesta-prestito")}
                   className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
                 >
                   Richiedi Preventivo

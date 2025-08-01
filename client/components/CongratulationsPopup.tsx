@@ -1,5 +1,5 @@
-import React from 'react';
-import { CheckCircle, X } from 'lucide-react';
+import React from "react";
+import { CheckCircle, X } from "lucide-react";
 
 interface CongratulationsPopupProps {
   isVisible: boolean;
@@ -12,7 +12,7 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
   isVisible,
   onClose,
   title = "Demanda Inviata con Successo!",
-  message = "Grazie per la tua richiesta. La nostra équipe ti contatterà entro 24 ore con una proposta personalizzata."
+  message = "Grazie per la tua richiesta. La nostra équipe ti contatterà entro 24 ore con una proposta personalizzata.",
 }) => {
   if (!isVisible) return null;
 
@@ -37,14 +37,10 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
           </div>
 
           {/* Title */}
-          <h2 className="text-2xl font-bold text-primary mb-4">
-            {title}
-          </h2>
+          <h2 className="text-2xl font-bold text-primary mb-4">{title}</h2>
 
           {/* Message */}
-          <p className="text-gray-600 mb-8 leading-relaxed">
-            {message}
-          </p>
+          <p className="text-gray-600 mb-8 leading-relaxed">{message}</p>
 
           {/* Features */}
           <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
@@ -85,7 +81,7 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
             transform: scale(1) translateY(0);
           }
         }
-        
+
         .animate-fade-in {
           animation: fade-in 0.3s ease-out;
         }
