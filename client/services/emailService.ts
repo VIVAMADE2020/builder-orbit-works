@@ -19,21 +19,24 @@ export const sendEmail = async (
       }),
     });
 
-    // Read the response body only once
-    const responseText = await response.text();
+    // Clone response to avoid body stream already read error
+    const responseClone = response.clone();
 
     if (!response.ok) {
-      console.error("Email API Error:", response.status, responseText);
-      throw new Error(`Failed to send email: ${response.status} - ${responseText}`);
+      const errorText = await responseClone.text();
+      console.error("Email API Error:", response.status, errorText);
+      throw new Error(`Failed to send email: ${response.status} - ${errorText}`);
     }
 
-    // Parse the successful response
+    // Parse the successful response from the original response
     let result;
     try {
-      result = JSON.parse(responseText);
+      result = await response.json();
     } catch (parseError) {
-      console.warn("Could not parse response as JSON:", responseText);
-      result = { message: responseText };
+      // If JSON parsing fails, try reading as text from the clone
+      const textResult = await responseClone.text();
+      console.warn("Could not parse response as JSON:", textResult);
+      result = { message: textResult };
     }
 
     console.log("Email sent successfully:", result);
