@@ -378,27 +378,22 @@ const RichiestaPrestito: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Durata (mesi) *
-                    </label>
-                    <select
-                      name="durata"
-                      value={formData.durata}
-                      onChange={handleInputChange}
-                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                      required
-                    >
-                      <option value="">Seleziona durata</option>
-                      <option value="12">12 mesi</option>
-                      <option value="24">24 mesi</option>
-                      <option value="36">36 mesi</option>
-                      <option value="48">48 mesi</option>
-                      <option value="60">60 mesi</option>
-                      <option value="84">84 mesi</option>
-                      <option value="120">120 mesi</option>
-                      <option value="240">240 mesi</option>
-                    </select>
-                  </div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Durata (mesi) *
+                  </label>
+                  <input
+                    type="number"
+                    name="durata"
+                    value={formData.durata}
+                    onChange={handleInputChange}
+                    min="1"
+                    max="240"
+                    placeholder="Inserisci durata in mesi (1-240)"
+                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    required
+                  />
+                  <p className="text-sm text-gray-500 mt-1">Da 1 a 240 mesi</p>
+                </div>
                 </div>
 
                 <div className="mt-6">
