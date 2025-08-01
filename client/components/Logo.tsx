@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface LogoProps {
   className?: string;
@@ -6,6 +7,7 @@ interface LogoProps {
 }
 
 export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
+  const navigate = useNavigate();
   const sizeClasses = {
     sm: 'h-8 w-auto',
     md: 'h-12 w-auto',
@@ -13,7 +15,10 @@ export const Logo: React.FC<LogoProps> = ({ className = '', size = 'md' }) => {
   };
 
   return (
-    <div className={`flex items-center space-x-4 ${className}`}>
+    <div
+      onClick={() => navigate('/')}
+      className={`flex items-center space-x-4 cursor-pointer ${className}`}
+    >
       <div className="relative">
         <svg
           className={`${sizeClasses[size]} text-primary`}

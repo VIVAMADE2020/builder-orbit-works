@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { CheckCircle, TrendingDown, Calculator, PieChart, Shield, Target, ArrowDown, DollarSign, CreditCard } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 
 const ConsolidamentoDebiti: React.FC = () => {
+  const navigate = useNavigate();
   const [currentDebts, setCurrentDebts] = useState([
     { type: 'Carta di Credito', amount: 8000, rate: 15.5, payment: 250 },
     { type: 'Prestito Personale', amount: 12000, rate: 8.2, payment: 340 },
@@ -133,10 +135,16 @@ const ConsolidamentoDebiti: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors">
-                  Analisi Gratuita
+                <button
+                  onClick={() => navigate('/richiesta-prestito')}
+                  className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  Fare una Demanda di Prestito
                 </button>
-                <button className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-all">
+                <button
+                  onClick={() => navigate('/calcolatore')}
+                  className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-all"
+                >
                   Calcola Risparmio
                 </button>
               </div>
@@ -292,8 +300,11 @@ const ConsolidamentoDebiti: React.FC = () => {
                   </div>
 
                   <div className="text-center">
-                    <button className="bg-secondary text-white px-8 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors">
-                      Richiedi Consolidamento
+                    <button
+                      onClick={() => navigate('/richiesta-prestito')}
+                      className="bg-secondary text-white px-8 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors"
+                    >
+                      Fare una Demanda di Prestito
                     </button>
                   </div>
                 </div>
@@ -373,7 +384,7 @@ const ConsolidamentoDebiti: React.FC = () => {
 
             <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
               <h3 className="text-2xl font-bold text-primary mb-6 text-center">
-                Analisi Gratuita Debiti
+                Richiesta Consolidamento Debiti
               </h3>
               
               <div className="space-y-4">
@@ -412,12 +423,15 @@ const ConsolidamentoDebiti: React.FC = () => {
                   />
                 </div>
                 
-                <button className="w-full bg-primary text-white py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors">
-                  Analizza Risparmio Gratuito
+                <button
+                  onClick={() => navigate('/richiesta-prestito')}
+                  className="w-full bg-primary text-white py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  Fare una Demanda di Prestito
                 </button>
                 
                 <p className="text-xs text-gray-500 text-center">
-                  Valutazione gratuita senza impegno
+                  Richiesta gratuita senza impegno
                 </p>
               </div>
             </div>
@@ -453,13 +467,19 @@ const ConsolidamentoDebiti: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-secondary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+            <button
+              onClick={() => navigate('/richiesta-prestito')}
+              className="bg-white text-secondary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center"
+            >
               <Calculator className="mr-2 h-5 w-5" />
-              Analisi Gratuita
+              Fare una Demanda di Prestito
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-secondary transition-all inline-flex items-center justify-center">
+            <button
+              onClick={() => navigate('/calcolatore')}
+              className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-secondary transition-all inline-flex items-center justify-center"
+            >
               <TrendingDown className="mr-2 h-5 w-5" />
-              Risparmia Subito
+              Calcola Risparmio
             </button>
           </div>
         </div>

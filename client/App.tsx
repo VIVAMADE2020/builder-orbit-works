@@ -18,9 +18,7 @@ import Contatti from "./pages/Contatti";
 import PrestitoPersonale from "./pages/PrestitoPersonale";
 import PrestitoAziendale from "./pages/PrestitoAziendale";
 import PrestitoIstantaneo from "./pages/PrestitoIstantaneo";
-import PrestitoPrivato from "./pages/PrestitoPrivato";
 import PrestitoSenzaSchufa from "./pages/PrestitoSenzaSchufa";
-import PrestitoAutonomi from "./pages/PrestitoAutonomi";
 import MutuoImmobiliare from "./pages/MutuoImmobiliare";
 import PrestitoAuto from "./pages/PrestitoAuto";
 import ConsolidamentoDebiti from "./pages/ConsolidamentoDebiti";
@@ -63,9 +61,7 @@ const App = () => (
               <Route path="/prestito-personale" element={<PrestitoPersonale />} />
               <Route path="/prestito-aziendale" element={<PrestitoAziendale />} />
               <Route path="/prestito-istantaneo" element={<PrestitoIstantaneo />} />
-              <Route path="/prestito-privato" element={<PrestitoPrivato />} />
               <Route path="/prestito-senza-schufa" element={<PrestitoSenzaSchufa />} />
-              <Route path="/prestito-autonomi" element={<PrestitoAutonomi />} />
               <Route path="/mutuo-immobiliare" element={<MutuoImmobiliare />} />
               <Route path="/prestito-auto" element={<PrestitoAuto />} />
               <Route path="/consolidamento-debiti" element={<ConsolidamentoDebiti />} />

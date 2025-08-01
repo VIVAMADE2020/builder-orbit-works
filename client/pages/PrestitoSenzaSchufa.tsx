@@ -1,8 +1,11 @@
 import React from 'react';
 import { CheckCircle, Shield, UserCheck, Clock, Euro, AlertTriangle, TrendingUp, FileText } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 
 const PrestitoSenzaSchufa: React.FC = () => {
+  const navigate = useNavigate();
+
   const features = [
     'Nessuna verifica Schufa richiesta',
     'Importi da €1.000 a €25.000',
@@ -37,17 +40,17 @@ const PrestitoSenzaSchufa: React.FC = () => {
 
   const whyChoose = [
     {
-      icon: <AlertTriangle className="h-8 w-8 text-orange-500" />,
+      icon: <AlertTriangle className="h-8 w-8 text-secondary" />,
       title: 'Problemi Creditizi Passati',
       description: 'Anche con precedenti difficoltà finanziarie puoi ottenere il prestito'
     },
     {
-      icon: <TrendingUp className="h-8 w-8 text-blue-500" />,
+      icon: <TrendingUp className="h-8 w-8 text-secondary" />,
       title: 'Reddito Stabile',
       description: 'Se hai un reddito regolare, possiamo aiutarti indipendentemente dalla Schufa'
     },
     {
-      icon: <FileText className="h-8 w-8 text-green-500" />,
+      icon: <FileText className="h-8 w-8 text-secondary" />,
       title: 'Pochi Documenti',
       description: 'Documentazione semplificata per un processo più veloce'
     }
@@ -115,11 +118,11 @@ const PrestitoSenzaSchufa: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+      <section className="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center bg-purple-100 text-purple-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <div className="inline-flex items-center bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold mb-6">
                 <Shield className="h-4 w-4 mr-2" />
                 Senza verifica Schufa
               </div>
@@ -142,11 +145,17 @@ const PrestitoSenzaSchufa: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-700 transition-colors">
-                  Richiedi Senza Schufa
+                <button 
+                  onClick={() => navigate('/richiesta-prestito')}
+                  className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  Fare una Demanda di Prestito
                 </button>
-                <button className="border-2 border-purple-600 text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-600 hover:text-white transition-all">
-                  Verifica Idoneità
+                <button 
+                  onClick={() => navigate('/calcolatore')}
+                  className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-all"
+                >
+                  Calcolatore Prestito
                 </button>
               </div>
             </div>
@@ -159,8 +168,8 @@ const PrestitoSenzaSchufa: React.FC = () => {
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
               </div>
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-purple-400/20 rounded-full"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-pink-400/20 rounded-full"></div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-secondary/20 rounded-full"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary/20 rounded-full"></div>
             </div>
           </div>
         </div>
@@ -219,13 +228,13 @@ const PrestitoSenzaSchufa: React.FC = () => {
       </section>
 
       {/* Process */}
-      <section className="py-20 bg-purple-600">
+      <section className="py-20 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">
               Come Funziona
             </h2>
-            <p className="text-xl text-purple-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
               Processo semplificato senza verifica Schufa
             </p>
           </div>
@@ -235,14 +244,14 @@ const PrestitoSenzaSchufa: React.FC = () => {
               <div key={index} className="text-center">
                 <div className="relative mb-6">
                   <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-purple-600">{step.step}</span>
+                    <span className="text-2xl font-bold text-primary">{step.step}</span>
                   </div>
                   {index < steps.length - 1 && (
                     <div className="hidden lg:block absolute top-10 left-1/2 w-full h-0.5 bg-white/30 z-0 transform translate-x-8"></div>
                   )}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                <p className="text-purple-200">{step.description}</p>
+                <p className="text-gray-200">{step.description}</p>
               </div>
             ))}
           </div>
@@ -347,21 +356,21 @@ const PrestitoSenzaSchufa: React.FC = () => {
       </section>
 
       {/* Warning Section */}
-      <section className="py-20 bg-orange-50">
+      <section className="py-20 bg-yellow-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-orange-200">
+          <div className="bg-white rounded-2xl shadow-lg p-8 border border-yellow-200">
             <div className="flex items-start">
-              <AlertTriangle className="h-12 w-12 text-orange-500 mr-6 flex-shrink-0" />
+              <AlertTriangle className="h-12 w-12 text-yellow-600 mr-6 flex-shrink-0" />
               <div>
-                <h3 className="text-2xl font-bold text-orange-800 mb-4">
+                <h3 className="text-2xl font-bold text-yellow-800 mb-4">
                   Prestito Responsabile
                 </h3>
-                <p className="text-orange-700 leading-relaxed mb-4">
+                <p className="text-yellow-700 leading-relaxed mb-4">
                   Il prestito senza Schufa è una soluzione seria per chi ha reali necessità finanziarie 
                   e la capacità di rimborso. Non è destinato a risolvere problemi di sovraindebitamento 
                   già esistenti.
                 </p>
-                <p className="text-orange-700 leading-relaxed">
+                <p className="text-yellow-700 leading-relaxed">
                   Prima di richiedere qualsiasi prestito, valuta attentamente la tua situazione finanziaria 
                   e assicurati di poter sostenere l'impegno di rimborso. I nostri consulenti sono disponibili 
                   per una valutazione gratuita e responsabile della tua richiesta.
@@ -373,22 +382,28 @@ const PrestitoSenzaSchufa: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-purple-600">
+      <section className="py-20 bg-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
             Una Nuova Opportunità Ti Aspetta
           </h2>
-          <p className="text-xl text-purple-200 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
             Non lasciare che il passato creditizio limiti il tuo futuro. 
             Richiedi subito il tuo prestito senza verifica Schufa e ottieni il finanziamento che meriti.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
+            <button 
+              onClick={() => navigate('/richiesta-prestito')}
+              className="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center"
+            >
               <Shield className="mr-2 h-5 w-5" />
-              Richiedi Senza Schufa
+              Fare una Demanda di Prestito
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-purple-600 transition-all inline-flex items-center justify-center">
+            <button 
+              onClick={() => navigate('/contatti')}
+              className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary transition-all inline-flex items-center justify-center"
+            >
               <UserCheck className="mr-2 h-5 w-5" />
               Consulenza Gratuita
             </button>
