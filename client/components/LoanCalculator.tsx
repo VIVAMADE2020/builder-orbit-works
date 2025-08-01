@@ -318,8 +318,6 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
           </div>
         </div>
       </div>
-
-
     </div>
   );
 };

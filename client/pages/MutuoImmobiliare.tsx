@@ -176,7 +176,7 @@ const MutuoImmobiliare: React.FC = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={() => navigate('/richiesta-prestito')}
+                  onClick={() => navigate("/richiesta-prestito")}
                   className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
                 >
                   Richiedi Mutuo
@@ -392,7 +392,7 @@ const MutuoImmobiliare: React.FC = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => navigate('/richiesta-prestito')}
+              onClick={() => navigate("/richiesta-prestito")}
               className="bg-white text-secondary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center"
             >
               <Home className="mr-2 h-5 w-5" />

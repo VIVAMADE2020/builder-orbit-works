@@ -109,7 +109,12 @@ const RichiestaPrestito: React.FC = () => {
     setIsSubmitting(true);
 
     // Validation
-    if (!formData.nome || !formData.cognome || !formData.email || !formData.telefono) {
+    if (
+      !formData.nome ||
+      !formData.cognome ||
+      !formData.email ||
+      !formData.telefono
+    ) {
       alert("Per favore compila tutti i campi obbligatori.");
       setIsSubmitting(false);
       return;
@@ -153,11 +158,15 @@ const RichiestaPrestito: React.FC = () => {
           consensoMarketing: false,
         });
       } else {
-        alert("❌ Errore nell'invio della richiesta. Verifica la tua connessione internet e riprova.");
+        alert(
+          "❌ Errore nell'invio della richiesta. Verifica la tua connessione internet e riprova.",
+        );
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      alert("❌ Errore tecnico nell'invio della richiesta. Riprova più tardi o contattaci direttamente.");
+      alert(
+        "❌ Errore tecnico nell'invio della richiesta. Riprova più tardi o contattaci direttamente.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -398,22 +407,24 @@ const RichiestaPrestito: React.FC = () => {
                   </div>
 
                   <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Durata (mesi) *
-                  </label>
-                  <input
-                    type="number"
-                    name="durata"
-                    value={formData.durata}
-                    onChange={handleInputChange}
-                    min="1"
-                    max="240"
-                    placeholder="Inserisci durata in mesi (1-240)"
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                  <p className="text-sm text-gray-500 mt-1">Da 1 a 240 mesi</p>
-                </div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Durata (mesi) *
+                    </label>
+                    <input
+                      type="number"
+                      name="durata"
+                      value={formData.durata}
+                      onChange={handleInputChange}
+                      min="1"
+                      max="240"
+                      placeholder="Inserisci durata in mesi (1-240)"
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                    <p className="text-sm text-gray-500 mt-1">
+                      Da 1 a 240 mesi
+                    </p>
+                  </div>
                 </div>
 
                 <div className="mt-6">

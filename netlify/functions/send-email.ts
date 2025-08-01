@@ -126,7 +126,7 @@ const handler: Handler = async (event, context) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST, OPTIONS"
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
       },
       body: JSON.stringify({
         success: true,
@@ -148,12 +148,12 @@ const handler: Handler = async (event, context) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST, OPTIONS"
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
       },
       body: JSON.stringify({
         error: "Failed to send email",
         message: errorMessage,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       }),
     };
   }

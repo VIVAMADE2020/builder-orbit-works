@@ -5,7 +5,13 @@ import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { useEffect } from "react";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -93,8 +99,14 @@ const App = () => (
               <Route path="/segnalazioni" element={<Segnalazioni />} />
 
               {/* Redirects for common 404s */}
-              <Route path="/prestito-privato" element={<Navigate to="/prestito-personale" replace />} />
-              <Route path="/prestito-autonomi" element={<Navigate to="/prestito-personale" replace />} />
+              <Route
+                path="/prestito-privato"
+                element={<Navigate to="/prestito-personale" replace />}
+              />
+              <Route
+                path="/prestito-autonomi"
+                element={<Navigate to="/prestito-personale" replace />}
+              />
 
               {/* Catch-all route */}
               <Route path="*" element={<NotFound />} />
