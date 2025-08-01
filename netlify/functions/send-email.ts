@@ -79,6 +79,29 @@ const handler: Handler = async (event, context) => {
         `;
         break;
 
+      case 'segnalazione':
+        subject = `Nuova Segnalazione - ${data.tipoSegnalazione} - ${data.oggetto}`;
+        htmlContent = `
+          <h2>🚨 Nuova Segnalazione Ricevuta</h2>
+          <h3>Informazioni del Mittente:</h3>
+          <p><strong>Nome:</strong> ${data.nome} ${data.cognome}</p>
+          <p><strong>Email:</strong> ${data.email}</p>
+          <p><strong>Telefono:</strong> ${data.telefono || 'Non fornito'}</p>
+
+          <h3>Dettagli della Segnalazione:</h3>
+          <p><strong>Tipo:</strong> ${data.tipoSegnalazione}</p>
+          <p><strong>Oggetto:</strong> ${data.oggetto}</p>
+          <p><strong>Descrizione:</strong></p>
+          <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #263959; margin: 10px 0;">
+            ${data.messaggio}
+          </div>
+
+          <hr>
+          <p><em>Segnalazione inviata il: ${timestamp}</em></p>
+          <p style="color: #d63031;"><strong>⚠️ PRIORITÀ:</strong> Rispondere entro 24 ore</p>
+        `;
+        break;
+
       default:
         subject = "Nuovo Modulo Ricevuto";
         htmlContent = `
