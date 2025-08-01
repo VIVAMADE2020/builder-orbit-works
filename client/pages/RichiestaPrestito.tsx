@@ -133,8 +133,10 @@ const RichiestaPrestito: React.FC = () => {
     }
 
     try {
+      console.log("Submitting loan request form...", { formType: "loan-request", data: formData });
       const success = await sendEmail(formData, "loan-request");
       if (success) {
+        console.log("Email sent successfully, showing congratulations");
         setShowCongratulations(true);
         // Reset form
         setFormData({
@@ -158,15 +160,28 @@ const RichiestaPrestito: React.FC = () => {
           consensoMarketing: false,
         });
       } else {
+        console.error("Email sending failed");
         alert(
           "❌ Errore nell'invio della richiesta. Verifica la tua connessione internet e riprova.",
         );
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      alert(
-        "❌ Errore tecnico nell'invio della richiesta. Riprova più tardi o contattaci direttamente.",
-      );
+
+      // Provide more specific error messages
+      let errorMessage = "❌ Errore tecnico nell'invio della richiesta.";
+      if (error instanceof Error) {
+        if (error.message.includes("404")) {
+          errorMessage += " Servizio email non disponibile.";
+        } else if (error.message.includes("500")) {
+          errorMessage += " Errore del server.";
+        } else if (error.message.includes("fetch")) {
+          errorMessage += " Problema di connessione.";
+        }
+      }
+      errorMessage += " Riprova più tardi o contattaci direttamente a contatto@soluzionerapida.com";
+
+      alert(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
