@@ -20,12 +20,28 @@ export const sendEmail = async (
     });
 
     if (!response.ok) {
-      throw new Error("Failed to send email");
+      const errorText = await response.text();
+      console.error("Email API Error:", response.status, errorText);
+      throw new Error(`Failed to send email: ${response.status} - ${errorText}`);
     }
 
+    const result = await response.json();
+    console.log("Email sent successfully:", result);
     return true;
   } catch (error) {
     console.error("Error sending email:", error);
+
+    // Provide more specific error information
+    if (error instanceof Error) {
+      if (error.message.includes("fetch")) {
+        console.error("Network error - check internet connection");
+      } else if (error.message.includes("404")) {
+        console.error("Email API endpoint not found");
+      } else if (error.message.includes("500")) {
+        console.error("Server error in email function");
+      }
+    }
+
     return false;
   }
 };
