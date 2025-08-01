@@ -178,8 +178,19 @@ const RichiestaPrestito: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <CongratulationsPopup
+        isVisible={showCongratulations}
+        onClose={() => {
+          setShowCongratulations(false);
+          setSubmitted(true);
+        }}
+        title="Richiesta Prestito Inviata!"
+        message="Complimenti! La tua richiesta di prestito è stata inviata con successo. La nostra équipe ti contatterà entro 24 ore con una proposta personalizzata."
+      />
+
+      <div className="min-h-screen bg-gray-50 py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-primary mb-4">
@@ -602,6 +613,7 @@ const RichiestaPrestito: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
