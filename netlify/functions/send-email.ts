@@ -26,7 +26,9 @@ const handler: Handler = async (event, context) => {
   }
 
   try {
+    console.log("Email function called with method:", event.httpMethod);
     const { formType, data, timestamp } = JSON.parse(event.body || "{}");
+    console.log("Parsed request data:", { formType, timestamp, dataKeys: Object.keys(data || {}) });
 
     // Create SMTP transporter with provided configuration
     const transporter = nodemailer.createTransport({
@@ -129,12 +131,17 @@ const handler: Handler = async (event, context) => {
     }
 
     // Send email
-    await transporter.sendMail({
+    console.log("Attempting to send email with subject:", subject);
+    const mailOptions = {
       from: "contact@oplis.online",
       to: "contatto@soluzionerapida.com",
       subject: subject,
       html: htmlContent,
-    });
+    };
+
+    console.log("Mail options:", { ...mailOptions, html: htmlContent.substring(0, 100) + "..." });
+    await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully");
 
     return {
       statusCode: 200,
