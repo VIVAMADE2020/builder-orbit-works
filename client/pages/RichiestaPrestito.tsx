@@ -37,6 +37,7 @@ const RichiestaPrestito: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [showCongratulations, setShowCongratulations] = useState(false);
 
   const loanTypes = [
     {
@@ -109,7 +110,7 @@ const RichiestaPrestito: React.FC = () => {
     try {
       const success = await sendEmail(formData, "loan-request");
       if (success) {
-        setSubmitted(true);
+        setShowCongratulations(true);
         // Reset form
         setFormData({
           nome: "",
