@@ -79,14 +79,14 @@ const handler: Handler = async (event, context) => {
         `;
         break;
 
-      case 'segnalazione':
+      case "segnalazione":
         subject = `Nuova Segnalazione - ${data.tipoSegnalazione} - ${data.oggetto}`;
         htmlContent = `
           <h2>🚨 Nuova Segnalazione Ricevuta</h2>
           <h3>Informazioni del Mittente:</h3>
           <p><strong>Nome:</strong> ${data.nome} ${data.cognome}</p>
           <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>Telefono:</strong> ${data.telefono || 'Non fornito'}</p>
+          <p><strong>Telefono:</strong> ${data.telefono || "Non fornito"}</p>
 
           <h3>Dettagli della Segnalazione:</h3>
           <p><strong>Tipo:</strong> ${data.tipoSegnalazione}</p>

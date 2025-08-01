@@ -1,134 +1,152 @@
-import React, { useState } from 'react';
-import { CheckCircle, Home, Key, Calculator, Shield, TrendingUp, MapPin, Users, Euro, Clock, Building } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import LoanCalculator from '../components/LoanCalculator';
+import React, { useState } from "react";
+import {
+  CheckCircle,
+  Home,
+  Key,
+  Calculator,
+  Shield,
+  TrendingUp,
+  MapPin,
+  Users,
+  Euro,
+  Clock,
+  Building,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import LoanCalculator from "../components/LoanCalculator";
 
 const MutuoImmobiliare: React.FC = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('acquisto');
+  const [activeTab, setActiveTab] = useState("acquisto");
 
   const features = [
-    'Finanziamento fino al 100% del valore',
-    'Durata fino a 30 anni (360 mesi)',
-    'Tasso fisso 2% annuo',
-    'Prima casa e investimenti',
-    'Valutazione gratuita dell\'immobile',
-    'Consulenza specializzata inclusa'
+    "Finanziamento fino al 100% del valore",
+    "Durata fino a 30 anni (360 mesi)",
+    "Tasso fisso 2% annuo",
+    "Prima casa e investimenti",
+    "Valutazione gratuita dell'immobile",
+    "Consulenza specializzata inclusa",
   ];
 
   const benefits = [
     {
       icon: <Home className="h-12 w-12 text-secondary" />,
-      title: 'Casa dei Sogni',
-      description: 'Realizziamo il sogno della casa propria con condizioni vantaggiose'
+      title: "Casa dei Sogni",
+      description:
+        "Realizziamo il sogno della casa propria con condizioni vantaggiose",
     },
     {
       icon: <Euro className="h-12 w-12 text-secondary" />,
-      title: 'Tasso Competitivo',
-      description: 'Solo 2% annuo fisso, tra i migliori del mercato europeo'
+      title: "Tasso Competitivo",
+      description: "Solo 2% annuo fisso, tra i migliori del mercato europeo",
     },
     {
       icon: <Shield className="h-12 w-12 text-secondary" />,
-      title: 'Sicurezza Totale',
-      description: 'Contratti trasparenti e assistenza legale inclusa'
+      title: "Sicurezza Totale",
+      description: "Contratti trasparenti e assistenza legale inclusa",
     },
     {
       icon: <Clock className="h-12 w-12 text-secondary" />,
-      title: 'Tempi Rapidi',
-      description: 'Istruttoria veloce e delibera in 5-7 giorni lavorativi'
-    }
+      title: "Tempi Rapidi",
+      description: "Istruttoria veloce e delibera in 5-7 giorni lavorativi",
+    },
   ];
 
   const propertyTypes = [
     {
       icon: <Home className="h-8 w-8 text-secondary" />,
-      title: 'Prima Casa',
-      description: 'Mutui agevolati per l\'acquisto della prima abitazione',
-      rate: 'da 1.8%'
+      title: "Prima Casa",
+      description: "Mutui agevolati per l'acquisto della prima abitazione",
+      rate: "da 1.8%",
     },
     {
       icon: <Building className="h-8 w-8 text-secondary" />,
-      title: 'Seconda Casa',
-      description: 'Finanziamenti per case vacanza e investimenti',
-      rate: 'da 2.2%'
+      title: "Seconda Casa",
+      description: "Finanziamenti per case vacanza e investimenti",
+      rate: "da 2.2%",
     },
     {
       icon: <TrendingUp className="h-8 w-8 text-secondary" />,
-      title: 'Investimento',
-      description: 'Mutui per immobili da mettere a reddito',
-      rate: 'da 2.5%'
+      title: "Investimento",
+      description: "Mutui per immobili da mettere a reddito",
+      rate: "da 2.5%",
     },
     {
       icon: <Key className="h-8 w-8 text-secondary" />,
-      title: 'Ristrutturazione',
-      description: 'Finanziamenti per lavori di ristrutturazione',
-      rate: 'da 2.0%'
-    }
+      title: "Ristrutturazione",
+      description: "Finanziamenti per lavori di ristrutturazione",
+      rate: "da 2.0%",
+    },
   ];
 
   const requirements = [
-    'Età minima 18 anni, massima 75 anni a fine mutuo',
-    'Reddito dimostrabile e stabile',
-    'Residenza in Italia, Germania, Slovacchia o Belgio',
-    'Nessun protesto o segnalazione negativa',
-    'Capacità di rimborso adeguata (rata max 35% del reddito)',
-    'Immobile in regola urbanisticamente'
+    "Età minima 18 anni, massima 75 anni a fine mutuo",
+    "Reddito dimostrabile e stabile",
+    "Residenza in Italia, Germania, Slovacchia o Belgio",
+    "Nessun protesto o segnalazione negativa",
+    "Capacità di rimborso adeguata (rata max 35% del reddito)",
+    "Immobile in regola urbanisticamente",
   ];
 
   const documents = [
-    'Documento d\'identità e codice fiscale',
-    'Estratti conto degli ultimi 6 mesi',
-    'Ultime 3 buste paga o dichiarazione redditi',
-    'Compromesso di vendita o proposta d\'acquisto',
-    'Planimetria e documenti catastali',
-    'Certificato energetico dell\'immobile'
+    "Documento d'identità e codice fiscale",
+    "Estratti conto degli ultimi 6 mesi",
+    "Ultime 3 buste paga o dichiarazione redditi",
+    "Compromesso di vendita o proposta d'acquisto",
+    "Planimetria e documenti catastali",
+    "Certificato energetico dell'immobile",
   ];
 
   const steps = [
     {
-      number: '01',
-      title: 'Consulenza',
-      description: 'Analizziamo insieme le tue esigenze e la fattibilità'
+      number: "01",
+      title: "Consulenza",
+      description: "Analizziamo insieme le tue esigenze e la fattibilità",
     },
     {
-      number: '02',
-      title: 'Documentazione',
-      description: 'Raccogliamo tutti i documenti necessari'
+      number: "02",
+      title: "Documentazione",
+      description: "Raccogliamo tutti i documenti necessari",
     },
     {
-      number: '03',
-      title: 'Valutazione',
-      description: 'Perizia gratuita dell\'immobile da parte di tecnici qualificati'
+      number: "03",
+      title: "Valutazione",
+      description:
+        "Perizia gratuita dell'immobile da parte di tecnici qualificati",
     },
     {
-      number: '04',
-      title: 'Delibera',
-      description: 'Istruttoria e delibera di concessione del mutuo'
+      number: "04",
+      title: "Delibera",
+      description: "Istruttoria e delibera di concessione del mutuo",
     },
     {
-      number: '05',
-      title: 'Rogito',
-      description: 'Assistenza completa fino alla firma dell\'atto'
-    }
+      number: "05",
+      title: "Rogito",
+      description: "Assistenza completa fino alla firma dell'atto",
+    },
   ];
 
   const faqs = [
     {
-      question: 'Posso ottenere un mutuo al 100%?',
-      answer: 'Sì, per la prima casa possiamo finanziare fino al 100% del valore dell\'immobile, con valutazione favorevole.'
+      question: "Posso ottenere un mutuo al 100%?",
+      answer:
+        "Sì, per la prima casa possiamo finanziare fino al 100% del valore dell'immobile, con valutazione favorevole.",
     },
     {
-      question: 'Quali sono i costi del mutuo?',
-      answer: 'I costi includono solo gli interessi al 2% annuo. Nessuna commissione di istruttoria o gestione.'
+      question: "Quali sono i costi del mutuo?",
+      answer:
+        "I costi includono solo gli interessi al 2% annuo. Nessuna commissione di istruttoria o gestione.",
     },
     {
-      question: 'Posso estinguere anticipatamente?',
-      answer: 'Sì, è possibile estinguere o ridurre il mutuo in qualsiasi momento senza penali.'
+      question: "Posso estinguere anticipatamente?",
+      answer:
+        "Sì, è possibile estinguere o ridurre il mutuo in qualsiasi momento senza penali.",
     },
     {
-      question: 'Quanto tempo serve per l\'approvazione?',
-      answer: 'L\'istruttoria richiede 5-7 giorni lavorativi dalla consegna di tutta la documentazione.'
-    }
+      question: "Quanto tempo serve per l'approvazione?",
+      answer:
+        "L'istruttoria richiede 5-7 giorni lavorativi dalla consegna di tutta la documentazione.",
+    },
   ];
 
   return (
@@ -142,10 +160,11 @@ const MutuoImmobiliare: React.FC = () => {
                 Mutuo Immobiliare
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Realizza il sogno della casa propria con i nostri mutui immobiliari. 
-                Condizioni vantaggiose, tasso fisso al 2% e finanziamento fino al 100% del valore.
+                Realizza il sogno della casa propria con i nostri mutui
+                immobiliari. Condizioni vantaggiose, tasso fisso al 2% e
+                finanziamento fino al 100% del valore.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-center">
@@ -164,11 +183,11 @@ const MutuoImmobiliare: React.FC = () => {
                 </button>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
-                <img 
-                  src="https://images.pexels.com/photos/7415122/pexels-photo-7415122.jpeg" 
+                <img
+                  src="https://images.pexels.com/photos/7415122/pexels-photo-7415122.jpeg"
                   alt="Mutuo Immobiliare"
                   className="w-full h-80 object-cover rounded-xl shadow-lg"
                 />
@@ -191,15 +210,20 @@ const MutuoImmobiliare: React.FC = () => {
               Vantaggi esclusivi per realizzare il tuo progetto immobiliare
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <div key={index} className="text-center bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow">
-                <div className="flex justify-center mb-6">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-4">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+              <div
+                key={index}
+                className="text-center bg-gray-50 p-8 rounded-xl hover:shadow-lg transition-shadow"
+              >
+                <div className="flex justify-center mb-6">{benefit.icon}</div>
+                <h3 className="text-xl font-bold text-primary mb-4">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {benefit.description}
+                </p>
               </div>
             ))}
           </div>
@@ -220,13 +244,20 @@ const MutuoImmobiliare: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {propertyTypes.map((type, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+              <div
+                key={index}
+                className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+              >
                 <div className="flex items-center mb-4">
                   {type.icon}
-                  <h3 className="text-lg font-bold text-primary ml-3">{type.title}</h3>
+                  <h3 className="text-lg font-bold text-primary ml-3">
+                    {type.title}
+                  </h3>
                 </div>
                 <p className="text-gray-600 mb-4">{type.description}</p>
-                <div className="text-secondary font-bold text-lg">{type.rate}</div>
+                <div className="text-secondary font-bold text-lg">
+                  {type.rate}
+                </div>
               </div>
             ))}
           </div>
@@ -251,13 +282,17 @@ const MutuoImmobiliare: React.FC = () => {
                 <div key={index} className="text-center relative">
                   <div className="relative mb-6">
                     <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-xl font-bold text-white">{step.number}</span>
+                      <span className="text-xl font-bold text-white">
+                        {step.number}
+                      </span>
                     </div>
                     {index < steps.length - 1 && (
                       <div className="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-primary/30 z-0 transform translate-x-8"></div>
                     )}
                   </div>
-                  <h3 className="text-lg font-bold text-primary mb-3">{step.title}</h3>
+                  <h3 className="text-lg font-bold text-primary mb-3">
+                    {step.title}
+                  </h3>
                   <p className="text-gray-600 text-sm">{step.description}</p>
                 </div>
               ))}
@@ -274,7 +309,7 @@ const MutuoImmobiliare: React.FC = () => {
               <h2 className="text-3xl font-bold text-primary mb-6">
                 Requisiti per il Mutuo
               </h2>
-              
+
               <div className="space-y-4">
                 {requirements.map((requirement, index) => (
                   <div key={index} className="flex items-start">
@@ -289,7 +324,7 @@ const MutuoImmobiliare: React.FC = () => {
               <h2 className="text-3xl font-bold text-primary mb-6">
                 Documenti Necessari
               </h2>
-              
+
               <div className="space-y-4">
                 {documents.map((document, index) => (
                   <div key={index} className="flex items-start">
@@ -314,7 +349,7 @@ const MutuoImmobiliare: React.FC = () => {
               Scopri subito la rata del tuo mutuo immobiliare
             </p>
           </div>
-          
+
           <LoanCalculator />
         </div>
       </section>
@@ -334,7 +369,9 @@ const MutuoImmobiliare: React.FC = () => {
           <div className="space-y-6">
             {faqs.map((faq, index) => (
               <div key={index} className="bg-white p-6 rounded-xl shadow-lg">
-                <h4 className="text-lg font-bold text-primary mb-3">{faq.question}</h4>
+                <h4 className="text-lg font-bold text-primary mb-3">
+                  {faq.question}
+                </h4>
                 <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
               </div>
             ))}
@@ -349,9 +386,10 @@ const MutuoImmobiliare: React.FC = () => {
             Pronto per la Casa dei Tuoi Sogni?
           </h2>
           <p className="text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-            Inizia subito il percorso verso la tua nuova casa con il nostro mutuo immobiliare conveniente e sicuro.
+            Inizia subito il percorso verso la tua nuova casa con il nostro
+            mutuo immobiliare conveniente e sicuro.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-white text-secondary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
               <Home className="mr-2 h-5 w-5" />

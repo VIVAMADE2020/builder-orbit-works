@@ -55,30 +55,49 @@ const App = () => (
               <Route path="/calcolatore" element={<Calcolatore />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/contatti" element={<Contatti />} />
-              <Route path="/richiesta-prestito" element={<RichiestaPrestito />} />
-              
+              <Route
+                path="/richiesta-prestito"
+                element={<RichiestaPrestito />}
+              />
+
               {/* Loan Types */}
-              <Route path="/prestito-personale" element={<PrestitoPersonale />} />
-              <Route path="/prestito-aziendale" element={<PrestitoAziendale />} />
-              <Route path="/prestito-istantaneo" element={<PrestitoIstantaneo />} />
-              <Route path="/prestito-senza-schufa" element={<PrestitoSenzaSchufa />} />
+              <Route
+                path="/prestito-personale"
+                element={<PrestitoPersonale />}
+              />
+              <Route
+                path="/prestito-aziendale"
+                element={<PrestitoAziendale />}
+              />
+              <Route
+                path="/prestito-istantaneo"
+                element={<PrestitoIstantaneo />}
+              />
+              <Route
+                path="/prestito-senza-schufa"
+                element={<PrestitoSenzaSchufa />}
+              />
               <Route path="/mutuo-immobiliare" element={<MutuoImmobiliare />} />
               <Route path="/prestito-auto" element={<PrestitoAuto />} />
-              <Route path="/consolidamento-debiti" element={<ConsolidamentoDebiti />} />
-              
+              <Route
+                path="/consolidamento-debiti"
+                element={<ConsolidamentoDebiti />}
+              />
+
               {/* Legal Pages */}
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/termini-condizioni" element={<TerminiCondizioni />} />
+              <Route
+                path="/termini-condizioni"
+                element={<TerminiCondizioni />}
+              />
               <Route path="/segnalazioni" element={<Segnalazioni />} />
-              
+
               {/* Catch-all route */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
         </div>
-        
-
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

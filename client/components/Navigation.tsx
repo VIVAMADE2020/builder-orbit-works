@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import Logo from './Logo';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
+import Logo from "./Logo";
 
 const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,13 +9,13 @@ const Navigation: React.FC = () => {
   const location = useLocation();
 
   const loanTypes = [
-    { name: 'Prestito Personale', path: '/prestito-personale' },
-    { name: 'Prestito Aziendale', path: '/prestito-aziendale' },
-    { name: 'Prestito Istantaneo', path: '/prestito-istantaneo' },
-    { name: 'Prestito Senza Schufa', path: '/prestito-senza-schufa' },
-    { name: 'Mutuo Immobiliare', path: '/mutuo-immobiliare' },
-    { name: 'Prestito Auto', path: '/prestito-auto' },
-    { name: 'Consolidamento Debiti', path: '/consolidamento-debiti' },
+    { name: "Prestito Personale", path: "/prestito-personale" },
+    { name: "Prestito Aziendale", path: "/prestito-aziendale" },
+    { name: "Prestito Istantaneo", path: "/prestito-istantaneo" },
+    { name: "Prestito Senza Schufa", path: "/prestito-senza-schufa" },
+    { name: "Mutuo Immobiliare", path: "/mutuo-immobiliare" },
+    { name: "Prestito Auto", path: "/prestito-auto" },
+    { name: "Consolidamento Debiti", path: "/consolidamento-debiti" },
   ];
 
   const isActivePath = (path: string) => location.pathname === path;
@@ -35,23 +35,25 @@ const Navigation: React.FC = () => {
             <Link
               to="/"
               className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
-                isActivePath('/') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
+                isActivePath("/")
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-gray-600 hover:text-primary"
               }`}
             >
               Home
             </Link>
-            
-            <div 
+
+            <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown('prestiti')}
+              onMouseEnter={() => setActiveDropdown("prestiti")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <button className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors">
                 I Nostri Prestiti
                 <ChevronDown className="ml-1 h-4 w-4" />
               </button>
-              
-              {activeDropdown === 'prestiti' && (
+
+              {activeDropdown === "prestiti" && (
                 <div className="absolute top-full left-0 w-56 xl:w-64 bg-white shadow-lg rounded-lg border mt-1">
                   {loanTypes.map((loan) => (
                     <Link
@@ -69,7 +71,9 @@ const Navigation: React.FC = () => {
             <Link
               to="/chi-siamo"
               className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
-                isActivePath('/chi-siamo') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
+                isActivePath("/chi-siamo")
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-gray-600 hover:text-primary"
               }`}
             >
               Chi Siamo
@@ -78,7 +82,9 @@ const Navigation: React.FC = () => {
             <Link
               to="/calcolatore"
               className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
-                isActivePath('/calcolatore') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
+                isActivePath("/calcolatore")
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-gray-600 hover:text-primary"
               }`}
             >
               Calcolatore
@@ -87,7 +93,9 @@ const Navigation: React.FC = () => {
             <Link
               to="/faq"
               className={`px-2 xl:px-3 py-2 text-sm font-medium transition-colors ${
-                isActivePath('/faq') ? 'text-primary border-b-2 border-primary' : 'text-gray-600 hover:text-primary'
+                isActivePath("/faq")
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-gray-600 hover:text-primary"
               }`}
             >
               FAQ
@@ -107,7 +115,11 @@ const Navigation: React.FC = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-600 hover:text-primary p-2"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -125,7 +137,9 @@ const Navigation: React.FC = () => {
               </Link>
 
               <div className="space-y-1">
-                <div className="px-3 py-2 text-base font-medium text-gray-600">I Nostri Prestiti</div>
+                <div className="px-3 py-2 text-base font-medium text-gray-600">
+                  I Nostri Prestiti
+                </div>
                 {loanTypes.map((loan) => (
                   <Link
                     key={loan.path}

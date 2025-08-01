@@ -1,26 +1,30 @@
-import React, { useState } from 'react';
-import { Send, AlertTriangle, CheckCircle, Clock, Mail } from 'lucide-react';
-import { sendEmail } from '../services/emailService';
+import React, { useState } from "react";
+import { Send, AlertTriangle, CheckCircle, Clock, Mail } from "lucide-react";
+import { sendEmail } from "../services/emailService";
 
 const Segnalazioni: React.FC = () => {
   const [formData, setFormData] = useState({
-    nome: '',
-    cognome: '',
-    email: '',
-    telefono: '',
-    tipoSegnalazione: '',
-    oggetto: '',
-    messaggio: ''
+    nome: "",
+    cognome: "",
+    email: "",
+    telefono: "",
+    tipoSegnalazione: "",
+    oggetto: "",
+    messaggio: "",
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -29,24 +33,24 @@ const Segnalazioni: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const success = await sendEmail(formData, 'segnalazione');
+      const success = await sendEmail(formData, "segnalazione");
       if (success) {
         setSubmitted(true);
         // Reset form
         setFormData({
-          nome: '',
-          cognome: '',
-          email: '',
-          telefono: '',
-          tipoSegnalazione: '',
-          oggetto: '',
-          messaggio: ''
+          nome: "",
+          cognome: "",
+          email: "",
+          telefono: "",
+          tipoSegnalazione: "",
+          oggetto: "",
+          messaggio: "",
         });
       } else {
-        alert('Errore nell\'invio della segnalazione. Riprova più tardi.');
+        alert("Errore nell'invio della segnalazione. Riprova più tardi.");
       }
     } catch (error) {
-      alert('Errore nell\'invio della segnalazione. Riprova più tardi.');
+      alert("Errore nell'invio della segnalazione. Riprova più tardi.");
     } finally {
       setIsSubmitting(false);
     }
@@ -57,9 +61,12 @@ const Segnalazioni: React.FC = () => {
       <div className="min-h-screen bg-gray-50 py-20 flex items-center justify-center">
         <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8 text-center">
           <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-primary mb-4">Segnalazione Inviata!</h2>
+          <h2 className="text-2xl font-bold text-primary mb-4">
+            Segnalazione Inviata!
+          </h2>
           <p className="text-gray-600 mb-6">
-            Grazie per la tua segnalazione. La nostra équipe ti contatterà entro 24 ore per gestire la tua richiesta.
+            Grazie per la tua segnalazione. La nostra équipe ti contatterà entro
+            24 ore per gestire la tua richiesta.
           </p>
           <button
             onClick={() => setSubmitted(false)}
@@ -79,8 +86,8 @@ const Segnalazioni: React.FC = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-primary mb-4">Segnalazioni</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Hai riscontrato un problema o vuoi fare una segnalazione? 
-            Compila il modulo e ti contatteremo entro 24 ore.
+            Hai riscontrato un problema o vuoi fare una segnalazione? Compila il
+            modulo e ti contatteremo entro 24 ore.
           </p>
         </div>
 
@@ -88,8 +95,10 @@ const Segnalazioni: React.FC = () => {
           {/* Form */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h2 className="text-2xl font-bold text-primary mb-6">Modulo di Segnalazione</h2>
-              
+              <h2 className="text-2xl font-bold text-primary mb-6">
+                Modulo di Segnalazione
+              </h2>
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Personal Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -106,7 +115,7 @@ const Segnalazioni: React.FC = () => {
                       required
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Cognome *
@@ -136,7 +145,7 @@ const Segnalazioni: React.FC = () => {
                       required
                     />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Telefono (opzionale)
@@ -164,10 +173,18 @@ const Segnalazioni: React.FC = () => {
                   >
                     <option value="">Seleziona il tipo di segnalazione</option>
                     <option value="problema-tecnico">Problema Tecnico</option>
-                    <option value="questione-prestito">Questione relativa ai Prestiti</option>
-                    <option value="reclamo-servizio">Reclamo Servizio Clienti</option>
-                    <option value="segnalazione-sicurezza">Segnalazione di Sicurezza</option>
-                    <option value="suggerimento">Suggerimento per Miglioramenti</option>
+                    <option value="questione-prestito">
+                      Questione relativa ai Prestiti
+                    </option>
+                    <option value="reclamo-servizio">
+                      Reclamo Servizio Clienti
+                    </option>
+                    <option value="segnalazione-sicurezza">
+                      Segnalazione di Sicurezza
+                    </option>
+                    <option value="suggerimento">
+                      Suggerimento per Miglioramenti
+                    </option>
                     <option value="altro">Altro</option>
                   </select>
                 </div>
@@ -208,7 +225,7 @@ const Segnalazioni: React.FC = () => {
                   className="w-full bg-primary text-white py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  {isSubmitting ? 'Invio in corso...' : 'Invia Segnalazione'}
+                  {isSubmitting ? "Invio in corso..." : "Invia Segnalazione"}
                 </button>
               </form>
             </div>
@@ -218,15 +235,17 @@ const Segnalazioni: React.FC = () => {
           <div className="space-y-8">
             {/* Contact Info */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-xl font-bold text-primary mb-6">Informazioni di Contatto</h3>
-              
+              <h3 className="text-xl font-bold text-primary mb-6">
+                Informazioni di Contatto
+              </h3>
+
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Mail className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium text-gray-900">Email</div>
-                    <a 
-                      href="mailto:contatto@soluzionerapida.com" 
+                    <a
+                      href="mailto:contatto@soluzionerapida.com"
                       className="text-secondary hover:underline"
                     >
                       contatto@soluzionerapida.com
@@ -237,7 +256,9 @@ const Segnalazioni: React.FC = () => {
                 <div className="flex items-start">
                   <Clock className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <div className="font-medium text-gray-900">Tempi di Risposta</div>
+                    <div className="font-medium text-gray-900">
+                      Tempi di Risposta
+                    </div>
                     <div className="text-gray-600">Entro 24 ore lavorative</div>
                   </div>
                 </div>
@@ -247,13 +268,15 @@ const Segnalazioni: React.FC = () => {
             {/* Types of Reports */}
             <div className="bg-primary text-white rounded-xl p-6">
               <h3 className="text-xl font-bold mb-4">Tipi di Segnalazioni</h3>
-              
+
               <div className="space-y-3">
                 <div className="flex items-start">
                   <AlertTriangle className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium">Problemi Tecnici</div>
-                    <div className="text-gray-200 text-sm">Malfunzionamenti del sito</div>
+                    <div className="text-gray-200 text-sm">
+                      Malfunzionamenti del sito
+                    </div>
                   </div>
                 </div>
 
@@ -261,7 +284,9 @@ const Segnalazioni: React.FC = () => {
                   <AlertTriangle className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium">Questioni Prestiti</div>
-                    <div className="text-gray-200 text-sm">Problemi con i finanziamenti</div>
+                    <div className="text-gray-200 text-sm">
+                      Problemi con i finanziamenti
+                    </div>
                   </div>
                 </div>
 
@@ -269,7 +294,9 @@ const Segnalazioni: React.FC = () => {
                   <AlertTriangle className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium">Servizio Clienti</div>
-                    <div className="text-gray-200 text-sm">Reclami sul servizio</div>
+                    <div className="text-gray-200 text-sm">
+                      Reclami sul servizio
+                    </div>
                   </div>
                 </div>
 
@@ -277,7 +304,9 @@ const Segnalazioni: React.FC = () => {
                   <AlertTriangle className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
                     <div className="font-medium">Sicurezza</div>
-                    <div className="text-gray-200 text-sm">Segnalazioni di sicurezza</div>
+                    <div className="text-gray-200 text-sm">
+                      Segnalazioni di sicurezza
+                    </div>
                   </div>
                 </div>
               </div>
@@ -285,23 +314,33 @@ const Segnalazioni: React.FC = () => {
 
             {/* Process Info */}
             <div className="bg-gradient-to-r from-secondary/10 to-primary/10 rounded-xl p-6">
-              <h3 className="text-lg font-bold text-primary mb-4">Come Gestiamo le Segnalazioni</h3>
-              
+              <h3 className="text-lg font-bold text-primary mb-4">
+                Come Gestiamo le Segnalazioni
+              </h3>
+
               <ol className="space-y-2 text-sm">
                 <li className="flex items-start">
-                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">1</span>
+                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">
+                    1
+                  </span>
                   <span>Riceviamo la tua segnalazione</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">2</span>
+                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">
+                    2
+                  </span>
                   <span>Analisi entro 24 ore</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">3</span>
+                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">
+                    3
+                  </span>
                   <span>Ti contatteremo con una soluzione</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">4</span>
+                  <span className="bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5 flex-shrink-0">
+                    4
+                  </span>
                   <span>Risoluzione del problema</span>
                 </li>
               </ol>
