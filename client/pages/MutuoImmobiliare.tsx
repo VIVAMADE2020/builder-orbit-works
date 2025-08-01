@@ -175,11 +175,11 @@ const MutuoImmobiliare: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors">
+                <button
+                  onClick={() => navigate('/richiesta-prestito')}
+                  className="bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
+                >
                   Richiedi Mutuo
-                </button>
-                <button className="border-2 border-primary text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary hover:text-white transition-all">
-                  Valutazione Gratuita
                 </button>
               </div>
             </div>

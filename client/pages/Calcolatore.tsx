@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import LoanCalculator from '../components/LoanCalculator';
 import { Calculator, TrendingUp, Shield, Clock } from 'lucide-react';
 
 const Calcolatore: React.FC = () => {
+  const navigate = useNavigate();
   const benefits = [
     {
       icon: <Calculator className="h-12 w-12 text-secondary" />,
@@ -102,7 +104,10 @@ const Calcolatore: React.FC = () => {
               <p className="text-gray-200 mb-4">
                 Hai trovato la rata perfetta? Richiedi il tuo prestito ora!
               </p>
-              <button className="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors">
+              <button
+                onClick={() => navigate('/richiesta-prestito')}
+                className="w-full bg-secondary text-white py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors"
+              >
                 Richiedi Prestito
               </button>
             </div>
@@ -154,7 +159,10 @@ const Calcolatore: React.FC = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-gray-200">
-                  <button className="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
+                  <button
+                    onClick={() => navigate('/richiesta-prestito')}
+                    className="w-full bg-primary text-white py-2 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                  >
                     Richiedi Questo Prestito
                   </button>
                 </div>
