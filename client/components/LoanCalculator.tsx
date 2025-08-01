@@ -319,25 +319,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
         </div>
       </div>
 
-      <style jsx>{`
-        .slider::-webkit-slider-thumb {
-          appearance: none;
-          width: 20px;
-          height: 20px;
-          background: #263959;
-          border-radius: 50%;
-          cursor: pointer;
-        }
 
-        .slider::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
-          background: #263959;
-          border-radius: 50%;
-          cursor: pointer;
-          border: none;
-        }
-      `}</style>
     </div>
   );
 };

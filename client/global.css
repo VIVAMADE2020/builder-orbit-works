@@ -143,3 +143,22 @@
   white-space: nowrap;
   animation: typewriter 2s steps(40, end);
 }
+
+/* Slider styles for LoanCalculator */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #263959;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #263959;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
