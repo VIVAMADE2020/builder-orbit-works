@@ -26,15 +26,26 @@ export const sendEmail = async (
     console.log("Response status:", response.status);
     console.log("Response headers:", Object.fromEntries(response.headers.entries()));
 
-    // Handle response based on content type
-    const contentType = response.headers.get("content-type");
+    // Handle response with fallback for body stream issues
     let responseData;
-    
-    if (contentType && contentType.includes("application/json")) {
+
+    try {
+      // Try to read as JSON first (most common case)
       responseData = await response.json();
-    } else {
-      const textResponse = await response.text();
-      responseData = { message: textResponse };
+    } catch (jsonError) {
+      try {
+        // If JSON fails, clone the response and try as text
+        const responseClone = response.clone();
+        const textResponse = await responseClone.text();
+        responseData = { message: textResponse };
+      } catch (textError) {
+        // If both fail, create a generic response
+        console.warn("Could not read response body:", jsonError, textError);
+        responseData = {
+          message: "Response received but could not be parsed",
+          status: response.status
+        };
+      }
     }
 
     if (!response.ok) {
