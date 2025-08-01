@@ -108,6 +108,25 @@ const RichiestaPrestito: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Validation
+    if (!formData.nome || !formData.cognome || !formData.email || !formData.telefono) {
+      alert("Per favore compila tutti i campi obbligatori.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.tipoPrestito || !formData.importo || !formData.durata) {
+      alert("Per favore completa tutti i dettagli del prestito.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.consensoPrivacy) {
+      alert("Devi accettare la Privacy Policy per continuare.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const success = await sendEmail(formData, "loan-request");
       if (success) {
@@ -134,10 +153,11 @@ const RichiestaPrestito: React.FC = () => {
           consensoMarketing: false,
         });
       } else {
-        alert("Errore nell'invio della richiesta. Riprova più tardi.");
+        alert("❌ Errore nell'invio della richiesta. Verifica la tua connessione internet e riprova.");
       }
     } catch (error) {
-      alert("Errore nell'invio della richiesta. Riprova più tardi.");
+      console.error("Form submission error:", error);
+      alert("❌ Errore tecnico nell'invio della richiesta. Riprova più tardi o contattaci direttamente.");
     } finally {
       setIsSubmitting(false);
     }
