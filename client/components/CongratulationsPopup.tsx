@@ -17,8 +17,14 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[9999] p-4 sm:p-6">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto relative animate-fade-in overflow-hidden">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[9999] p-4 sm:p-6"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto relative animate-fade-in overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Close button */}
         <button
           onClick={onClose}
