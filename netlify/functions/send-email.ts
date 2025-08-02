@@ -32,12 +32,12 @@ const handler: Handler = async (event, context) => {
 
     // Create SMTP transporter with provided configuration
     const transporter = nodemailer.createTransport({
-      host: "mail.privateemail.com",
+      host: "mail.spacemail.com",
       port: 465,
       secure: true, // SSL
       auth: {
-        user: "contact@oplis.online",
-        pass: "Made2020@",
+        user: "contatto@soluzionerapida.com",
+        pass: "Salomon123@",
       },
     });
 
