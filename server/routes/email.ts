@@ -3,9 +3,10 @@ import nodemailer from "nodemailer";
 
 export const handleSendEmail = async (req: Request, res: Response) => {
   try {
-    console.log("Email API called with method:", req.method);
+    console.log("📧 Email API called with method:", req.method);
+    console.log("📧 Full request body:", req.body);
     const { formType, data, timestamp } = req.body;
-    console.log("Parsed request data:", { formType, timestamp, dataKeys: Object.keys(data || {}) });
+    console.log("📧 Parsed request data:", { formType, timestamp, dataKeys: Object.keys(data || {}) });
 
     // Create SMTP transporter with provided configuration
     const transporter = nodemailer.createTransporter({
