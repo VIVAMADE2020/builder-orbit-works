@@ -162,9 +162,8 @@ const RichiestaPrestito: React.FC = () => {
       } else {
         console.error("Email sending failed - service returned false");
         alert(
-          "✅ La tua richiesta è stata ricevuta! Ti contatteremo entro 24 ore per fornirti tutti i dettagli del tuo prestito personalizzato."
+          "⚠️ Abbiamo ricevuto la tua richiesta ma c'è stato un problema tecnico. Ti contatteremo comunque entro 24 ore. Se è urgente, scrivici a contatto@soluzionerapida.com"
         );
-        setShowCongratulations(true);
       }
     } catch (error) {
       console.error("Form submission error:", error);
