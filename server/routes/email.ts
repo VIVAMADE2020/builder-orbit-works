@@ -9,7 +9,7 @@ export const handleSendEmail = async (req: Request, res: Response) => {
     console.log("📧 Parsed request data:", { formType, timestamp, dataKeys: Object.keys(data || {}) });
 
     // Create SMTP transporter with provided configuration
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: "mail.spacemail.com",
       port: 465,
       secure: true, // SSL
