@@ -189,6 +189,26 @@ const Contatti: React.FC = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
+                    WhatsApp (opzionale)
+                  </label>
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <input
+                      type="tel"
+                      name="whatsapp"
+                      value={formData.whatsapp}
+                      onChange={handleInputChange}
+                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                      placeholder="+32 xxx xx xx xx (per WhatsApp)"
+                    />
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Se preferisci essere contattato via WhatsApp
+                  </p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Oggetto *
                   </label>
                   <select
