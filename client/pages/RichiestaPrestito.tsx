@@ -134,11 +134,17 @@ const RichiestaPrestito: React.FC = () => {
     }
 
     try {
+      const loanCalculations = calculateLoanDetails();
+      const formDataWithCalculations = {
+        ...formData,
+        calculations: loanCalculations
+      };
+
       console.log("Submitting loan request form...", {
         formType: "loan-request",
-        data: formData,
+        data: formDataWithCalculations,
       });
-      const success = await sendEmail(formData, "loan-request");
+      const success = await sendEmail(formDataWithCalculations, "loan-request");
       if (success) {
         console.log("✅ Email sent successfully, showing congratulations");
         setShowCongratulations(true);
