@@ -20,9 +20,8 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
-  // Email route for development (fallback for Netlify functions)
+  // Email route
   app.post("/api/send-email", handleSendEmail);
-  app.post("/.netlify/functions/send-email", handleSendEmail);
 
   return app;
 }
