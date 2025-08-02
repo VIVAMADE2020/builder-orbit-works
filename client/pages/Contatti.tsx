@@ -18,6 +18,7 @@ const Contatti: React.FC = () => {
     cognome: "",
     email: "",
     telefono: "",
+    whatsapp: "",
     oggetto: "",
     messaggio: "",
   });
