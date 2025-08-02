@@ -35,14 +35,19 @@ export const sendEmail = async (
     } else {
       console.error("❌ Email API Error - status:", response.status);
       console.error("Response details:", response.statusText);
-      throw new Error(`Failed to send email: HTTP ${response.status} - ${response.statusText}`);
+      throw new Error(
+        `Failed to send email: HTTP ${response.status} - ${response.statusText}`,
+      );
     }
   } catch (error) {
     console.error("Error sending email:", error);
 
     // Provide more specific error information
     if (error instanceof Error) {
-      if (error.message.includes("NetworkError") || error.message.includes("Failed to fetch")) {
+      if (
+        error.message.includes("NetworkError") ||
+        error.message.includes("Failed to fetch")
+      ) {
         console.error("Network error - check internet connection");
       } else if (error.message.includes("404")) {
         console.error("Email API endpoint not found");

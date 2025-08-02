@@ -6,7 +6,11 @@ export const handleSendEmail = async (req: Request, res: Response) => {
     console.log("📧 Email API called with method:", req.method);
     console.log("📧 Full request body:", req.body);
     const { formType, data, timestamp } = req.body;
-    console.log("📧 Parsed request data:", { formType, timestamp, dataKeys: Object.keys(data || {}) });
+    console.log("📧 Parsed request data:", {
+      formType,
+      timestamp,
+      dataKeys: Object.keys(data || {}),
+    });
 
     // Create SMTP transporter with provided configuration
     const transporter = nodemailer.createTransport({
@@ -98,7 +102,10 @@ export const handleSendEmail = async (req: Request, res: Response) => {
       html: htmlContent,
     };
 
-    console.log("📧 Mail options:", { ...mailOptions, html: htmlContent.substring(0, 100) + "..." });
+    console.log("📧 Mail options:", {
+      ...mailOptions,
+      html: htmlContent.substring(0, 100) + "...",
+    });
     await transporter.sendMail(mailOptions);
     console.log("✅ Email sent successfully!");
 

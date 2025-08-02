@@ -73,8 +73,8 @@ const Contatti: React.FC = () => {
             Messaggio Inviato!
           </h2>
           <p className="text-gray-600 mb-6">
-            Grazie per il tuo messaggio. La nostra équipe ti contatterà entro
-            24 ore.
+            Grazie per il tuo messaggio. La nostra équipe ti contatterà entro 24
+            ore.
           </p>
           <button
             onClick={() => setSubmitted(false)}
@@ -92,12 +92,10 @@ const Contatti: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-primary mb-6">
-            Contattaci
-          </h1>
+          <h1 className="text-5xl font-bold text-primary mb-6">Contattaci</h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Hai domande sui nostri servizi di prestito? Il nostro team è qui per aiutarti.
-            Contattaci per una consulenza gratuita e personalizzata.
+            Hai domande sui nostri servizi di prestito? Il nostro team è qui per
+            aiutarti. Contattaci per una consulenza gratuita e personalizzata.
           </p>
         </div>
 
@@ -199,10 +197,18 @@ const Contatti: React.FC = () => {
                     required
                   >
                     <option value="">Seleziona l'oggetto del messaggio</option>
-                    <option value="Informazioni Prestito Personale">Informazioni Prestito Personale</option>
-                    <option value="Informazioni Mutuo Immobiliare">Informazioni Mutuo Immobiliare</option>
-                    <option value="Informazioni Prestito Aziendale">Informazioni Prestito Aziendale</option>
-                    <option value="Consolidamento Debiti">Consolidamento Debiti</option>
+                    <option value="Informazioni Prestito Personale">
+                      Informazioni Prestito Personale
+                    </option>
+                    <option value="Informazioni Mutuo Immobiliare">
+                      Informazioni Mutuo Immobiliare
+                    </option>
+                    <option value="Informazioni Prestito Aziendale">
+                      Informazioni Prestito Aziendale
+                    </option>
+                    <option value="Consolidamento Debiti">
+                      Consolidamento Debiti
+                    </option>
                     <option value="Stato Pratica">Stato Pratica</option>
                     <option value="Supporto Tecnico">Supporto Tecnico</option>
                     <option value="Reclamo">Reclamo</option>
@@ -273,10 +279,14 @@ const Contatti: React.FC = () => {
                 <div className="flex items-start">
                   <Clock className="h-5 w-5 text-secondary mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <div className="font-medium text-gray-900">Orari di Lavoro</div>
+                    <div className="font-medium text-gray-900">
+                      Orari di Lavoro
+                    </div>
                     <div className="text-gray-600">Lun-Ven: 9:00-18:00</div>
                     <div className="text-gray-600">Sab: 9:00-13:00</div>
-                    <div className="text-gray-600 text-sm mt-1">Dom: Chiuso</div>
+                    <div className="text-gray-600 text-sm mt-1">
+                      Dom: Chiuso
+                    </div>
                   </div>
                 </div>
               </div>
