@@ -43,18 +43,18 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
           <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">{message}</p>
 
           {/* Features */}
-          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-            <div className="text-sm text-green-700 space-y-2">
+          <div className="bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
+            <div className="text-xs sm:text-sm text-green-700 space-y-2">
               <div className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                 <span>Risposta garantita entro 24 ore</span>
               </div>
               <div className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                 <span>Tasso fisso 2% senza sorprese</span>
               </div>
               <div className="flex items-center">
-                <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                 <span>Consulenza gratuita e personalizzata</span>
               </div>
             </div>
