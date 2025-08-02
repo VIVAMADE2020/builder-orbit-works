@@ -68,19 +68,19 @@ const Contatti: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-gray-50 py-20 flex items-center justify-center">
-        <div className="max-w-md mx-auto bg-white rounded-2xl shadow-xl p-8 text-center">
-          <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
-          <h2 className="text-2xl font-bold text-primary mb-4">
+      <div className="min-h-screen bg-gray-50 py-12 sm:py-20 flex items-center justify-center px-4">
+        <div className="max-w-md w-full mx-auto bg-white rounded-2xl shadow-xl p-6 sm:p-8 text-center">
+          <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16 text-green-500 mx-auto mb-4 sm:mb-6" />
+          <h2 className="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4">
             Messaggio Inviato!
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
             Grazie per il tuo messaggio. La nostra équipe ti contatterà entro 24
             ore.
           </p>
           <button
             onClick={() => setSubmitted(false)}
-            className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
+            className="w-full sm:w-auto bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors text-sm sm:text-base"
           >
             Invia un altro messaggio
           </button>
