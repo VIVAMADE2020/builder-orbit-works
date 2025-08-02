@@ -44,10 +44,14 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
           </div>
 
           {/* Title */}
-          <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">{title}</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-primary mb-4">
+            {title}
+          </h2>
 
           {/* Message */}
-          <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">{message}</p>
+          <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">
+            {message}
+          </p>
 
           {/* Features */}
           <div className="bg-green-50 border border-green-200 rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
