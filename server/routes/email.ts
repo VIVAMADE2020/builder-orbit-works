@@ -77,22 +77,23 @@ export const handleSendEmail = async (req: Request, res: Response) => {
         subject = `Nuovo Contatto - ${data.oggetto} - ${data.nome} ${data.cognome}`;
         htmlContent = `
           <h2>📧 Nuovo Messaggio di Contatto</h2>
-          
-          <h3>Informazioni del Mittente:</h3>
+
+          <h3>👤 Informazioni del Mittente:</h3>
           <p><strong>Nome:</strong> ${data.nome} ${data.cognome}</p>
           <p><strong>Email:</strong> ${data.email}</p>
           <p><strong>Telefono:</strong> ${data.telefono || "Non fornito"}</p>
-          
-          <h3>Dettagli del Messaggio:</h3>
+          <p><strong>WhatsApp:</strong> ${data.whatsapp || "Non fornito"}</p>
+
+          <h3>💬 Dettagli del Messaggio:</h3>
           <p><strong>Oggetto:</strong> ${data.oggetto}</p>
           <p><strong>Messaggio:</strong></p>
           <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #263959; margin: 10px 0;">
             ${data.messaggio}
           </div>
-          
+
           <hr>
-          <p><em>Messaggio inviato il: ${timestamp}</em></p>
           <p style="color: #2563eb;"><strong>📞 RICHIAMA:</strong> Rispondere entro 24 ore</p>
+          <p><em>Messaggio inviato il: ${timestamp}</em></p>
         `;
         break;
 
