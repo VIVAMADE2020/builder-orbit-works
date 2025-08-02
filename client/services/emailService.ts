@@ -7,16 +7,15 @@ export const sendEmail = async (
   formType: string,
 ): Promise<boolean> => {
   try {
-    console.log("Sending email request to:", "/.netlify/functions/send-email");
-    
+    console.log("Sending email request to:", "/api/send-email");
+
     const requestBody = JSON.stringify({
       formType,
       data,
       timestamp: new Date().toISOString(),
     });
 
-    // Try development server first, then fallback to Netlify functions
-    let endpoint = "/api/send-email";
+    const endpoint = "/api/send-email";
 
     const response = await fetch(endpoint, {
       method: "POST",
