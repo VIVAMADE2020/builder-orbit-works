@@ -27,14 +27,16 @@ export const sendEmail = async (
     });
 
     console.log("Response status:", response.status);
+    console.log("Response ok:", response.ok);
 
     // Simple approach: just check status, don't read body unless absolutely necessary
     if (response.ok) {
-      console.log("Email sent successfully - status OK");
+      console.log("✅ Email sent successfully - status OK");
       return true;
     } else {
-      console.error("Email API Error - status:", response.status);
-      throw new Error(`Failed to send email: HTTP ${response.status}`);
+      console.error("❌ Email API Error - status:", response.status);
+      console.error("Response details:", response.statusText);
+      throw new Error(`Failed to send email: HTTP ${response.status} - ${response.statusText}`);
     }
   } catch (error) {
     console.error("Error sending email:", error);
