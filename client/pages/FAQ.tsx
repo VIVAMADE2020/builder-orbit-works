@@ -15,7 +15,7 @@ const FAQ: React.FC = () => {
         },
         {
           question: 'In quali paesi operate?',
-          answer: 'Operiamo principalmente in Italia, Germania, Slovacchia e Belgio. I nostri servizi sono disponibili per residenti di questi paesi con documenti validi e reddito dimostrabile.'
+          answer: 'Operiamo in tutta Europa attraverso la nostra rete di partner finanziari. I nostri servizi sono disponibili per residenti di tutti i paesi europei con documenti validi e reddito dimostrabile.'
         },
         {
           question: 'Quali tipi di prestiti offrite?',
