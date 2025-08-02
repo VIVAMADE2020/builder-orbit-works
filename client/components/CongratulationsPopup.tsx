@@ -17,17 +17,17 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 relative animate-fade-in">
+    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[9999] p-4 sm:p-6">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto relative animate-fade-in overflow-hidden">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors z-10 p-1"
         >
           <X className="h-6 w-6" />
         </button>
 
-        <div className="p-8 text-center">
+        <div className="p-6 sm:p-8 text-center">
           {/* Success Icon */}
           <div className="mx-auto mb-6">
             <div className="relative">
