@@ -15,7 +15,10 @@ export const sendEmail = async (
       timestamp: new Date().toISOString(),
     });
 
-    const response = await fetch("/.netlify/functions/send-email", {
+    // Try development server first, then fallback to Netlify functions
+    let endpoint = "/api/send-email";
+
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
