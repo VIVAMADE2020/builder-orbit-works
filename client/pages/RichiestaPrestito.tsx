@@ -148,6 +148,7 @@ const RichiestaPrestito: React.FC = () => {
           cognome: "",
           email: "",
           telefono: "",
+          whatsapp: "",
           dataNascita: "",
           indirizzo: "",
           citta: "",
