@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { handleSendEmail } from "./routes/email";
 
 export function createServer() {
   const app = express();
@@ -18,6 +19,10 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  // Email route for development (fallback for Netlify functions)
+  app.post("/api/send-email", handleSendEmail);
+  app.post("/.netlify/functions/send-email", handleSendEmail);
 
   return app;
 }
