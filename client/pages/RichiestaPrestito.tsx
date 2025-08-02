@@ -136,7 +136,7 @@ const RichiestaPrestito: React.FC = () => {
       console.log("Submitting loan request form...", { formType: "loan-request", data: formData });
       const success = await sendEmail(formData, "loan-request");
       if (success) {
-        console.log("Email sent successfully, showing congratulations");
+        console.log("✅ Email sent successfully, showing congratulations");
         setShowCongratulations(true);
         // Reset form
         setFormData({
@@ -160,9 +160,9 @@ const RichiestaPrestito: React.FC = () => {
           consensoMarketing: false,
         });
       } else {
-        console.error("Email sending failed - service returned false");
+        console.error("❌ Email sending failed - service returned false");
         alert(
-          "⚠️ Abbiamo ricevuto la tua richiesta ma c'è stato un problema tecnico. Ti contatteremo comunque entro 24 ore. Se è urgente, scrivici a contatto@soluzionerapida.com"
+          "❌ Errore nell'invio della richiesta. Verifica i dati inseriti e riprova. Se il problema persiste, contattaci a contatto@soluzionerapida.com"
         );
       }
     } catch (error) {
