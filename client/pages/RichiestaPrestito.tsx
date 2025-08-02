@@ -206,6 +206,28 @@ const RichiestaPrestito: React.FC = () => {
     return 0;
   };
 
+  const calculateLoanDetails = () => {
+    if (formData.importo && formData.durata) {
+      const amount = parseInt(formData.importo);
+      const months = parseInt(formData.durata);
+      const monthlyRate = 0.02 / 12; // 2% annual rate / 12 months
+      const monthlyPayment =
+        (amount * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+        (Math.pow(1 + monthlyRate, months) - 1);
+
+      const totalPayment = monthlyPayment * months;
+      const totalInterest = totalPayment - amount;
+
+      return {
+        monthlyPayment: Math.round(monthlyPayment),
+        totalPayment: Math.round(totalPayment),
+        totalInterest: Math.round(totalInterest),
+        interestRate: "2% annuo fisso"
+      };
+    }
+    return null;
+  };
+
   if (submitted) {
     return (
       <div className="min-h-screen bg-gray-50 py-12 flex items-center justify-center">
