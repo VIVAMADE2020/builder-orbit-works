@@ -98,9 +98,9 @@ export const handleSendEmail = async (req: Request, res: Response) => {
       html: htmlContent,
     };
 
-    console.log("Mail options:", { ...mailOptions, html: htmlContent.substring(0, 100) + "..." });
+    console.log("📧 Mail options:", { ...mailOptions, html: htmlContent.substring(0, 100) + "..." });
     await transporter.sendMail(mailOptions);
-    console.log("Email sent successfully");
+    console.log("✅ Email sent successfully!");
 
     res.status(200).json({
       success: true,
