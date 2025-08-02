@@ -87,7 +87,7 @@ const FAQ: React.FC = () => {
         },
         {
           question: 'Quali sono i requisiti per ottenere un prestito?',
-          answer: 'Età minima 18 anni, residenza in Italia/Germania/Slovacchia/Belgio, reddito dimostrabile, conto corrente intestato al richiedente, e capacità di rimborso adeguata all\'importo richiesto.'
+          answer: 'Età minima 18 anni, residenza in un paese europeo, reddito dimostrabile, conto corrente intestato al richiedente, e capacità di rimborso adeguata all\'importo richiesto.'
         },
         {
           question: 'Posso richiedere se ho altri prestiti in corso?',
