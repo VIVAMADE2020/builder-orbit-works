@@ -133,7 +133,7 @@ const handler: Handler = async (event, context) => {
     // Send email
     console.log("Attempting to send email with subject:", subject);
     const mailOptions = {
-      from: "contact@oplis.online",
+      from: "contatto@soluzionerapida.com",
       to: "contatto@soluzionerapida.com",
       subject: subject,
       html: htmlContent,
