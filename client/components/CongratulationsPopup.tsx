@@ -63,7 +63,7 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
           {/* Action button */}
           <button
             onClick={onClose}
-            className="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+            className="w-full bg-primary text-white py-3 sm:py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors text-sm sm:text-base"
           >
             Perfetto, Grazie!
           </button>
