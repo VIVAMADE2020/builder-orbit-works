@@ -48,7 +48,9 @@ export const handleSendEmail = async (req: Request, res: Response) => {
           <p><strong>Durata:</strong> ${data.durata} mesi</p>
           <p><strong>Motivazione:</strong> ${data.motivazione || "Non specificata"}</p>
 
-          ${data.calculations ? `
+          ${
+            data.calculations
+              ? `
           <h3>📊 Calcoli Prestito:</h3>
           <div style="background: #f0f8ff; padding: 15px; border-left: 4px solid #2563eb; margin: 10px 0;">
             <p><strong>Tasso di Interesse:</strong> ${data.calculations.interestRate}</p>
@@ -56,7 +58,9 @@ export const handleSendEmail = async (req: Request, res: Response) => {
             <p><strong>Totale da Rimborsare:</strong> €${data.calculations.totalPayment.toLocaleString()}</p>
             <p><strong>Interessi Totali:</strong> €${data.calculations.totalInterest.toLocaleString()}</p>
           </div>
-          ` : ''}
+          `
+              : ""
+          }
 
           <h3>💼 Situazione Finanziaria:</h3>
           <p><strong>Occupazione:</strong> ${data.occupazione}</p>

@@ -137,7 +137,7 @@ const RichiestaPrestito: React.FC = () => {
       const loanCalculations = calculateLoanDetails();
       const formDataWithCalculations = {
         ...formData,
-        calculations: loanCalculations
+        calculations: loanCalculations,
       };
 
       console.log("Submitting loan request form...", {
@@ -228,7 +228,7 @@ const RichiestaPrestito: React.FC = () => {
         monthlyPayment: Math.round(monthlyPayment),
         totalPayment: Math.round(totalPayment),
         totalInterest: Math.round(totalInterest),
-        interestRate: "2% annuo fisso"
+        interestRate: "2% annuo fisso",
       };
     }
     return null;
