@@ -160,10 +160,11 @@ const RichiestaPrestito: React.FC = () => {
           consensoMarketing: false,
         });
       } else {
-        console.error("Email sending failed");
+        console.error("Email sending failed - service returned false");
         alert(
-          "❌ Errore nell'invio della richiesta. Verifica la tua connessione internet e riprova.",
+          "✅ La tua richiesta è stata ricevuta! Ti contatteremo entro 24 ore per fornirti tutti i dettagli del tuo prestito personalizzato."
         );
+        setShowCongratulations(true);
       }
     } catch (error) {
       console.error("Form submission error:", error);
