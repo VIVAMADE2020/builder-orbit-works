@@ -14,6 +14,7 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
   title = "Demanda Inviata con Successo!",
   message = "Grazie per la tua richiesta. La nostra équipe ti contatterà entro 24 ore con una proposta personalizzata.",
 }) => {
+  console.log("🎉 CongratulationsPopup rendered with isVisible:", isVisible);
   if (!isVisible) return null;
 
   return (
