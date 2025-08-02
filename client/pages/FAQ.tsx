@@ -83,7 +83,7 @@ const FAQ: React.FC = () => {
       faqs: [
         {
           question: 'Quali documenti sono necessari?',
-          answer: 'Servono: documento d\'identità valido, codice fiscale, ultimi 3 estratti conto bancari, buste paga recenti (per dipendenti) o dichiarazione dei redditi (per autonomi), e residenza in uno dei paesi coperti.'
+          answer: 'Servono: documento d\'identità valido, codice fiscale o equivalente nazionale, ultimi 3 estratti conto bancari, buste paga recenti (per dipendenti) o dichiarazione dei redditi (per autonomi), e residenza in un paese europeo.'
         },
         {
           question: 'Quali sono i requisiti per ottenere un prestito?',
