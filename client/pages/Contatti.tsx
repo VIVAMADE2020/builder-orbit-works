@@ -19,6 +19,7 @@ const Contatti: React.FC = () => {
     email: "",
     telefono: "",
     whatsapp: "",
+    paese: "",
     oggetto: "",
     messaggio: "",
   });
