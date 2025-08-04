@@ -149,11 +149,16 @@ const RichiestaPrestito: React.FC = () => {
       // Essayer d'envoyer l'email d'abord
       console.log("📧 Tentative d'envoi email...");
       try {
-        const emailSent = await sendEmail(formDataWithCalculations, "loan-request");
+        const emailSent = await sendEmail(
+          formDataWithCalculations,
+          "loan-request",
+        );
         if (emailSent) {
           console.log("✅ Email sent successfully, showing congratulations");
         } else {
-          console.warn("⚠️ Email may not have been sent, but showing congratulations anyway");
+          console.warn(
+            "⚠️ Email may not have been sent, but showing congratulations anyway",
+          );
         }
       } catch (emailError) {
         console.error("❌ Email sending error:", emailError);
