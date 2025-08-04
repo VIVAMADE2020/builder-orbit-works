@@ -48,12 +48,21 @@ export const sendDirectSMTP = async (
 
     console.log("📧 Statut:", response.status);
 
+    // Lire le corps de la réponse une seule fois
+    let responseText = "";
+    try {
+      responseText = await response.text();
+      console.log("📧 Réponse:", responseText);
+    } catch (readError) {
+      console.warn("⚠️ Impossible de lire la réponse:", readError);
+      responseText = `Status: ${response.status}`;
+    }
+
     if (response.ok) {
       console.log("✅ Email envoyé avec succès");
       return true;
     } else {
-      const errorText = await response.text();
-      console.error("❌ Erreur SMTP:", errorText);
+      console.error("❌ Erreur SMTP:", responseText);
       return false;
     }
   } catch (error) {
