@@ -57,6 +57,8 @@ export const sendEmail = async (
 
     console.log("📧 Response status:", response.status);
     console.log("📧 Response ok:", response.ok);
+    console.log("📧 Response URL:", response.url);
+    console.log("📧 Response type:", response.type);
 
     // Read response body for better debugging
     let responseData;
