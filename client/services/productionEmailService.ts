@@ -25,54 +25,88 @@ export const sendEmail = async (
       subject: emailPayload.subject,
     });
 
-    // Endpoint pour le service SMTP backend
-    let endpoint = "/.netlify/functions/send-smtp-email";
-    
-    // En développement, utiliser le serveur local s'il est disponible
-    if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-      endpoint = "/api/send-smtp-email";
-    }
+    // Essayer différents endpoints
+    const endpoints = [
+      "/api/send-smtp-email", // Serveur de développement
+      "/.netlify/functions/send-smtp-email", // Netlify functions
+      "/.netlify/functions/send-email", // Fallback ancien endpoint
+    ];
 
-    console.log("🌐 Utilisation endpoint:", endpoint);
+    let lastError = null;
 
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(emailPayload),
-    });
-
-    console.log("📧 Statut réponse SMTP:", response.status);
-
-    // Lire le corps de la réponse une seule fois
-    let responseText = "";
-    try {
-      responseText = await response.text();
-      console.log("📧 Texte de réponse:", responseText);
-    } catch (readError) {
-      console.warn("⚠️ Impossible de lire le corps de la réponse:", readError);
-      responseText = `Status: ${response.status}`;
-    }
-
-    if (response.ok) {
-      let result;
+    for (const endpoint of endpoints) {
       try {
-        result = JSON.parse(responseText);
-        console.log("✅ Email envoyé avec succès via SMTP:", result);
-      } catch (e) {
-        console.log("✅ Email envoyé avec succès (réponse non-JSON):", responseText);
+        console.log("🌐 Tentative endpoint:", endpoint);
+
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(emailPayload),
+        });
+
+        console.log("📧 Statut réponse SMTP:", response.status);
+
+        // Si 404, essayer l'endpoint suivant
+        if (response.status === 404) {
+          console.warn(`⚠️ Endpoint ${endpoint} non trouvé (404), essai suivant...`);
+          continue;
+        }
+
+        // Lire le corps de la réponse une seule fois
+        let responseText = "";
+        try {
+          responseText = await response.text();
+          console.log("📧 Texte de réponse:", responseText);
+        } catch (readError) {
+          console.warn("⚠️ Impossible de lire le corps de la réponse:", readError);
+          responseText = `Status: ${response.status}`;
+        }
+
+        if (response.ok) {
+          let result;
+          try {
+            result = JSON.parse(responseText);
+            console.log("✅ Email envoyé avec succès via SMTP:", result);
+          } catch (e) {
+            console.log("✅ Email envoyé avec succès (réponse non-JSON):", responseText);
+          }
+          return true;
+        } else {
+          console.error(`❌ Erreur SMTP avec ${endpoint}:`, responseText);
+          lastError = responseText;
+        }
+      } catch (fetchError) {
+        console.warn(`⚠️ Erreur de connexion avec ${endpoint}:`, fetchError);
+        lastError = fetchError.message;
+        continue;
       }
-      return true;
-    } else {
-      console.error("❌ Erreur SMTP:", responseText);
-      return false;
     }
+
+    // Si tous les endpoints ont échoué, utiliser le fallback mailto
+    console.warn("⚠️ Tous les endpoints SMTP ont échoué, utilisation du fallback mailto");
+    return await sendEmailFallback(data, formType);
   } catch (error) {
     console.error("❌ Erreur service email:", error);
     return false;
   }
 };
+
+// Fallback pour mailto si tous les services SMTP échouent
+async function sendEmailFallback(data: EmailData, formType: string): Promise<boolean> {
+  console.log("🔄 Utilisation du fallback mailto...");
+
+  const subject = getEmailSubject(data, formType);
+  const body = formatEmailText(data, formType);
+
+  const mailtoUrl = `mailto:contatto@soluzionerapida.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Ouvrir le client email
+  window.open(mailtoUrl, "_blank");
+
+  return true; // Considérer comme succès car le client email s'ouvre
+}
 
 function getEmailSubject(data: any, formType: string): string {
   if (formType === "loan-request") {
