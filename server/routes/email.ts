@@ -13,7 +13,8 @@ export const handleSendEmail = async (req: Request, res: Response) => {
     });
 
     // Create SMTP transporter with provided configuration
-    const transporter = nodemailer.createTransport({
+    console.log("🔧 Creating SMTP transporter...");
+    const transporter = nodemailer.createTransporter({
       host: "mail.spacemail.com",
       port: 465,
       secure: true, // SSL
@@ -21,6 +22,12 @@ export const handleSendEmail = async (req: Request, res: Response) => {
         user: "contatto@soluzionerapida.com",
         pass: "Salomon123@",
       },
+      // Options supplémentaires pour debug
+      debug: true, // Active les logs de debug
+      logger: true, // Active le logging
+      connectionTimeout: 10000, // 10 secondes
+      greetingTimeout: 5000, // 5 secondes
+      socketTimeout: 10000, // 10 secondes
     });
 
     // Format email content based on form type
