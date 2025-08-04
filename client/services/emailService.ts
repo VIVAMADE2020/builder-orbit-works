@@ -32,13 +32,28 @@ export const sendEmail = async (
       endpoint
     });
 
-    const response = await fetch(endpoint, {
+    let response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: requestBody,
     });
+
+    // If primary endpoint fails with 404, try fallback
+    if (response.status === 404) {
+      console.log("⚠️ Primary endpoint failed, trying fallback...");
+      const fallbackEndpoint = isDevelopment ? "/.netlify/functions/send-email" : "/api/send-email";
+      console.log("🔄 Trying fallback endpoint:", fallbackEndpoint);
+
+      response = await fetch(fallbackEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: requestBody,
+      });
+    }
 
     console.log("📧 Response status:", response.status);
     console.log("📧 Response ok:", response.ok);
