@@ -25,10 +25,9 @@ export const sendEmail = async (
       subject: emailPayload.subject,
     });
 
-    // Essayer les endpoints SMTP disponibles
+    // Utiliser seulement l'endpoint qui fonctionne dans tous les environnements
     const endpoints = [
-      "/api/send-smtp-email", // Serveur de développement
-      "http://localhost:3001/send-email", // Serveur SMTP standalone
+      "/.netlify/functions/send-smtp-email", // Netlify functions - fonctionne partout
     ];
 
     let lastError = null;

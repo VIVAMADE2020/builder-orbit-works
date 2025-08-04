@@ -1,5 +1,4 @@
 import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
-import nodemailer from "nodemailer";
 
 // Configuration SMTP avec vos paramètres exacts
 const smtpConfig = {
@@ -82,6 +81,9 @@ export const handler: Handler = async (
       secure: smtpConfig.secure,
       user: smtpConfig.auth.user,
     });
+
+    // Import dynamique de nodemailer pour Netlify
+    const nodemailer = await import("nodemailer");
 
     // Créer le transporteur SMTP
     const transporter = nodemailer.createTransporter(smtpConfig);
