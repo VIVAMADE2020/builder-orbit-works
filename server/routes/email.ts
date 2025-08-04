@@ -139,15 +139,29 @@ export const handleSendEmail = async (req: Request, res: Response) => {
       message: "Email sent successfully",
     });
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("❌ Error sending email:", error);
 
     // Return more detailed error information
     let errorMessage = "Failed to send email";
+    let statusCode = 500;
+
     if (error instanceof Error) {
       errorMessage = error.message;
+
+      // Analyse du type d'erreur SMTP
+      if (error.message.includes("ECONNREFUSED")) {
+        errorMessage = "Cannot connect to SMTP server";
+        statusCode = 503;
+      } else if (error.message.includes("Invalid login")) {
+        errorMessage = "SMTP authentication failed";
+        statusCode = 401;
+      } else if (error.message.includes("timeout")) {
+        errorMessage = "SMTP timeout";
+        statusCode = 408;
+      }
     }
 
-    res.status(500).json({
+    res.status(statusCode).json({
       error: "Failed to send email",
       message: errorMessage,
       timestamp: new Date().toISOString(),
