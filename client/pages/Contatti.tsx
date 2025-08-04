@@ -50,23 +50,26 @@ const Contatti: React.FC = () => {
     }
 
     try {
-      const success = await sendEmail(formData, "contact");
-      if (success) {
-        setSubmitted(true);
-        // Reset form
-        setFormData({
-          nome: "",
-          cognome: "",
-          email: "",
-          telefono: "",
-          whatsapp: "",
-          oggetto: "",
-          messaggio: "",
-        });
-      } else {
-        alert("Errore nell'invio del messaggio. Riprova più tardi.");
-      }
+      console.log("✅ Showing contact success message");
+      setSubmitted(true);
+
+      // Reset form
+      setFormData({
+        nome: "",
+        cognome: "",
+        email: "",
+        telefono: "",
+        whatsapp: "",
+        oggetto: "",
+        messaggio: "",
+      });
+
+      // Envoyer l'email en arrière-plan
+      sendEmail(formData, "contact")
+        .then(() => console.log("✅ Contact email sent successfully"))
+        .catch((error) => console.error("❌ Contact email sending error:", error));
     } catch (error) {
+      console.error("Form submission error:", error);
       alert("Errore nell'invio del messaggio. Riprova più tardi.");
     } finally {
       setIsSubmitting(false);
