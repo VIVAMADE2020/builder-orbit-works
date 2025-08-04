@@ -37,6 +37,7 @@ const RichiestaPrestito: React.FC = () => {
     consensoMarketing: false,
   });
 
+  const [emailConsent, setEmailConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showCongratulations, setShowCongratulations] = useState(false);
