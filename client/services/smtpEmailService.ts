@@ -47,38 +47,10 @@ export const sendEmailSMTP = async (
       return false;
     }
 
-    // Handle 404 - endpoint not found, try fallback
+    // Handle 404 - endpoint not found in development
     if (response.status === 404) {
-      console.warn("⚠️ SMTP endpoint not found, trying alternative endpoint...");
-
-      // Try the alternative endpoint
-      const altEndpoint = isDevelopment
-        ? "/.netlify/functions/smtp-send"
-        : "/api/smtp-send";
-
-      console.log("🔄 Trying alternative endpoint:", altEndpoint);
-
-      try {
-        const altResponse = await fetch(altEndpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(emailPayload),
-        });
-
-        if (altResponse.ok) {
-          console.log("✅ Email sent via alternative endpoint");
-          return true;
-        } else {
-          console.error("❌ Alternative endpoint also failed:", altResponse.status);
-        }
-      } catch (altError) {
-        console.error("❌ Alternative endpoint error:", altError);
-      }
-
-      // If both endpoints fail, return false
-      console.error("❌ Both SMTP endpoints failed - SMTP service not available");
+      console.warn("⚠️ SMTP endpoint not found - Netlify functions not available in development");
+      console.warn("📧 SMTP email would work in production deployment");
       return false;
     }
 
