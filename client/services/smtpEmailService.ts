@@ -24,8 +24,19 @@ export const sendEmailSMTP = async (
       subject: emailPayload.subject,
     });
 
-    // Use standalone SMTP server (can be deployed anywhere)
-    // Change this URL to your deployed SMTP server
+    // Check if running in cloud environment
+    const isCloudEnvironment = !window.location.hostname.includes("localhost") &&
+                              !window.location.hostname.includes("127.0.0.1");
+
+    if (isCloudEnvironment) {
+      console.warn("⚠️ Running in cloud environment - SMTP server not accessible");
+      console.warn("📧 For production, deploy SMTP server or use different email service");
+
+      // In cloud environment, fall back to a basic mailto approach
+      return sendEmailFallback(data, formType);
+    }
+
+    // Use standalone SMTP server (only works in local development)
     const smtpServerUrl = import.meta.env.VITE_SMTP_SERVER_URL || "http://localhost:3001";
     const endpoint = `${smtpServerUrl}/send-email`;
 
