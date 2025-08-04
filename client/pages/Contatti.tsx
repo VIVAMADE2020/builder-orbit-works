@@ -43,7 +43,14 @@ const Contatti: React.FC = () => {
     setIsSubmitting(true);
 
     // Validation des champs obligatoires
-    if (!formData.nome || !formData.cognome || !formData.email || !formData.whatsapp || !formData.oggetto || !formData.messaggio) {
+    if (
+      !formData.nome ||
+      !formData.cognome ||
+      !formData.email ||
+      !formData.whatsapp ||
+      !formData.oggetto ||
+      !formData.messaggio
+    ) {
       alert("Per favore compila tutti i campi obbligatori.");
       setIsSubmitting(false);
       return;
@@ -67,7 +74,9 @@ const Contatti: React.FC = () => {
       // Envoyer l'email en arrière-plan
       sendEmail(formData, "contact")
         .then(() => console.log("✅ Contact email sent successfully"))
-        .catch((error) => console.error("❌ Contact email sending error:", error));
+        .catch((error) =>
+          console.error("❌ Contact email sending error:", error),
+        );
     } catch (error) {
       console.error("Form submission error:", error);
       alert("Errore nell'invio del messaggio. Riprova più tardi.");
