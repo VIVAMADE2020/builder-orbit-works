@@ -24,14 +24,8 @@ export const sendEmailSMTP = async (
       subject: emailPayload.subject,
     });
 
-    // Try development server first
-    const isDevelopment =
-      window.location.hostname === "localhost" ||
-      window.location.hostname === "127.0.0.1";
-
-    let endpoint = isDevelopment
-      ? "/api/smtp-send"
-      : "/.netlify/functions/smtp-send";
+    // Use Netlify function endpoint for all environments
+    let endpoint = "/.netlify/functions/smtp-send";
 
     console.log("🌐 Using endpoint:", endpoint);
 
