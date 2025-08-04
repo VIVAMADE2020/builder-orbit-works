@@ -7,7 +7,7 @@ export const sendEmailSMTP = async (
   formType: string,
 ): Promise<boolean> => {
   try {
-    console.log("📧 Sending email via SMTP...");
+    console.log("📧 Sending email via standalone SMTP server...");
 
     const emailPayload = {
       to: "contatto@soluzionerapida.com",
@@ -24,10 +24,12 @@ export const sendEmailSMTP = async (
       subject: emailPayload.subject,
     });
 
-    // Use Netlify function endpoint for all environments
-    let endpoint = "/.netlify/functions/smtp-send";
+    // Use standalone SMTP server (can be deployed anywhere)
+    // Change this URL to your deployed SMTP server
+    const smtpServerUrl = process.env.SMTP_SERVER_URL || "http://localhost:3001";
+    const endpoint = `${smtpServerUrl}/send-email`;
 
-    console.log("🌐 Using endpoint:", endpoint);
+    console.log("🌐 Using SMTP server endpoint:", endpoint);
 
     const response = await fetch(endpoint, {
       method: "POST",
@@ -47,23 +49,21 @@ export const sendEmailSMTP = async (
       return false;
     }
 
-    // Handle 404 - endpoint not found in development
-    if (response.status === 404) {
-      console.warn("⚠️ SMTP endpoint not found - Netlify functions not available in development");
-      console.warn("📧 SMTP email would work in production deployment");
+    // Handle 404 or connection errors - server not available
+    if (response.status === 404 || !response.ok) {
+      console.warn("⚠️ SMTP server not available or endpoint not found");
+      console.warn("📧 Please ensure the SMTP server is running");
       return false;
     }
 
-    // Only try to read response body for non-404 responses
+    // Read response body safely
     let responseText = "";
-    if (response.ok || response.status >= 400) {
-      try {
-        responseText = await response.text();
-        console.log("📧 Response text:", responseText);
-      } catch (readError) {
-        console.warn("⚠️ Could not read response body:", readError);
-        responseText = `Status: ${response.status}`;
-      }
+    try {
+      responseText = await response.text();
+      console.log("📧 Response text:", responseText);
+    } catch (readError) {
+      console.warn("⚠️ Could not read response body:", readError);
+      responseText = `Status: ${response.status}`;
     }
 
     if (response.ok) {
