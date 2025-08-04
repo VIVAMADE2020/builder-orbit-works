@@ -45,19 +45,27 @@ export const sendEmail = async (
 
     console.log("📧 Statut réponse SMTP:", response.status);
 
+    // Lire le corps de la réponse une seule fois
+    let responseText = "";
+    try {
+      responseText = await response.text();
+      console.log("📧 Texte de réponse:", responseText);
+    } catch (readError) {
+      console.warn("⚠️ Impossible de lire le corps de la réponse:", readError);
+      responseText = `Status: ${response.status}`;
+    }
+
     if (response.ok) {
       let result;
       try {
-        const responseText = await response.text();
         result = JSON.parse(responseText);
         console.log("✅ Email envoyé avec succès via SMTP:", result);
       } catch (e) {
-        console.log("✅ Email envoyé avec succès (réponse non-JSON)");
+        console.log("✅ Email envoyé avec succès (réponse non-JSON):", responseText);
       }
       return true;
     } else {
-      const errorText = await response.text();
-      console.error("❌ Erreur SMTP:", errorText);
+      console.error("❌ Erreur SMTP:", responseText);
       return false;
     }
   } catch (error) {
