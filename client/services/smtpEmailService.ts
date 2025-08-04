@@ -45,13 +45,21 @@ export const sendEmailSMTP = async (
 
     console.log("📧 SMTP Response status:", response.status);
 
+    // Read response body only once
+    const responseText = await response.text();
+    console.log("📧 Response text:", responseText);
+
     if (response.ok) {
-      const result = await response.json();
-      console.log("✅ Email sent successfully via SMTP:", result);
+      let result;
+      try {
+        result = JSON.parse(responseText);
+        console.log("✅ Email sent successfully via SMTP:", result);
+      } catch (e) {
+        console.log("✅ Email sent successfully via SMTP (non-JSON response):", responseText);
+      }
       return true;
     } else {
-      const errorText = await response.text();
-      console.error("❌ SMTP Error:", errorText);
+      console.error("❌ SMTP Error:", responseText);
       return false;
     }
   } catch (error) {
