@@ -17,7 +17,10 @@ const smtpConfig = {
   socketTimeout: 10000,
 };
 
-export const handler: Handler = async (event: HandlerEvent, context: HandlerContext) => {
+export const handler: Handler = async (
+  event: HandlerEvent,
+  context: HandlerContext,
+) => {
   // Headers CORS
   const headers = {
     "Access-Control-Allow-Origin": "*",
@@ -45,7 +48,7 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
 
   try {
     console.log("📧 SMTP Netlify function called");
-    
+
     if (!event.body) {
       return {
         statusCode: 400,
@@ -57,7 +60,11 @@ export const handler: Handler = async (event: HandlerEvent, context: HandlerCont
     const { to, from, subject, html, formType, data } = JSON.parse(event.body);
 
     if (!to || !subject || !html) {
-      console.error("❌ Missing required fields:", { to, subject, htmlLength: html?.length });
+      console.error("❌ Missing required fields:", {
+        to,
+        subject,
+        htmlLength: html?.length,
+      });
       return {
         statusCode: 400,
         headers,

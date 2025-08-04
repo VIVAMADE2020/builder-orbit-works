@@ -50,7 +50,11 @@ export function createServer() {
       const { to, from, subject, html, formType, data } = req.body;
 
       if (!to || !subject || !html) {
-        console.error("❌ Missing required fields:", { to, subject, htmlLength: html?.length });
+        console.error("❌ Missing required fields:", {
+          to,
+          subject,
+          htmlLength: html?.length,
+        });
         return res.status(400).json({
           success: false,
           error: "Missing required fields: to, subject, html",

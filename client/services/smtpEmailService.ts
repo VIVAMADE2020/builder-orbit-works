@@ -19,14 +19,19 @@ export const sendEmailSMTP = async (
       timestamp: new Date().toISOString(),
     };
 
-    console.log("📧 Email payload prepared:", { to: emailPayload.to, subject: emailPayload.subject });
+    console.log("📧 Email payload prepared:", {
+      to: emailPayload.to,
+      subject: emailPayload.subject,
+    });
 
     // Try development server first
-    const isDevelopment = 
+    const isDevelopment =
       window.location.hostname === "localhost" ||
       window.location.hostname === "127.0.0.1";
 
-    let endpoint = isDevelopment ? "/api/smtp-send" : "/.netlify/functions/smtp-send";
+    let endpoint = isDevelopment
+      ? "/api/smtp-send"
+      : "/.netlify/functions/smtp-send";
 
     console.log("🌐 Using endpoint:", endpoint);
 
@@ -96,14 +101,18 @@ function formatEmailHTML(data: any, formType: string): string {
         <p><strong>Reddito Mensile:</strong> €${parseInt(data.redditoMensile).toLocaleString()}</p>
       </div>
 
-      ${data.calculations ? `
+      ${
+        data.calculations
+          ? `
       <div style="background: #e0e7ff; padding: 15px; border-radius: 8px; margin: 15px 0;">
         <h3 style="color: #3730a3; margin-top: 0;">📊 CALCOLI PRESTITO</h3>
         <p><strong>Rata Mensile:</strong> €${data.calculations.monthlyPayment?.toLocaleString()}</p>
         <p><strong>Totale:</strong> €${data.calculations.totalPayment?.toLocaleString()}</p>
         <p><strong>Interessi:</strong> €${data.calculations.totalInterest?.toLocaleString()}</p>
       </div>
-      ` : ''}
+      `
+          : ""
+      }
 
       <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 15px 0;">
         <h3 style="color: #374151; margin-top: 0;">💬 MESSAGGIO</h3>
