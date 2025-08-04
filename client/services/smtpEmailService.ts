@@ -25,19 +25,25 @@ export const sendEmailSMTP = async (
     });
 
     // Check if running in cloud environment
-    const isCloudEnvironment = !window.location.hostname.includes("localhost") &&
-                              !window.location.hostname.includes("127.0.0.1");
+    const isCloudEnvironment =
+      !window.location.hostname.includes("localhost") &&
+      !window.location.hostname.includes("127.0.0.1");
 
     if (isCloudEnvironment) {
-      console.warn("⚠️ Running in cloud environment - SMTP server not accessible");
-      console.warn("📧 For production, deploy SMTP server or use different email service");
+      console.warn(
+        "⚠️ Running in cloud environment - SMTP server not accessible",
+      );
+      console.warn(
+        "📧 For production, deploy SMTP server or use different email service",
+      );
 
       // In cloud environment, fall back to a basic mailto approach
       return sendEmailFallback(data, formType);
     }
 
     // Use standalone SMTP server (only works in local development)
-    const smtpServerUrl = import.meta.env.VITE_SMTP_SERVER_URL || "http://localhost:3001";
+    const smtpServerUrl =
+      import.meta.env.VITE_SMTP_SERVER_URL || "http://localhost:3001";
     const endpoint = `${smtpServerUrl}/send-email`;
 
     console.log("🌐 Using SMTP server endpoint:", endpoint);
@@ -100,7 +106,10 @@ export const sendEmailSMTP = async (
 };
 
 // Fallback for cloud environments - opens email client
-async function sendEmailFallback(data: EmailData, formType: string): Promise<boolean> {
+async function sendEmailFallback(
+  data: EmailData,
+  formType: string,
+): Promise<boolean> {
   console.log("🔄 Using email client fallback...");
 
   const subject = getEmailSubject(data, formType);
@@ -146,12 +155,16 @@ Motivazione: ${data.motivazione || "Non specificata"}
 Occupazione: ${data.occupazione}
 Reddito Mensile: €${parseInt(data.redditoMensile).toLocaleString()}
 
-${data.calculations ? `📊 CALCOLI PRESTITO:
+${
+  data.calculations
+    ? `📊 CALCOLI PRESTITO:
 Rata Mensile: €${data.calculations.monthlyPayment?.toLocaleString()}
 Totale: €${data.calculations.totalPayment?.toLocaleString()}
 Interessi: €${data.calculations.totalInterest?.toLocaleString()}
 
-` : ''}💬 MESSAGGIO:
+`
+    : ""
+}💬 MESSAGGIO:
 ${data.messaggio || "Nessun messaggio"}
 
 📋 CONSENSI:
