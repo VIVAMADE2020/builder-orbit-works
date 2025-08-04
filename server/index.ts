@@ -62,7 +62,7 @@ export function createServer() {
         });
       }
 
-      const nodemailer = await import("nodemailer");
+      const { createTransporter } = await import("nodemailer");
 
       const smtpConfig = {
         host: "mail.spacemail.com",
@@ -80,7 +80,7 @@ export function createServer() {
       };
 
       console.log("📧 Création du transporteur SMTP...");
-      const transporter = nodemailer.default.createTransporter(smtpConfig);
+      const transporter = createTransporter(smtpConfig);
 
       console.log("📧 Vérification connexion SMTP...");
       await transporter.verify();

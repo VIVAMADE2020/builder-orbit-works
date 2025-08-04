@@ -25,12 +25,10 @@ export const sendEmail = async (
       subject: emailPayload.subject,
     });
 
-    // Essayer différents endpoints
+    // Essayer les endpoints SMTP disponibles
     const endpoints = [
       "/api/send-smtp-email", // Serveur de développement
       "http://localhost:3001/send-email", // Serveur SMTP standalone
-      "/.netlify/functions/send-smtp-email", // Netlify functions
-      "/.netlify/functions/send-email", // Fallback ancien endpoint
     ];
 
     let lastError = null;
@@ -85,29 +83,15 @@ export const sendEmail = async (
       }
     }
 
-    // Si tous les endpoints ont échoué, utiliser le fallback mailto
-    console.warn("⚠️ Tous les endpoints SMTP ont échoué, utilisation du fallback mailto");
-    return await sendEmailFallback(data, formType);
+    // Si tous les endpoints ont échoué
+    console.error("❌ Tous les endpoints SMTP ont échoué");
+    console.error("❌ Dernière erreur:", lastError);
+    return false;
   } catch (error) {
     console.error("❌ Erreur service email:", error);
     return false;
   }
 };
-
-// Fallback pour mailto si tous les services SMTP échouent
-async function sendEmailFallback(data: EmailData, formType: string): Promise<boolean> {
-  console.log("🔄 Utilisation du fallback mailto...");
-
-  const subject = getEmailSubject(data, formType);
-  const body = formatEmailText(data, formType);
-
-  const mailtoUrl = `mailto:contatto@soluzionerapida.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  // Ouvrir le client email
-  window.open(mailtoUrl, "_blank");
-
-  return true; // Considérer comme succès car le client email s'ouvre
-}
 
 function getEmailSubject(data: any, formType: string): string {
   if (formType === "loan-request") {
