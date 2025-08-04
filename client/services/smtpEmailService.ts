@@ -55,7 +55,10 @@ export const sendEmailSMTP = async (
         result = JSON.parse(responseText);
         console.log("✅ Email sent successfully via SMTP:", result);
       } catch (e) {
-        console.log("✅ Email sent successfully via SMTP (non-JSON response):", responseText);
+        console.log(
+          "✅ Email sent successfully via SMTP (non-JSON response):",
+          responseText,
+        );
       }
       return true;
     } else {
