@@ -10,7 +10,7 @@ import {
   User,
   Building,
 } from "lucide-react";
-import { sendDirectSMTP } from "../services/directSMTP";
+import { sendSimpleEmail } from "../services/simpleEmail";
 
 const Contatti: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -64,7 +64,7 @@ const Contatti: React.FC = () => {
       // Essayer d'envoyer l'email d'abord
       console.log("📧 Tentative d'envoi email contact...");
       try {
-        const emailSent = await sendDirectSMTP(formData, "contact");
+        const emailSent = await sendSimpleEmail(formData, "contact");
         if (emailSent) {
           console.log("✅ Contact email sent successfully");
         } else {
