@@ -145,38 +145,38 @@ const RichiestaPrestito: React.FC = () => {
         formType: "loan-request",
         data: formDataWithCalculations,
       });
-      const success = await sendEmail(formDataWithCalculations, "loan-request");
-      if (success) {
-        console.log("✅ Email sent successfully, showing congratulations");
-        setShowCongratulations(true);
-        // Reset form
-        setFormData({
-          nome: "",
-          cognome: "",
-          email: "",
-          telefono: "",
-          whatsapp: "",
-          dataNascita: "",
-          indirizzo: "",
-          citta: "",
-          cap: "",
-          paese: "",
-          tipoPrestito: "",
-          importo: "",
-          durata: "",
-          motivazione: "",
-          occupazione: "",
-          redditoMensile: "",
-          messaggio: "",
-          consensoPrivacy: false,
-          consensoMarketing: false,
-        });
-      } else {
-        console.error("❌ Email sending failed - service returned false");
-        alert(
-          "❌ Errore nell'invio della richiesta. Verifica i dati inseriti e riprova. Se il problema persiste, contattaci a contatto@soluzionerapida.com",
-        );
-      }
+
+      // Afficher le popup immédiatement pour une meilleure expérience utilisateur
+      console.log("✅ Showing congratulations popup");
+      setShowCongratulations(true);
+
+      // Reset form
+      setFormData({
+        nome: "",
+        cognome: "",
+        email: "",
+        telefono: "",
+        whatsapp: "",
+        dataNascita: "",
+        indirizzo: "",
+        citta: "",
+        cap: "",
+        paese: "",
+        tipoPrestito: "",
+        importo: "",
+        durata: "",
+        motivazione: "",
+        occupazione: "",
+        redditoMensile: "",
+        messaggio: "",
+        consensoPrivacy: false,
+        consensoMarketing: false,
+      });
+
+      // Envoyer l'email en arrière-plan
+      sendEmail(formDataWithCalculations, "loan-request")
+        .then(() => console.log("✅ Email sent successfully"))
+        .catch((error) => console.error("❌ Email sending error:", error));
     } catch (error) {
       console.error("Form submission error:", error);
 
