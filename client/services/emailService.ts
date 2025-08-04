@@ -7,7 +7,9 @@ export const sendEmail = async (
   formType: string,
 ): Promise<boolean> => {
   try {
-    console.log("Sending email request to:", "/api/send-email");
+    console.log("📧 Sending email request to:", "/api/send-email");
+    console.log("📧 Form type:", formType);
+    console.log("📧 Data keys:", Object.keys(data));
 
     const requestBody = JSON.stringify({
       formType,
@@ -25,37 +27,33 @@ export const sendEmail = async (
       body: requestBody,
     });
 
-    console.log("Response status:", response.status);
-    console.log("Response ok:", response.ok);
+    console.log("📧 Response status:", response.status);
+    console.log("📧 Response ok:", response.ok);
 
-    // Simple approach: just check status, don't read body unless absolutely necessary
+    // Read response body for better debugging
+    let responseData;
+    try {
+      const responseText = await response.text();
+      console.log("📧 Response text:", responseText);
+
+      if (responseText) {
+        responseData = JSON.parse(responseText);
+        console.log("📧 Parsed response:", responseData);
+      }
+    } catch (parseError) {
+      console.warn("Could not parse response:", parseError);
+    }
+
     if (response.ok) {
-      console.log("✅ Email sent successfully - status OK");
+      console.log("✅ Email sent successfully!");
       return true;
     } else {
       console.error("❌ Email API Error - status:", response.status);
-      console.error("Response details:", response.statusText);
-      throw new Error(
-        `Failed to send email: HTTP ${response.status} - ${response.statusText}`,
-      );
+      console.error("❌ Response data:", responseData);
+      return false; // Return false instead of throwing to allow popup to show
     }
   } catch (error) {
-    console.error("Error sending email:", error);
-
-    // Provide more specific error information
-    if (error instanceof Error) {
-      if (
-        error.message.includes("NetworkError") ||
-        error.message.includes("Failed to fetch")
-      ) {
-        console.error("Network error - check internet connection");
-      } else if (error.message.includes("404")) {
-        console.error("Email API endpoint not found");
-      } else if (error.message.includes("500")) {
-        console.error("Server error in email function");
-      }
-    }
-
-    return false;
+    console.error("❌ Error sending email:", error);
+    return false; // Return false instead of throwing to allow popup to show
   }
 };
