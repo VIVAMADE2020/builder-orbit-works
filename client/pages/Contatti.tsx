@@ -49,6 +49,7 @@ const Contatti: React.FC = () => {
       !formData.cognome ||
       !formData.email ||
       !formData.whatsapp ||
+      !formData.paese ||
       !formData.oggetto ||
       !formData.messaggio
     ) {
