@@ -41,6 +41,77 @@ export function createServer() {
   // Email route
   app.post("/api/send-email", handleSendEmail);
 
+  // SMTP route
+  app.post("/api/smtp-send", async (req, res) => {
+    try {
+      console.log("📧 SMTP Send endpoint called");
+      console.log("📧 Request body keys:", Object.keys(req.body));
+
+      const { to, from, subject, html, formType, data } = req.body;
+
+      if (!to || !subject || !html) {
+        console.error("❌ Missing required fields:", { to, subject, htmlLength: html?.length });
+        return res.status(400).json({
+          success: false,
+          error: "Missing required fields: to, subject, html",
+        });
+      }
+
+      const nodemailer = await import("nodemailer");
+
+      const smtpConfig = {
+        host: "mail.spacemail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "contatto@soluzionerapida.com",
+          pass: "Salomon123@",
+        },
+        debug: true,
+        logger: true,
+        connectionTimeout: 10000,
+        greetingTimeout: 5000,
+        socketTimeout: 10000,
+      };
+
+      console.log("📧 Creating SMTP transporter...");
+      const transporter = nodemailer.default.createTransport(smtpConfig);
+
+      console.log("📧 Verifying SMTP connection...");
+      await transporter.verify();
+      console.log("✅ SMTP connection verified successfully");
+
+      const mailOptions = {
+        from: from || smtpConfig.auth.user,
+        to: to,
+        subject: subject,
+        html: html,
+        replyTo: data?.email || from || smtpConfig.auth.user,
+      };
+
+      console.log("📧 Sending email...");
+      const info = await transporter.sendMail(mailOptions);
+
+      console.log("✅ Email sent successfully:", {
+        messageId: info.messageId,
+        response: info.response,
+      });
+
+      res.json({
+        success: true,
+        messageId: info.messageId,
+        response: info.response,
+      });
+    } catch (error) {
+      console.error("❌ SMTP Error:", error);
+      res.status(500).json({
+        success: false,
+        error: error.message,
+        details: error.toString(),
+      });
+    }
+  });
+
   // Test SMTP endpoint
   app.get("/api/test-smtp", async (req, res) => {
     try {
