@@ -19,11 +19,13 @@ const CongratulationsPopup: React.FC<CongratulationsPopupProps> = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-[9999] p-4 sm:p-6"
+      className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 sm:p-6"
+      style={{ zIndex: 999999, position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
       onClick={onClose}
     >
       <div
         className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto relative animate-fade-in overflow-hidden"
+        style={{ maxHeight: '90vh', overflowY: 'auto' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
