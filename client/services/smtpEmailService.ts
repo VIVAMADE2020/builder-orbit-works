@@ -134,61 +134,70 @@ function getEmailSubject(data: any, formType: string): string {
 function formatEmailText(data: any, formType: string): string {
   if (formType === "loan-request") {
     return `
-🏦 RICHIESTA PRESTITO
+RICHIESTA PRESTITO - SOLUZIONE RAPIDA
 
-👤 INFORMAZIONI PERSONALI:
-Nome: ${data.nome} ${data.cognome}
-Email: ${data.email}
-Telefono: ${data.telefono || "Non fornito"}
+INFORMAZIONI PERSONALI:
+Nome Completo: ${data.nome} ${data.cognome}
+Indirizzo Email: ${data.email}
+Numero di Telefono: ${data.telefono || "Non fornito"}
 WhatsApp: ${data.whatsapp || "Non fornito"}
 Data di Nascita: ${data.dataNascita || "Non fornita"}
-Indirizzo: ${data.indirizzo || "Non fornito"}
-Paese: ${data.paese || "Non fornito"}
+Indirizzo di Residenza: ${data.indirizzo || "Non fornito"}
+Paese di Residenza: ${data.paese || "Non fornito"}
 
-💰 DETTAGLI PRESTITO:
-Tipo: ${data.tipoPrestito}
-Importo: €${parseInt(data.importo).toLocaleString()}
-Durata: ${data.durata} mesi
-Motivazione: ${data.motivazione || "Non specificata"}
+DETTAGLI DELLA RICHIESTA PRESTITO:
+Tipologia di Prestito: ${data.tipoPrestito}
+Importo Richiesto: EUR ${parseInt(data.importo).toLocaleString()}
+Durata del Prestito: ${data.durata} mesi
+Motivazione della Richiesta: ${data.motivazione || "Non specificata"}
 
-💼 SITUAZIONE FINANZIARIA:
-Occupazione: ${data.occupazione}
-Reddito Mensile: €${parseInt(data.redditoMensile).toLocaleString()}
+SITUAZIONE FINANZIARIA:
+Professione/Occupazione: ${data.occupazione}
+Reddito Mensile Netto: EUR ${parseInt(data.redditoMensile).toLocaleString()}
 
 ${
   data.calculations
-    ? `📊 CALCOLI PRESTITO:
-Rata Mensile: €${data.calculations.monthlyPayment?.toLocaleString()}
-Totale: €${data.calculations.totalPayment?.toLocaleString()}
-Interessi: €${data.calculations.totalInterest?.toLocaleString()}
+    ? `CALCOLI PRESTITO STIMATI:
+Rata Mensile Stimata: EUR ${data.calculations.monthlyPayment?.toLocaleString()}
+Importo Totale da Restituire: EUR ${data.calculations.totalPayment?.toLocaleString()}
+Interessi Totali: EUR ${data.calculations.totalInterest?.toLocaleString()}
 
 `
     : ""
-}💬 MESSAGGIO:
-${data.messaggio || "Nessun messaggio"}
+}MESSAGGIO AGGIUNTIVO:
+${data.messaggio || "Nessun messaggio aggiuntivo"}
 
-📋 CONSENSI:
-Privacy: ${data.consensoPrivacy ? "Sì" : "No"}
-Marketing: ${data.consensoMarketing ? "Sì" : "No"}
+CONSENSI:
+Trattamento Dati Personali: ${data.consensoPrivacy ? "Autorizzato" : "Non autorizzato"}
+Comunicazioni Marketing: ${data.consensoMarketing ? "Autorizzato" : "Non autorizzato"}
 
-⏰ Inviato il: ${new Date().toLocaleString("it-IT")}
+Data e Ora di Invio: ${new Date().toLocaleString("it-IT")}
+
+---
+Cordiali saluti,
+Sistema Automatico - Soluzione Rapida
     `.trim();
   } else {
     return `
-📧 MESSAGGIO DI CONTATTO
+MESSAGGIO DI CONTATTO - SOLUZIONE RAPIDA
 
-👤 MITTENTE:
-Nome: ${data.nome} ${data.cognome}
-Email: ${data.email}
-Telefono: ${data.telefono || "Non fornito"}
+INFORMAZIONI MITTENTE:
+Nome Completo: ${data.nome} ${data.cognome}
+Indirizzo Email: ${data.email}
+Numero di Telefono: ${data.telefono || "Non fornito"}
 WhatsApp: ${data.whatsapp || "Non fornito"}
+Paese: ${data.paese || "Non specificato"}
 
-💬 OGGETTO: ${data.oggetto}
+OGGETTO DELLA COMUNICAZIONE: ${data.oggetto}
 
-MESSAGGIO:
+CONTENUTO DEL MESSAGGIO:
 ${data.messaggio}
 
-⏰ Inviato il: ${new Date().toLocaleString("it-IT")}
+Data e Ora di Invio: ${new Date().toLocaleString("it-IT")}
+
+---
+Cordiali saluti,
+Sistema Automatico - Soluzione Rapida
     `.trim();
   }
 }
@@ -196,13 +205,14 @@ ${data.messaggio}
 function formatEmailHTML(data: any, formType: string): string {
   if (formType === "loan-request") {
     return `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
-        🏦 RICHIESTA PRESTITO
-      </h2>
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
+      <div style="text-align: center; margin-bottom: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+        <h1 style="color: #2563eb; margin: 0; font-size: 24px; font-weight: bold;">SOLUZIONE RAPIDA</h1>
+        <h2 style="color: #374151; margin: 10px 0 0 0; font-size: 18px;">RICHIESTA PRESTITO</h2>
+      </div>
       
       <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #374151; margin-top: 0;">👤 INFORMAZIONI PERSONALI</h3>
+        <h3 style="color: #374151; margin-top: 0; font-size: 16px; font-weight: bold;">INFORMAZIONI PERSONALI</h3>
         <p><strong>Nome:</strong> ${data.nome} ${data.cognome}</p>
         <p><strong>Email:</strong> ${data.email}</p>
         <p><strong>Telefono:</strong> ${data.telefono || "Non fornito"}</p>
@@ -213,7 +223,7 @@ function formatEmailHTML(data: any, formType: string): string {
       </div>
 
       <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #065f46; margin-top: 0;">💰 DETTAGLI PRESTITO</h3>
+        <h3 style="color: #065f46; margin-top: 0; font-size: 16px; font-weight: bold;">DETTAGLI PRESTITO</h3>
         <p><strong>Tipo:</strong> ${data.tipoPrestito}</p>
         <p><strong>Importo:</strong> €${parseInt(data.importo).toLocaleString()}</p>
         <p><strong>Durata:</strong> ${data.durata} mesi</p>
@@ -221,7 +231,7 @@ function formatEmailHTML(data: any, formType: string): string {
       </div>
 
       <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #92400e; margin-top: 0;">💼 SITUAZIONE FINANZIARIA</h3>
+        <h3 style="color: #92400e; margin-top: 0; font-size: 16px; font-weight: bold;">SITUAZIONE FINANZIARIA</h3>
         <p><strong>Occupazione:</strong> ${data.occupazione}</p>
         <p><strong>Reddito Mensile:</strong> €${parseInt(data.redditoMensile).toLocaleString()}</p>
       </div>
@@ -230,7 +240,7 @@ function formatEmailHTML(data: any, formType: string): string {
         data.calculations
           ? `
       <div style="background: #e0e7ff; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #3730a3; margin-top: 0;">📊 CALCOLI PRESTITO</h3>
+        <h3 style="color: #3730a3; margin-top: 0; font-size: 16px; font-weight: bold;">CALCOLI PRESTITO STIMATI</h3>
         <p><strong>Rata Mensile:</strong> €${data.calculations.monthlyPayment?.toLocaleString()}</p>
         <p><strong>Totale:</strong> €${data.calculations.totalPayment?.toLocaleString()}</p>
         <p><strong>Interessi:</strong> €${data.calculations.totalInterest?.toLocaleString()}</p>
@@ -240,12 +250,12 @@ function formatEmailHTML(data: any, formType: string): string {
       }
 
       <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #374151; margin-top: 0;">💬 MESSAGGIO</h3>
-        <p>${data.messaggio || "Nessun messaggio"}</p>
+        <h3 style="color: #374151; margin-top: 0; font-size: 16px; font-weight: bold;">MESSAGGIO AGGIUNTIVO</h3>
+        <p>${data.messaggio || "Nessun messaggio aggiuntivo"}</p>
       </div>
 
       <div style="background: #fee2e2; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #991b1b; margin-top: 0;">📋 CONSENSI</h3>
+        <h3 style="color: #991b1b; margin-top: 0; font-size: 16px; font-weight: bold;">CONSENSI</h3>
         <p><strong>Privacy:</strong> ${data.consensoPrivacy ? "Sì" : "No"}</p>
         <p><strong>Marketing:</strong> ${data.consensoMarketing ? "Sì" : "No"}</p>
       </div>
@@ -259,13 +269,14 @@ function formatEmailHTML(data: any, formType: string): string {
     `;
   } else {
     return `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-      <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
-        📧 MESSAGGIO DI CONTATTO
-      </h2>
-      
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
+      <div style="text-align: center; margin-bottom: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+        <h1 style="color: #2563eb; margin: 0; font-size: 24px; font-weight: bold;">SOLUZIONE RAPIDA</h1>
+        <h2 style="color: #374151; margin: 10px 0 0 0; font-size: 18px;">MESSAGGIO DI CONTATTO</h2>
+      </div>
+
       <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #374151; margin-top: 0;">👤 MITTENTE</h3>
+        <h3 style="color: #374151; margin-top: 0; font-size: 16px; font-weight: bold;">INFORMAZIONI MITTENTE</h3>
         <p><strong>Nome:</strong> ${data.nome} ${data.cognome}</p>
         <p><strong>Email:</strong> ${data.email}</p>
         <p><strong>Telefono:</strong> ${data.telefono || "Non fornito"}</p>
@@ -273,12 +284,12 @@ function formatEmailHTML(data: any, formType: string): string {
       </div>
 
       <div style="background: #ecfdf5; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #065f46; margin-top: 0;">💬 OGGETTO</h3>
+        <h3 style="color: #065f46; margin-top: 0; font-size: 16px; font-weight: bold;">OGGETTO DELLA COMUNICAZIONE</h3>
         <p><strong>${data.oggetto}</strong></p>
       </div>
 
       <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 15px 0;">
-        <h3 style="color: #374151; margin-top: 0;">MESSAGGIO</h3>
+        <h3 style="color: #374151; margin-top: 0; font-size: 16px; font-weight: bold;">CONTENUTO DEL MESSAGGIO</h3>
         <p style="white-space: pre-wrap;">${data.messaggio}</p>
       </div>
 
