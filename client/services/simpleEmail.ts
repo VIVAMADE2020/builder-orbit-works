@@ -41,9 +41,14 @@ export const sendSimpleEmail = async (
 };
 
 // Essayer la fonction Netlify
-async function tryNetlifyFunction(data: any, formType: string, subject: string, body: string): Promise<boolean> {
+async function tryNetlifyFunction(
+  data: any,
+  formType: string,
+  subject: string,
+  body: string,
+): Promise<boolean> {
   console.log("📧 Tentative fonction Netlify...");
-  
+
   const payload = {
     to: "contatto@soluzionerapida.com",
     from: "contatto@soluzionerapida.com",
@@ -71,15 +76,20 @@ async function tryNetlifyFunction(data: any, formType: string, subject: string, 
 }
 
 // Essayer FormSubmit.co comme fallback
-async function tryFormSubmit(data: any, formType: string, subject: string, body: string): Promise<boolean> {
+async function tryFormSubmit(
+  data: any,
+  formType: string,
+  subject: string,
+  body: string,
+): Promise<boolean> {
   console.log("📧 Tentative FormSubmit.co...");
-  
+
   const formData = new FormData();
   formData.append("_to", "contatto@soluzionerapida.com");
   formData.append("_subject", subject);
   formData.append("_template", "table");
   formData.append("_captcha", "false");
-  
+
   // Ajouter les données du formulaire
   formData.append("Type", formType);
   formData.append("Nome", `${data.nome} ${data.cognome}`);
@@ -95,16 +105,22 @@ async function tryFormSubmit(data: any, formType: string, subject: string, body:
     formData.append("Importo", `€${parseInt(data.importo).toLocaleString()}`);
     formData.append("Durata", `${data.durata} mesi`);
     formData.append("Occupazione", data.occupazione);
-    formData.append("Reddito", `€${parseInt(data.redditoMensile).toLocaleString()}`);
+    formData.append(
+      "Reddito",
+      `€${parseInt(data.redditoMensile).toLocaleString()}`,
+    );
   } else {
     formData.append("Paese", data.paese || "Non specificato");
     formData.append("Oggetto", data.oggetto);
   }
 
-  const response = await fetch("https://formsubmit.co/contatto@soluzionerapida.com", {
-    method: "POST",
-    body: formData,
-  });
+  const response = await fetch(
+    "https://formsubmit.co/contatto@soluzionerapida.com",
+    {
+      method: "POST",
+      body: formData,
+    },
+  );
 
   if (response.ok) {
     console.log("✅ FormSubmit.co réussi");
@@ -147,12 +163,16 @@ SITUAZIONE FINANZIARIA:
 Occupazione: ${data.occupazione}
 Reddito Mensile: EUR ${parseInt(data.redditoMensile).toLocaleString()}
 
-${data.calculations ? `CALCOLI PRESTITO:
+${
+  data.calculations
+    ? `CALCOLI PRESTITO:
 Rata Mensile: EUR ${data.calculations.monthlyPayment?.toLocaleString()}
 Totale: EUR ${data.calculations.totalPayment?.toLocaleString()}
 Interessi: EUR ${data.calculations.totalInterest?.toLocaleString()}
 
-` : ""}MESSAGGIO:
+`
+    : ""
+}MESSAGGIO:
 ${data.messaggio || "Nessun messaggio"}
 
 CONSENSI:

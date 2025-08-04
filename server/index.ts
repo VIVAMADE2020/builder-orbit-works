@@ -94,9 +94,9 @@ export function createServer() {
         text: text,
         replyTo: data?.email || smtpConfig.auth.user,
         headers: {
-          'X-Mailer': 'Soluzione Rapida System',
-          'X-Priority': '1',
-        }
+          "X-Mailer": "Soluzione Rapida System",
+          "X-Priority": "1",
+        },
       };
 
       console.log("📧 Envoi email...");

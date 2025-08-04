@@ -23,7 +23,7 @@ export const sendDirectSMTP = async (
         auth: {
           user: "contatto@soluzionerapida.com",
           pass: "Salomon123@",
-        }
+        },
       },
       formType,
       data,
@@ -35,7 +35,7 @@ export const sendDirectSMTP = async (
 
     // Utiliser l'endpoint Netlify JavaScript qui fonctionne partout
     const endpoint = "/.netlify/functions/send-smtp-email";
-    
+
     console.log("🌐 Endpoint:", endpoint);
 
     const response = await fetch(endpoint, {
@@ -103,12 +103,16 @@ SITUAZIONE FINANZIARIA:
 Occupazione: ${data.occupazione}
 Reddito Mensile: EUR ${parseInt(data.redditoMensile).toLocaleString()}
 
-${data.calculations ? `CALCOLI PRESTITO:
+${
+  data.calculations
+    ? `CALCOLI PRESTITO:
 Rata Mensile: EUR ${data.calculations.monthlyPayment?.toLocaleString()}
 Totale: EUR ${data.calculations.totalPayment?.toLocaleString()}
 Interessi: EUR ${data.calculations.totalInterest?.toLocaleString()}
 
-` : ""}MESSAGGIO:
+`
+    : ""
+}MESSAGGIO:
 ${data.messaggio || "Nessun messaggio"}
 
 CONSENSI:
@@ -170,14 +174,18 @@ function formatEmailHTML(data: any, formType: string): string {
         <p><strong>Reddito Mensile:</strong> EUR ${parseInt(data.redditoMensile).toLocaleString()}</p>
       </div>
 
-      ${data.calculations ? `
+      ${
+        data.calculations
+          ? `
       <div style="background: #e0e7ff; padding: 15px; border-radius: 8px; margin: 15px 0;">
         <h3>CALCOLI PRESTITO</h3>
         <p><strong>Rata Mensile:</strong> EUR ${data.calculations.monthlyPayment?.toLocaleString()}</p>
         <p><strong>Totale:</strong> EUR ${data.calculations.totalPayment?.toLocaleString()}</p>
         <p><strong>Interessi:</strong> EUR ${data.calculations.totalInterest?.toLocaleString()}</p>
       </div>
-      ` : ""}
+      `
+          : ""
+      }
 
       <div style="background: #f9fafb; padding: 15px; border-radius: 8px; margin: 15px 0;">
         <h3>MESSAGGIO</h3>

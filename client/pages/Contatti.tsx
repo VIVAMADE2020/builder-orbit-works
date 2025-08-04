@@ -58,8 +58,6 @@ const Contatti: React.FC = () => {
       return;
     }
 
-
-
     try {
       // Essayer d'envoyer l'email d'abord
       console.log("📧 Tentative d'envoi email contact...");

@@ -48,7 +48,9 @@ export const sendEmail = async (
 
         // Si 404, essayer l'endpoint suivant
         if (response.status === 404) {
-          console.warn(`⚠️ Endpoint ${endpoint} non trouvé (404), essai suivant...`);
+          console.warn(
+            `⚠️ Endpoint ${endpoint} non trouvé (404), essai suivant...`,
+          );
           continue;
         }
 
@@ -58,7 +60,10 @@ export const sendEmail = async (
           responseText = await response.text();
           console.log("📧 Texte de réponse:", responseText);
         } catch (readError) {
-          console.warn("⚠️ Impossible de lire le corps de la réponse:", readError);
+          console.warn(
+            "⚠️ Impossible de lire le corps de la réponse:",
+            readError,
+          );
           responseText = `Status: ${response.status}`;
         }
 
@@ -68,7 +73,10 @@ export const sendEmail = async (
             result = JSON.parse(responseText);
             console.log("✅ Email envoyé avec succès via SMTP:", result);
           } catch (e) {
-            console.log("✅ Email envoyé avec succès (réponse non-JSON):", responseText);
+            console.log(
+              "✅ Email envoyé avec succès (réponse non-JSON):",
+              responseText,
+            );
           }
           return true;
         } else {

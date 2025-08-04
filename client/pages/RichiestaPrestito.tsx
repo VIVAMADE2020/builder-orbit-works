@@ -134,8 +134,6 @@ const RichiestaPrestito: React.FC = () => {
       return;
     }
 
-
-
     try {
       const loanCalculations = calculateLoanDetails();
       const formDataWithCalculations = {
@@ -737,7 +735,9 @@ const RichiestaPrestito: React.FC = () => {
                   className="w-full md:w-auto px-12 py-4 bg-primary text-white rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   <Send className="mr-2 h-5 w-5" />
-                  {isSubmitting ? "Invio in corso..." : "Invia Richiesta Prestito"}
+                  {isSubmitting
+                    ? "Invio in corso..."
+                    : "Invia Richiesta Prestito"}
                 </button>
                 <p className="text-sm text-gray-500 mt-3">
                   Riceverai una risposta entro 24 ore lavorative

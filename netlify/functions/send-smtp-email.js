@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 // Configuration SMTP
 const smtpConfig = {
@@ -53,7 +53,9 @@ exports.handler = async (event, context) => {
       };
     }
 
-    const { to, from, subject, html, text, formType, data } = JSON.parse(event.body);
+    const { to, from, subject, html, text, formType, data } = JSON.parse(
+      event.body,
+    );
 
     if (!to || !subject || (!html && !text)) {
       console.error("❌ Champs requis manquants");
@@ -86,9 +88,9 @@ exports.handler = async (event, context) => {
       text: text,
       replyTo: data?.email || smtpConfig.auth.user,
       headers: {
-        'X-Mailer': 'Soluzione Rapida System',
-        'X-Priority': '1',
-      }
+        "X-Mailer": "Soluzione Rapida System",
+        "X-Priority": "1",
+      },
     };
 
     console.log("📧 Envoi email...");

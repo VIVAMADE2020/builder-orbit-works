@@ -63,9 +63,9 @@ router.post("/send-smtp-email", async (req, res) => {
       text: text,
       replyTo: data?.email || smtpConfig.auth.user,
       headers: {
-        'X-Mailer': 'Soluzione Rapida System',
-        'X-Priority': '1', // High priority
-      }
+        "X-Mailer": "Soluzione Rapida System",
+        "X-Priority": "1", // High priority
+      },
     };
 
     console.log("📧 Envoi email avec options:", {
