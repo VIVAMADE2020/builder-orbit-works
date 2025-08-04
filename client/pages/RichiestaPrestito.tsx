@@ -114,7 +114,8 @@ const RichiestaPrestito: React.FC = () => {
       !formData.nome ||
       !formData.cognome ||
       !formData.email ||
-      !formData.telefono
+      !formData.telefono ||
+      !formData.whatsapp
     ) {
       alert("Per favore compila tutti i campi obbligatori.");
       setIsSubmitting(false);
