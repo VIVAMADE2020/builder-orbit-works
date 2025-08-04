@@ -10,7 +10,7 @@ import {
   User,
   Building,
 } from "lucide-react";
-import { sendEmail } from "../services/emailService";
+import { sendEmailSimple } from "../services/simpleEmailService";
 
 const Contatti: React.FC = () => {
   const [formData, setFormData] = useState({
