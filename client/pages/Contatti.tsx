@@ -60,7 +60,7 @@ const Contatti: React.FC = () => {
       // Essayer d'envoyer l'email d'abord
       console.log("📧 Tentative d'envoi email contact...");
       try {
-        const emailSent = await sendEmailDirect(formData, "contact");
+        const emailSent = await sendEmailSMTP(formData, "contact");
         if (emailSent) {
           console.log("✅ Contact email sent successfully");
         } else {
