@@ -37,11 +37,16 @@ export const sendEmail = async (
       console.log("📧 Response text:", responseText);
 
       if (responseText) {
-        responseData = JSON.parse(responseText);
-        console.log("📧 Parsed response:", responseData);
+        try {
+          responseData = JSON.parse(responseText);
+          console.log("📧 Parsed response:", responseData);
+        } catch (jsonError) {
+          console.warn("Response is not JSON:", responseText);
+          responseData = { message: responseText };
+        }
       }
     } catch (parseError) {
-      console.warn("Could not parse response:", parseError);
+      console.warn("Could not read response:", parseError);
     }
 
     if (response.ok) {
