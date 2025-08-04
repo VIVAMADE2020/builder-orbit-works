@@ -42,6 +42,13 @@ const Contatti: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Validation des champs obligatoires
+    if (!formData.nome || !formData.cognome || !formData.email || !formData.whatsapp || !formData.oggetto || !formData.messaggio) {
+      alert("Per favore compila tutti i campi obbligatori.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const success = await sendEmail(formData, "contact");
       if (success) {
