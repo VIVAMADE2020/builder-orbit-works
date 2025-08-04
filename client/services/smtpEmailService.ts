@@ -47,20 +47,29 @@ export const sendEmailSMTP = async (
     console.log("📧 Response type:", response.type);
     console.log("📧 Response ok:", response.ok);
 
-    // Check if response is valid before reading body
-    if (!response || !response.body) {
+    // Check if response is valid
+    if (!response) {
       console.error("❌ Invalid response object");
       return false;
     }
 
-    // Read response body only once
+    // Clone response to avoid body stream issues
     let responseText = "";
     try {
-      responseText = await response.text();
+      // Use clone to avoid body stream already read errors
+      const responseClone = response.clone();
+      responseText = await responseClone.text();
       console.log("📧 Response text:", responseText);
     } catch (readError) {
       console.error("❌ Error reading response:", readError);
-      return false;
+      // Fallback: just check status without reading body
+      if (response.ok) {
+        console.log("✅ Email sent successfully (could not read response body)");
+        return true;
+      } else {
+        console.error("❌ Email failed (status:", response.status, ")");
+        return false;
+      }
     }
 
     if (response.ok) {
