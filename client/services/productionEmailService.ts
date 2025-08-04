@@ -28,6 +28,7 @@ export const sendEmail = async (
     // Essayer différents endpoints
     const endpoints = [
       "/api/send-smtp-email", // Serveur de développement
+      "http://localhost:3001/send-email", // Serveur SMTP standalone
       "/.netlify/functions/send-smtp-email", // Netlify functions
       "/.netlify/functions/send-email", // Fallback ancien endpoint
     ];
