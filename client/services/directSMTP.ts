@@ -33,7 +33,7 @@ export const sendDirectSMTP = async (
     console.log("📧 Envoi vers:", emailPayload.to);
     console.log("📧 Sujet:", emailPayload.subject);
 
-    // Utiliser l'endpoint Netlify qui fonctionne partout
+    // Utiliser l'endpoint Netlify JavaScript qui fonctionne partout
     const endpoint = "/.netlify/functions/send-smtp-email";
     
     console.log("🌐 Endpoint:", endpoint);
