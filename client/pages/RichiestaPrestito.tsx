@@ -135,6 +135,12 @@ const RichiestaPrestito: React.FC = () => {
       return;
     }
 
+    if (!emailConsent) {
+      alert("Devi accettare che il tuo client email si aprirà per inviare la richiesta.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const loanCalculations = calculateLoanDetails();
       const formDataWithCalculations = {
