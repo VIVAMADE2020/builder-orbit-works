@@ -728,16 +728,37 @@ const RichiestaPrestito: React.FC = () => {
                 </div>
               </div>
 
+              {/* Email Consent Checkbox */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-start space-x-3">
+                  <input
+                    type="checkbox"
+                    id="emailConsentLoan"
+                    checked={emailConsent}
+                    onChange={(e) => setEmailConsent(e.target.checked)}
+                    className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
+                  />
+                  <label htmlFor="emailConsentLoan" className="flex-1 text-sm text-gray-700">
+                    <span className="font-medium text-gray-900">Accetto che il mio client email si aprirà automaticamente</span>
+                    <br />
+                    Cliccando su "Invia Richiesta Prestito", il tuo programma di posta elettronica predefinito (Outlook, Gmail, Apple Mail, ecc.) si aprirà automaticamente con la richiesta pre-compilata.
+                    <strong className="text-primary"> Dovrai cliccare "Invia" nel tuo client email per completare l'invio della richiesta di prestito.</strong>
+                    <br />
+                    <em className="text-gray-600">Questo garantisce che la tua richiesta venga effettivamente inviata e ricevuta dal nostro team per la valutazione.</em>
+                  </label>
+                </div>
+              </div>
+
               {/* Submit Button */}
               <div className="text-center pt-6">
                 <button
                   type="submit"
-                  disabled={!formData.consensoPrivacy || isSubmitting}
+                  disabled={!formData.consensoPrivacy || !emailConsent || isSubmitting}
                   className="w-full md:w-auto px-12 py-4 bg-primary text-white rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   <Send className="mr-2 h-5 w-5" />
                   {isSubmitting
-                    ? "Invio in corso..."
+                    ? "Apertura client email..."
                     : "Invia Richiesta Prestito"}
                 </button>
                 <p className="text-sm text-gray-500 mt-3">
