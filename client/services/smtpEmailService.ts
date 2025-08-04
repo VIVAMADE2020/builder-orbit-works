@@ -53,22 +53,50 @@ export const sendEmailSMTP = async (
       return false;
     }
 
-    // Clone response to avoid body stream issues
+    // Handle 404 - endpoint not found, try fallback
+    if (response.status === 404) {
+      console.warn("⚠️ SMTP endpoint not found, trying alternative endpoint...");
+
+      // Try the alternative endpoint
+      const altEndpoint = isDevelopment
+        ? "/.netlify/functions/smtp-send"
+        : "/api/smtp-send";
+
+      console.log("🔄 Trying alternative endpoint:", altEndpoint);
+
+      try {
+        const altResponse = await fetch(altEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(emailPayload),
+        });
+
+        if (altResponse.ok) {
+          console.log("✅ Email sent via alternative endpoint");
+          return true;
+        } else {
+          console.error("❌ Alternative endpoint also failed:", altResponse.status);
+        }
+      } catch (altError) {
+        console.error("❌ Alternative endpoint error:", altError);
+      }
+
+      // If both endpoints fail, return false
+      console.error("❌ Both SMTP endpoints failed - SMTP service not available");
+      return false;
+    }
+
+    // Only try to read response body for non-404 responses
     let responseText = "";
-    try {
-      // Use clone to avoid body stream already read errors
-      const responseClone = response.clone();
-      responseText = await responseClone.text();
-      console.log("📧 Response text:", responseText);
-    } catch (readError) {
-      console.error("❌ Error reading response:", readError);
-      // Fallback: just check status without reading body
-      if (response.ok) {
-        console.log("✅ Email sent successfully (could not read response body)");
-        return true;
-      } else {
-        console.error("❌ Email failed (status:", response.status, ")");
-        return false;
+    if (response.ok || response.status >= 400) {
+      try {
+        responseText = await response.text();
+        console.log("📧 Response text:", responseText);
+      } catch (readError) {
+        console.warn("⚠️ Could not read response body:", readError);
+        responseText = `Status: ${response.status}`;
       }
     }
 
