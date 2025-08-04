@@ -17,7 +17,9 @@ export const sendEmail = async (
       timestamp: new Date().toISOString(),
     });
 
-    const endpoint = "/api/send-email";
+    // Use different endpoints for development vs production
+    const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const endpoint = isDevelopment ? "/api/send-email" : "/.netlify/functions/send-email";
 
     const response = await fetch(endpoint, {
       method: "POST",
