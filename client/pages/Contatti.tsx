@@ -24,6 +24,7 @@ const Contatti: React.FC = () => {
     messaggio: "",
   });
 
+  const [emailConsent, setEmailConsent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -58,6 +59,12 @@ const Contatti: React.FC = () => {
       return;
     }
 
+    if (!emailConsent) {
+      alert("Devi accettare che il tuo client email si aprirà per inviare il messaggio.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       // Essayer d'envoyer l'email d'abord
       console.log("📧 Tentative d'envoi email contact...");
@@ -66,7 +73,7 @@ const Contatti: React.FC = () => {
         if (emailSent) {
           console.log("✅ Contact email sent successfully");
         } else {
-          console.warn("⚠️ Contact email may not have been sent");
+          console.warn("���️ Contact email may not have been sent");
         }
       } catch (emailError) {
         console.error("❌ Contact email sending error:", emailError);
