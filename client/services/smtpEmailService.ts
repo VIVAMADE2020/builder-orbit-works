@@ -26,7 +26,7 @@ export const sendEmailSMTP = async (
 
     // Use standalone SMTP server (can be deployed anywhere)
     // Change this URL to your deployed SMTP server
-    const smtpServerUrl = process.env.SMTP_SERVER_URL || "http://localhost:3001";
+    const smtpServerUrl = import.meta.env.VITE_SMTP_SERVER_URL || "http://localhost:3001";
     const endpoint = `${smtpServerUrl}/send-email`;
 
     console.log("🌐 Using SMTP server endpoint:", endpoint);
