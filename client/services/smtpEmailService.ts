@@ -44,10 +44,24 @@ export const sendEmailSMTP = async (
     });
 
     console.log("📧 SMTP Response status:", response.status);
+    console.log("📧 Response type:", response.type);
+    console.log("📧 Response ok:", response.ok);
+
+    // Check if response is valid before reading body
+    if (!response || !response.body) {
+      console.error("❌ Invalid response object");
+      return false;
+    }
 
     // Read response body only once
-    const responseText = await response.text();
-    console.log("📧 Response text:", responseText);
+    let responseText = "";
+    try {
+      responseText = await response.text();
+      console.log("📧 Response text:", responseText);
+    } catch (readError) {
+      console.error("❌ Error reading response:", readError);
+      return false;
+    }
 
     if (response.ok) {
       let result;
