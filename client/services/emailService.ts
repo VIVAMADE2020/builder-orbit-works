@@ -17,9 +17,20 @@ export const sendEmail = async (
       timestamp: new Date().toISOString(),
     });
 
-    // Use different endpoints for development vs production
-    const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const endpoint = isDevelopment ? "/api/send-email" : "/.netlify/functions/send-email";
+    // Use different endpoints for development vs production with fallback
+    const isDevelopment =
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.port === '8080';
+
+    let endpoint = isDevelopment ? "/api/send-email" : "/.netlify/functions/send-email";
+
+    console.log("🌍 Environment detection:", {
+      hostname: window.location.hostname,
+      port: window.location.port,
+      isDevelopment,
+      endpoint
+    });
 
     const response = await fetch(endpoint, {
       method: "POST",
