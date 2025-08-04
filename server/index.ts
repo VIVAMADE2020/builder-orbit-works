@@ -27,14 +27,14 @@ export function createServer() {
       if (middleware.route) {
         routes.push({
           path: middleware.route.path,
-          methods: Object.keys(middleware.route.methods)
+          methods: Object.keys(middleware.route.methods),
         });
       }
     });
     res.json({
       message: "Debug info",
       routes,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   });
 

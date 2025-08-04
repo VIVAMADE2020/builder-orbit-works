@@ -27,7 +27,11 @@ exports.handler = async (event, context) => {
   try {
     console.log("📧 Email function called with method:", event.httpMethod);
     const { formType, data, timestamp } = JSON.parse(event.body || "{}");
-    console.log("📧 Parsed request data:", { formType, timestamp, dataKeys: Object.keys(data || {}) });
+    console.log("📧 Parsed request data:", {
+      formType,
+      timestamp,
+      dataKeys: Object.keys(data || {}),
+    });
 
     // Create SMTP transporter
     console.log("🔧 Creating SMTP transporter...");
@@ -66,7 +70,9 @@ exports.handler = async (event, context) => {
           <p><strong>Durata:</strong> ${data.durata} mesi</p>
           <p><strong>Motivazione:</strong> ${data.motivazione || "Non specificata"}</p>
           
-          ${data.calculations ? `
+          ${
+            data.calculations
+              ? `
           <h3>📊 Calcoli Prestito:</h3>
           <div style="background: #f0f8ff; padding: 15px; border-left: 4px solid #2563eb; margin: 10px 0;">
             <p><strong>Tasso di Interesse:</strong> ${data.calculations.interestRate}</p>
@@ -74,7 +80,9 @@ exports.handler = async (event, context) => {
             <p><strong>Totale da Rimborsare:</strong> €${data.calculations.totalPayment.toLocaleString()}</p>
             <p><strong>Interessi Totali:</strong> €${data.calculations.totalInterest.toLocaleString()}</p>
           </div>
-          ` : ''}
+          `
+              : ""
+          }
           
           <h3>💼 Situazione Finanziaria:</h3>
           <p><strong>Occupazione:</strong> ${data.occupazione}</p>

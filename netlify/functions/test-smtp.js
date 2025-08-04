@@ -24,21 +24,21 @@ exports.handler = async (event, context) => {
         pass: "Salomon123@",
       },
     });
-    
+
     console.log("🔗 Testing SMTP connection...");
     await transporter.verify();
     console.log("✅ SMTP connection successful");
-    
+
     return {
       statusCode: 200,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({ 
-        success: true, 
+      body: JSON.stringify({
+        success: true,
         message: "SMTP connection verified",
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       }),
     };
   } catch (error) {
@@ -49,10 +49,10 @@ exports.handler = async (event, context) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({ 
-        success: false, 
+      body: JSON.stringify({
+        success: false,
         error: error.message,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       }),
     };
   }

@@ -19,9 +19,9 @@ export const sendEmail = async (
 
     // Force development endpoint for debugging
     const isDevelopment =
-      window.location.hostname === 'localhost' ||
-      window.location.hostname === '127.0.0.1' ||
-      window.location.port === '8080';
+      window.location.hostname === "localhost" ||
+      window.location.hostname === "127.0.0.1" ||
+      window.location.port === "8080";
 
     // Force local endpoint for now
     let endpoint = "/api/send-email";
@@ -31,7 +31,7 @@ export const sendEmail = async (
       port: window.location.port,
       isDevelopment,
       endpoint,
-      fullUrl: window.location.href
+      fullUrl: window.location.href,
     });
 
     let response = await fetch(endpoint, {
@@ -45,7 +45,9 @@ export const sendEmail = async (
     // If primary endpoint fails with 404, try fallback
     if (response.status === 404) {
       console.log("⚠️ Primary endpoint failed, trying fallback...");
-      const fallbackEndpoint = isDevelopment ? "/.netlify/functions/send-email" : "/api/send-email";
+      const fallbackEndpoint = isDevelopment
+        ? "/.netlify/functions/send-email"
+        : "/api/send-email";
       console.log("🔄 Trying fallback endpoint:", fallbackEndpoint);
 
       response = await fetch(fallbackEndpoint, {
