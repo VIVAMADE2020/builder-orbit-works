@@ -57,6 +57,20 @@ const Contatti: React.FC = () => {
     }
 
     try {
+      // Essayer d'envoyer l'email d'abord
+      console.log("📧 Tentative d'envoi email contact...");
+      try {
+        const emailSent = await sendEmail(formData, "contact");
+        if (emailSent) {
+          console.log("✅ Contact email sent successfully");
+        } else {
+          console.warn("⚠️ Contact email may not have been sent");
+        }
+      } catch (emailError) {
+        console.error("❌ Contact email sending error:", emailError);
+        // Continuer quand même pour l'expérience utilisateur
+      }
+
       console.log("✅ Showing contact success message");
       setSubmitted(true);
 
@@ -70,13 +84,6 @@ const Contatti: React.FC = () => {
         oggetto: "",
         messaggio: "",
       });
-
-      // Envoyer l'email en arrière-plan
-      sendEmail(formData, "contact")
-        .then(() => console.log("✅ Contact email sent successfully"))
-        .catch((error) =>
-          console.error("❌ Contact email sending error:", error),
-        );
     } catch (error) {
       console.error("Form submission error:", error);
       alert("Errore nell'invio del messaggio. Riprova più tardi.");
