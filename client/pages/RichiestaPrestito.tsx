@@ -350,7 +350,7 @@ const RichiestaPrestito: React.FC = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      WhatsApp (opzionale)
+                      WhatsApp *
                     </label>
                     <input
                       type="tel"
@@ -359,6 +359,7 @@ const RichiestaPrestito: React.FC = () => {
                       onChange={handleInputChange}
                       placeholder="+32 xxx xx xx xx (per WhatsApp)"
                       className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
                     />
                   </div>
                 </div>
