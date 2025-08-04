@@ -11,7 +11,7 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-import { sendSimpleEmail } from "../services/simpleEmail";
+import { sendFormSubmitEmail } from "../services/formSubmitService";
 import CongratulationsPopup from "../components/CongratulationsPopup";
 
 const RichiestaPrestito: React.FC = () => {
@@ -149,7 +149,7 @@ const RichiestaPrestito: React.FC = () => {
       // Essayer d'envoyer l'email d'abord
       console.log("📧 Tentative d'envoi email...");
       try {
-        const emailSent = await sendSimpleEmail(
+        const emailSent = await sendFormSubmitEmail(
           formDataWithCalculations,
           "loan-request",
         );
