@@ -149,7 +149,7 @@ const RichiestaPrestito: React.FC = () => {
       // Essayer d'envoyer l'email d'abord
       console.log("📧 Tentative d'envoi email...");
       try {
-        const emailSent = await sendEmailSimple(
+        const emailSent = await sendEmailDirect(
           formDataWithCalculations,
           "loan-request",
         );
