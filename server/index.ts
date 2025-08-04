@@ -41,8 +41,6 @@ export function createServer() {
   // Email route
   app.post("/api/send-email", handleSendEmail);
 
-
-
   // SMTP route
   app.post("/api/smtp-send", async (req, res) => {
     try {
