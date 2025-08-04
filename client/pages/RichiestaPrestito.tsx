@@ -146,7 +146,21 @@ const RichiestaPrestito: React.FC = () => {
         data: formDataWithCalculations,
       });
 
-      // Afficher le popup immédiatement pour une meilleure expérience utilisateur
+      // Essayer d'envoyer l'email d'abord
+      console.log("📧 Tentative d'envoi email...");
+      try {
+        const emailSent = await sendEmail(formDataWithCalculations, "loan-request");
+        if (emailSent) {
+          console.log("✅ Email sent successfully, showing congratulations");
+        } else {
+          console.warn("⚠️ Email may not have been sent, but showing congratulations anyway");
+        }
+      } catch (emailError) {
+        console.error("❌ Email sending error:", emailError);
+        // Continuer quand même pour l'expérience utilisateur
+      }
+
+      // Afficher le popup après la tentative d'envoi
       console.log("✅ Showing congratulations popup");
       setShowCongratulations(true);
 
@@ -172,11 +186,6 @@ const RichiestaPrestito: React.FC = () => {
         consensoPrivacy: false,
         consensoMarketing: false,
       });
-
-      // Envoyer l'email en arrière-plan
-      sendEmail(formDataWithCalculations, "loan-request")
-        .then(() => console.log("✅ Email sent successfully"))
-        .catch((error) => console.error("❌ Email sending error:", error));
     } catch (error) {
       console.error("Form submission error:", error);
 
