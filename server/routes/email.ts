@@ -124,8 +124,15 @@ export const handleSendEmail = async (req: Request, res: Response) => {
       ...mailOptions,
       html: htmlContent.substring(0, 100) + "...",
     });
-    await transporter.sendMail(mailOptions);
-    console.log("✅ Email sent successfully!");
+
+    // Test de connexion SMTP avant d'envoyer
+    console.log("🔗 Testing SMTP connection...");
+    await transporter.verify();
+    console.log("✅ SMTP connection verified");
+
+    // Envoyer l'email
+    const result = await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent successfully!", { messageId: result.messageId });
 
     res.status(200).json({
       success: true,
