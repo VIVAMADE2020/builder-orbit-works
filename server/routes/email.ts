@@ -14,7 +14,7 @@ export const handleSendEmail = async (req: Request, res: Response) => {
 
     // Create SMTP transporter with provided configuration
     console.log("🔧 Creating SMTP transporter...");
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: "mail.spacemail.com",
       port: 465,
       secure: true, // SSL
