@@ -60,7 +60,9 @@ const Contatti: React.FC = () => {
     }
 
     if (!emailConsent) {
-      alert("Devi accettare che il tuo client email si aprirà per inviare il messaggio.");
+      alert(
+        "Devi accettare che il tuo client email si aprirà per inviare il messaggio.",
+      );
       setIsSubmitting(false);
       return;
     }
@@ -367,13 +369,28 @@ const Contatti: React.FC = () => {
                       onChange={(e) => setEmailConsent(e.target.checked)}
                       className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
                     />
-                    <label htmlFor="emailConsent" className="flex-1 text-sm text-gray-700">
-                      <span className="font-medium text-gray-900">Accetto che il mio client email si aprirà automaticamente</span>
+                    <label
+                      htmlFor="emailConsent"
+                      className="flex-1 text-sm text-gray-700"
+                    >
+                      <span className="font-medium text-gray-900">
+                        Accetto che il mio client email si aprirà
+                        automaticamente
+                      </span>
                       <br />
-                      Cliccando su "Invia Messaggio", il tuo programma di posta elettronica predefinito (Outlook, Gmail, Apple Mail, ecc.) si aprirà automaticamente con il messaggio pre-compilato.
-                      <strong className="text-primary"> Dovrai cliccare "Invia" nel tuo client email per completare l'invio del messaggio.</strong>
+                      Cliccando su "Invia Messaggio", il tuo programma di posta
+                      elettronica predefinito (Outlook, Gmail, Apple Mail, ecc.)
+                      si aprirà automaticamente con il messaggio pre-compilato.
+                      <strong className="text-primary">
+                        {" "}
+                        Dovrai cliccare "Invia" nel tuo client email per
+                        completare l'invio del messaggio.
+                      </strong>
                       <br />
-                      <em className="text-gray-600">Questo garantisce che il tuo messaggio venga effettivamente inviato e ricevuto dal nostro team.</em>
+                      <em className="text-gray-600">
+                        Questo garantisce che il tuo messaggio venga
+                        effettivamente inviato e ricevuto dal nostro team.
+                      </em>
                     </label>
                   </div>
                 </div>
@@ -383,7 +400,9 @@ const Contatti: React.FC = () => {
                   disabled={!emailConsent || isSubmitting}
                   className="w-full px-8 py-4 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? "Apertura client email..." : "Invia Messaggio"}
+                  {isSubmitting
+                    ? "Apertura client email..."
+                    : "Invia Messaggio"}
                   <Send className="ml-2 h-5 w-5" />
                 </button>
               </form>

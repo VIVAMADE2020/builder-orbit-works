@@ -136,7 +136,9 @@ const RichiestaPrestito: React.FC = () => {
     }
 
     if (!emailConsent) {
-      alert("Devi accettare che il tuo client email si aprirà per inviare la richiesta.");
+      alert(
+        "Devi accettare che il tuo client email si aprirà per inviare la richiesta.",
+      );
       setIsSubmitting(false);
       return;
     }
@@ -744,13 +746,29 @@ const RichiestaPrestito: React.FC = () => {
                     onChange={(e) => setEmailConsent(e.target.checked)}
                     className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary focus:ring-2"
                   />
-                  <label htmlFor="emailConsentLoan" className="flex-1 text-sm text-gray-700">
-                    <span className="font-medium text-gray-900">Accetto che il mio client email si aprirà automaticamente</span>
+                  <label
+                    htmlFor="emailConsentLoan"
+                    className="flex-1 text-sm text-gray-700"
+                  >
+                    <span className="font-medium text-gray-900">
+                      Accetto che il mio client email si aprirà automaticamente
+                    </span>
                     <br />
-                    Cliccando su "Invia Richiesta Prestito", il tuo programma di posta elettronica predefinito (Outlook, Gmail, Apple Mail, ecc.) si aprirà automaticamente con la richiesta pre-compilata.
-                    <strong className="text-primary"> Dovrai cliccare "Invia" nel tuo client email per completare l'invio della richiesta di prestito.</strong>
+                    Cliccando su "Invia Richiesta Prestito", il tuo programma di
+                    posta elettronica predefinito (Outlook, Gmail, Apple Mail,
+                    ecc.) si aprirà automaticamente con la richiesta
+                    pre-compilata.
+                    <strong className="text-primary">
+                      {" "}
+                      Dovrai cliccare "Invia" nel tuo client email per
+                      completare l'invio della richiesta di prestito.
+                    </strong>
                     <br />
-                    <em className="text-gray-600">Questo garantisce che la tua richiesta venga effettivamente inviata e ricevuta dal nostro team per la valutazione.</em>
+                    <em className="text-gray-600">
+                      Questo garantisce che la tua richiesta venga
+                      effettivamente inviata e ricevuta dal nostro team per la
+                      valutazione.
+                    </em>
                   </label>
                 </div>
               </div>
@@ -759,7 +777,9 @@ const RichiestaPrestito: React.FC = () => {
               <div className="text-center pt-6">
                 <button
                   type="submit"
-                  disabled={!formData.consensoPrivacy || !emailConsent || isSubmitting}
+                  disabled={
+                    !formData.consensoPrivacy || !emailConsent || isSubmitting
+                  }
                   className="w-full md:w-auto px-12 py-4 bg-primary text-white rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
                 >
                   <Send className="mr-2 h-5 w-5" />
