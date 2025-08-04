@@ -11,7 +11,7 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-import { sendEmailDirect } from "../services/directEmailService";
+import { sendEmailSMTP } from "../services/smtpEmailService";
 import CongratulationsPopup from "../components/CongratulationsPopup";
 
 const RichiestaPrestito: React.FC = () => {
