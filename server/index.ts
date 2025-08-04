@@ -20,6 +20,24 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
+  // Debug endpoint to list all routes
+  app.get("/api/debug", (req, res) => {
+    const routes = [];
+    app._router.stack.forEach((middleware) => {
+      if (middleware.route) {
+        routes.push({
+          path: middleware.route.path,
+          methods: Object.keys(middleware.route.methods)
+        });
+      }
+    });
+    res.json({
+      message: "Debug info",
+      routes,
+      timestamp: new Date().toISOString()
+    });
+  });
+
   // Email route
   app.post("/api/send-email", handleSendEmail);
 
