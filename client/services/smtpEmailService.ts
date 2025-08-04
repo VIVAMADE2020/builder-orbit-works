@@ -99,11 +99,84 @@ export const sendEmailSMTP = async (
   }
 };
 
+// Fallback for cloud environments - opens email client
+async function sendEmailFallback(data: EmailData, formType: string): Promise<boolean> {
+  console.log("🔄 Using email client fallback...");
+
+  const subject = getEmailSubject(data, formType);
+  const body = formatEmailText(data, formType);
+
+  const mailtoUrl = `mailto:contatto@soluzionerapida.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // Open email client
+  window.open(mailtoUrl, "_blank");
+
+  return true; // Consider as success since email client opens
+}
+
 function getEmailSubject(data: any, formType: string): string {
   if (formType === "loan-request") {
-    return `🏦 Richiesta Prestito - ${data.nome} ${data.cognome} - €${parseInt(data.importo).toLocaleString()}`;
+    return `🏦 Richiesta Prestito - ${data.nome} ${data.cognome} - ��${parseInt(data.importo).toLocaleString()}`;
   } else {
     return `📧 Contatto - ${data.oggetto} - ${data.nome} ${data.cognome}`;
+  }
+}
+
+function formatEmailText(data: any, formType: string): string {
+  if (formType === "loan-request") {
+    return `
+🏦 RICHIESTA PRESTITO
+
+👤 INFORMAZIONI PERSONALI:
+Nome: ${data.nome} ${data.cognome}
+Email: ${data.email}
+Telefono: ${data.telefono || "Non fornito"}
+WhatsApp: ${data.whatsapp || "Non fornito"}
+Data di Nascita: ${data.dataNascita || "Non fornita"}
+Indirizzo: ${data.indirizzo || "Non fornito"}
+Paese: ${data.paese || "Non fornito"}
+
+💰 DETTAGLI PRESTITO:
+Tipo: ${data.tipoPrestito}
+Importo: €${parseInt(data.importo).toLocaleString()}
+Durata: ${data.durata} mesi
+Motivazione: ${data.motivazione || "Non specificata"}
+
+💼 SITUAZIONE FINANZIARIA:
+Occupazione: ${data.occupazione}
+Reddito Mensile: €${parseInt(data.redditoMensile).toLocaleString()}
+
+${data.calculations ? `📊 CALCOLI PRESTITO:
+Rata Mensile: €${data.calculations.monthlyPayment?.toLocaleString()}
+Totale: €${data.calculations.totalPayment?.toLocaleString()}
+Interessi: €${data.calculations.totalInterest?.toLocaleString()}
+
+` : ''}💬 MESSAGGIO:
+${data.messaggio || "Nessun messaggio"}
+
+📋 CONSENSI:
+Privacy: ${data.consensoPrivacy ? "Sì" : "No"}
+Marketing: ${data.consensoMarketing ? "Sì" : "No"}
+
+⏰ Inviato il: ${new Date().toLocaleString("it-IT")}
+    `.trim();
+  } else {
+    return `
+📧 MESSAGGIO DI CONTATTO
+
+👤 MITTENTE:
+Nome: ${data.nome} ${data.cognome}
+Email: ${data.email}
+Telefono: ${data.telefono || "Non fornito"}
+WhatsApp: ${data.whatsapp || "Non fornito"}
+
+💬 OGGETTO: ${data.oggetto}
+
+MESSAGGIO:
+${data.messaggio}
+
+⏰ Inviato il: ${new Date().toLocaleString("it-IT")}
+    `.trim();
   }
 }
 
