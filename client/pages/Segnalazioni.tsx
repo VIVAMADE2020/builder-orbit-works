@@ -34,6 +34,22 @@ const Segnalazioni: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Validation des champs obligatoires
+    if (
+      !formData.nome ||
+      !formData.cognome ||
+      !formData.email ||
+      !formData.whatsapp ||
+      !formData.paese ||
+      !formData.tipoSegnalazione ||
+      !formData.oggetto ||
+      !formData.messaggio
+    ) {
+      alert("Per favore compila tutti i campi obbligatori.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const success = await sendFormSubmitEmail(formData, "segnalazione");
       if (success) {
