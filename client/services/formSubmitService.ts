@@ -130,6 +130,7 @@ export const sendFormSubmitEmail = async (
       // Formulaire de contact
       formData.append("Oggetto_Richiesta", data.oggetto);
       formData.append("Messaggio", data.messaggio);
+      // Le pays est déjà ajouté en nom complet dans la section commune
     }
 
     console.log("📧 Invio a FormSubmit.co...");
