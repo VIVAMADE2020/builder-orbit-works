@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Send, AlertTriangle, CheckCircle, Clock, Mail } from "lucide-react";
-import { sendEmail } from "../services/emailService";
+import { sendFormSubmitEmail } from "../services/formSubmitService";
 
 const Segnalazioni: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ const Segnalazioni: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const success = await sendEmail(formData, "segnalazione");
+      const success = await sendFormSubmitEmail(formData, "segnalazione");
       if (success) {
         setSubmitted(true);
         // Reset form

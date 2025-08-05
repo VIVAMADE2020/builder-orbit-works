@@ -75,6 +75,11 @@ export const sendFormSubmitEmail = async (
         "Consenso_Marketing",
         data.consensoMarketing ? "Autorizzato" : "Non autorizzato",
       );
+    } else if (formType === "segnalazione") {
+      // Formulaire de signalement
+      formData.append("Tipo_Segnalazione", data.tipoSegnalazione);
+      formData.append("Oggetto_Segnalazione", data.oggetto);
+      formData.append("Descrizione_Dettagliata", data.messaggio);
     } else {
       // Formulaire de contact
       formData.append("Oggetto_Richiesta", data.oggetto);
@@ -109,6 +114,8 @@ export const sendFormSubmitEmail = async (
 function getEmailSubject(data: any, formType: string): string {
   if (formType === "loan-request") {
     return `RICHIESTA PRESTITO - ${data.nome} ${data.cognome} - EUR ${parseInt(data.importo).toLocaleString()}`;
+  } else if (formType === "segnalazione") {
+    return `SEGNALAZIONE - ${data.tipoSegnalazione} - ${data.nome} ${data.cognome}`;
   } else {
     return `CONTATTO - ${data.oggetto} - ${data.nome} ${data.cognome}`;
   }
