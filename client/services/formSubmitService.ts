@@ -2,58 +2,7 @@ interface EmailData {
   [key: string]: any;
 }
 
-// Mapping des codes pays vers les noms complets
-const countryNames: { [key: string]: string } = {
-  "AD": "Andorra",
-  "AL": "Albania",
-  "AT": "Austria",
-  "BA": "Bosnia ed Erzegovina",
-  "BE": "Belgio",
-  "BG": "Bulgaria",
-  "BY": "Bielorussia",
-  "CH": "Svizzera",
-  "CY": "Cipro",
-  "CZ": "Repubblica Ceca",
-  "DE": "Germania",
-  "DK": "Danimarca",
-  "EE": "Estonia",
-  "ES": "Spagna",
-  "FI": "Finlandia",
-  "FR": "Francia",
-  "GB": "Regno Unito",
-  "GR": "Grecia",
-  "HR": "Croazia",
-  "HU": "Ungheria",
-  "IE": "Irlanda",
-  "IS": "Islanda",
-  "IT": "Italia",
-  "LI": "Liechtenstein",
-  "LT": "Lituania",
-  "LU": "Lussemburgo",
-  "LV": "Lettonia",
-  "MC": "Monaco",
-  "MD": "Moldavia",
-  "ME": "Montenegro",
-  "MK": "Macedonia del Nord",
-  "MT": "Malta",
-  "NL": "Paesi Bassi",
-  "NO": "Norvegia",
-  "PL": "Polonia",
-  "PT": "Portogallo",
-  "RO": "Romania",
-  "RS": "Serbia",
-  "RU": "Russia",
-  "SE": "Svezia",
-  "SI": "Slovenia",
-  "SK": "Slovacchia",
-  "SM": "San Marino",
-  "UA": "Ucraina",
-  "VA": "Città del Vaticano"
-};
-
-function getCountryFullName(countryCode: string): string {
-  return countryNames[countryCode] || countryCode || "Non specificato";
-}
+import { getCountryFullName } from "../utils/countryUtils";
 
 export const sendFormSubmitEmail = async (
   data: EmailData,
