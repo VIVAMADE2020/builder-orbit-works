@@ -8,6 +8,8 @@ const Segnalazioni: React.FC = () => {
     cognome: "",
     email: "",
     telefono: "",
+    whatsapp: "",
+    paese: "",
     tipoSegnalazione: "",
     oggetto: "",
     messaggio: "",
@@ -42,6 +44,8 @@ const Segnalazioni: React.FC = () => {
           cognome: "",
           email: "",
           telefono: "",
+          whatsapp: "",
+          paese: "",
           tipoSegnalazione: "",
           oggetto: "",
           messaggio: "",
@@ -157,6 +161,83 @@ const Segnalazioni: React.FC = () => {
                       onChange={handleInputChange}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                     />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      WhatsApp *
+                    </label>
+                    <input
+                      type="tel"
+                      name="whatsapp"
+                      value={formData.whatsapp}
+                      onChange={handleInputChange}
+                      placeholder="+32 xxx xx xx xx (per WhatsApp)"
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Paese *
+                    </label>
+                    <select
+                      name="paese"
+                      value={formData.paese}
+                      onChange={handleInputChange}
+                      className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      required
+                    >
+                      <option value="">Seleziona paese</option>
+                      <option value="AD">Andorra</option>
+                      <option value="AL">Albania</option>
+                      <option value="AT">Austria</option>
+                      <option value="BA">Bosnia ed Erzegovina</option>
+                      <option value="BE">Belgio</option>
+                      <option value="BG">Bulgaria</option>
+                      <option value="BY">Bielorussia</option>
+                      <option value="CH">Svizzera</option>
+                      <option value="CY">Cipro</option>
+                      <option value="CZ">Repubblica Ceca</option>
+                      <option value="DE">Germania</option>
+                      <option value="DK">Danimarca</option>
+                      <option value="EE">Estonia</option>
+                      <option value="ES">Spagna</option>
+                      <option value="FI">Finlandia</option>
+                      <option value="FR">Francia</option>
+                      <option value="GB">Regno Unito</option>
+                      <option value="GR">Grecia</option>
+                      <option value="HR">Croazia</option>
+                      <option value="HU">Ungheria</option>
+                      <option value="IE">Irlanda</option>
+                      <option value="IS">Islanda</option>
+                      <option value="IT">Italia</option>
+                      <option value="LI">Liechtenstein</option>
+                      <option value="LT">Lituania</option>
+                      <option value="LU">Lussemburgo</option>
+                      <option value="LV">Lettonia</option>
+                      <option value="MC">Monaco</option>
+                      <option value="MD">Moldavia</option>
+                      <option value="ME">Montenegro</option>
+                      <option value="MK">Macedonia del Nord</option>
+                      <option value="MT">Malta</option>
+                      <option value="NL">Paesi Bassi</option>
+                      <option value="NO">Norvegia</option>
+                      <option value="PL">Polonia</option>
+                      <option value="PT">Portogallo</option>
+                      <option value="RO">Romania</option>
+                      <option value="RS">Serbia</option>
+                      <option value="RU">Russia</option>
+                      <option value="SE">Svezia</option>
+                      <option value="SI">Slovenia</option>
+                      <option value="SK">Slovacchia</option>
+                      <option value="SM">San Marino</option>
+                      <option value="UA">Ucraina</option>
+                      <option value="VA">Città del Vaticano</option>
+                    </select>
                   </div>
                 </div>
 
