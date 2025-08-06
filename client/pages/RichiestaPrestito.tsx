@@ -520,9 +520,7 @@ const RichiestaPrestito: React.FC = () => {
                       value={formData.importo}
                       onChange={handleInputChange}
                       min="5000"
-                      max="500000"
-                      step="1"
-                      placeholder="Esempio: 13500"
+                      placeholder="Esempio: 12750"
                       className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                       required
                     />
@@ -587,7 +585,7 @@ const RichiestaPrestito: React.FC = () => {
                       <div>
                         <div className="text-sm text-gray-600">Importo</div>
                         <div className="text-xl font-bold text-primary">
-                          €{parseInt(formData.importo).toLocaleString()}
+                          ��{parseInt(formData.importo).toLocaleString()}
                         </div>
                       </div>
                       <div>
