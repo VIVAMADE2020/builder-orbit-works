@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Send, AlertTriangle, CheckCircle, Clock, Mail } from "lucide-react";
 import { sendFormSubmitEmail } from "../services/formSubmitService";
+import CongratulationsPopup from "../components/CongratulationsPopup";
 
 const Segnalazioni: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const Segnalazioni: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [showCongratulations, setShowCongratulations] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -53,7 +55,8 @@ const Segnalazioni: React.FC = () => {
     try {
       const success = await sendFormSubmitEmail(formData, "segnalazione");
       if (success) {
-        setSubmitted(true);
+        console.log("✅ Segnalazione sent successfully, showing congratulations");
+        setShowCongratulations(true);
         // Reset form
         setFormData({
           nome: "",
