@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Send, AlertTriangle, CheckCircle, Clock, Mail } from "lucide-react";
 import { sendFormSubmitEmail } from "../services/formSubmitService";
 import CongratulationsPopup from "../components/CongratulationsPopup";
+import CongratulationsPopup from "../components/CongratulationsPopup";
 
 const Segnalazioni: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ const Segnalazioni: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [showCongratulations, setShowCongratulations] = useState(false);
   const [showCongratulations, setShowCongratulations] = useState(false);
 
   const handleInputChange = (
@@ -56,6 +58,7 @@ const Segnalazioni: React.FC = () => {
       const success = await sendFormSubmitEmail(formData, "segnalazione");
       if (success) {
         console.log("✅ Segnalazione sent successfully, showing congratulations");
+        setShowCongratulations(true);
         setShowCongratulations(true);
         // Reset form
         setFormData({
@@ -103,7 +106,18 @@ const Segnalazioni: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-20">
+    <>
+      <CongratulationsPopup
+        isVisible={showCongratulations}
+        onClose={() => {
+          setShowCongratulations(false);
+          setSubmitted(true);
+        }}
+        title="Segnalazione Inviata!"
+        message="Complimenti! La tua segnalazione è stata inviata con successo. La nostra équipe ti contatterà entro 24 ore per gestire la tua richiesta."
+      />
+
+      <div className="min-h-screen bg-gray-50 py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -449,6 +463,7 @@ const Segnalazioni: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
