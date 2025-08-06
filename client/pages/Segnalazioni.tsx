@@ -20,7 +20,6 @@ const Segnalazioni: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [showCongratulations, setShowCongratulations] = useState(false);
-  const [showCongratulations, setShowCongratulations] = useState(false);
 
   const handleInputChange = (
     e: React.ChangeEvent<
