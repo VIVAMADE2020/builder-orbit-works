@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Send, AlertTriangle, CheckCircle, Clock, Mail } from "lucide-react";
 import { sendFormSubmitEmail } from "../services/formSubmitService";
 import CongratulationsPopup from "../components/CongratulationsPopup";
-import CongratulationsPopup from "../components/CongratulationsPopup";
 
 const Segnalazioni: React.FC = () => {
   const [formData, setFormData] = useState({
