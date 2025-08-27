@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { sendFormSubmitEmail } from "../services/formSubmitService";
 
+// Formulaire de contact - FormSubmit.co configuré
+
 const Contatti: React.FC = () => {
   const [formData, setFormData] = useState({
     nome: "",
