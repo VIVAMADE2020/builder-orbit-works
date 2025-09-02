@@ -480,7 +480,6 @@ const RichiestaPrestito: React.FC = () => {
                     </select>
                   </div>
                 </div>
-
               </div>
 
               {/* Loan Information */}
