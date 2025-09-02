@@ -32,8 +32,14 @@ export const sendFormSubmitEmail = async (
 
     // Données spécifiques selon le type de formulaire
     if (formType === "loan-request") {
-      formData.append("Data_Nascita", data.dataNascita || "Non fornita");
-      formData.append("Indirizzo", data.indirizzo || "Non fornito");
+      const dn =
+        data.dataNascita ||
+        (data.giornoNascita && data.meseNascita && data.annoNascita
+          ? `${String(data.giornoNascita).padStart(2, "0")}/${String(
+              data.meseNascita,
+            ).padStart(2, "0")}/${data.annoNascita}`
+          : "Non fornita");
+      formData.append("Data_Nascita", dn);
       formData.append("Tipo_Prestito", data.tipoPrestito);
       formData.append(
         "Importo_Richiesto",
