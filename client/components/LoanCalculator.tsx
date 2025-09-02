@@ -40,7 +40,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
 
   const handleAmountChange = (value: string) => {
     const numValue = parseInt(value) || 0;
-    setAmount(Math.max(5000, Math.min(500000, numValue)));
+    setAmount(Math.max(0, Math.min(500000, numValue)));
   };
 
   const handleDurationChange = (value: string) => {
@@ -66,7 +66,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
             {useManualInput ? (
               <input
                 type="number"
-                min="5000"
+                min="0"
                 max="500000"
                 step="1000"
                 value={amount}
@@ -76,7 +76,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
             ) : (
               <input
                 type="range"
-                min="5000"
+                min="0"
                 max="100000"
                 step="1000"
                 value={amount}
@@ -85,7 +85,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
               />
             )}
             <div className="flex justify-between text-xs text-gray-500 mt-1">
-              <span>€5.000</span>
+              <span>€0</span>
               <span className="font-semibold text-primary">
                 {formatCurrency(amount)}
               </span>
@@ -170,7 +170,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
               {useManualInput ? (
                 <input
                   type="number"
-                  min="5000"
+                  min="0"
                   max="500000"
                   step="1000"
                   value={amount}
@@ -180,7 +180,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
               ) : (
                 <input
                   type="range"
-                  min="5000"
+                  min="0"
                   max="100000"
                   step="1000"
                   value={amount}
@@ -189,7 +189,7 @@ const LoanCalculator: React.FC<LoanCalculatorProps> = ({
                 />
               )}
               <div className="flex justify-between text-sm text-gray-500 mt-2">
-                <span>€5.000</span>
+                <span>€0</span>
                 <span className="font-semibold text-primary text-lg">
                   {formatCurrency(amount)}
                 </span>
