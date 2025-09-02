@@ -21,10 +21,9 @@ const RichiestaPrestito: React.FC = () => {
     email: "",
     telefono: "",
     whatsapp: "",
-    dataNascita: "",
-    indirizzo: "",
-    citta: "",
-    cap: "",
+    giornoNascita: "",
+    meseNascita: "",
+    annoNascita: "",
     paese: "",
     tipoPrestito: "",
     importo: "",
@@ -136,8 +135,10 @@ const RichiestaPrestito: React.FC = () => {
 
     try {
       const loanCalculations = calculateLoanDetails();
+      const dataNascitaStr = `${String(formData.giornoNascita).padStart(2, "0")}/${String(formData.meseNascita).padStart(2, "0")}/${formData.annoNascita}`;
       const formDataWithCalculations = {
         ...formData,
+        dataNascita: dataNascitaStr,
         calculations: loanCalculations,
       };
 
@@ -176,10 +177,9 @@ const RichiestaPrestito: React.FC = () => {
         email: "",
         telefono: "",
         whatsapp: "",
-        dataNascita: "",
-        indirizzo: "",
-        citta: "",
-        cap: "",
+        giornoNascita: "",
+        meseNascita: "",
+        annoNascita: "",
         paese: "",
         tipoPrestito: "",
         importo: "",
@@ -383,14 +383,41 @@ const RichiestaPrestito: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Data di Nascita *
                     </label>
-                    <input
-                      type="date"
-                      name="dataNascita"
-                      value={formData.dataNascita}
-                      onChange={handleInputChange}
-                      className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                      required
-                    />
+                    <div className="grid grid-cols-3 gap-3">
+                      <input
+                        type="number"
+                        name="giornoNascita"
+                        value={formData.giornoNascita}
+                        onChange={handleInputChange}
+                        placeholder="GG"
+                        min="1"
+                        max="31"
+                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        required
+                      />
+                      <input
+                        type="number"
+                        name="meseNascita"
+                        value={formData.meseNascita}
+                        onChange={handleInputChange}
+                        placeholder="MM"
+                        min="1"
+                        max="12"
+                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        required
+                      />
+                      <input
+                        type="number"
+                        name="annoNascita"
+                        value={formData.annoNascita}
+                        onChange={handleInputChange}
+                        placeholder="AAAA"
+                        min="1900"
+                        max="2100"
+                        className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        required
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -454,20 +481,6 @@ const RichiestaPrestito: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Indirizzo Completo *
-                  </label>
-                  <input
-                    type="text"
-                    name="indirizzo"
-                    value={formData.indirizzo}
-                    onChange={handleInputChange}
-                    placeholder="Via, numero civico, città, CAP"
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                    required
-                  />
-                </div>
               </div>
 
               {/* Loan Information */}
@@ -554,26 +567,15 @@ const RichiestaPrestito: React.FC = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Motivazione del Prestito *
                   </label>
-                  <select
+                  <input
+                    type="text"
                     name="motivazione"
                     value={formData.motivazione}
                     onChange={handleInputChange}
+                    placeholder="Descrivi la motivazione"
                     className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                     required
-                  >
-                    <option value="">Seleziona motivazione</option>
-                    <option value="casa">Acquisto/Ristrutturazione Casa</option>
-                    <option value="auto">Acquisto Veicolo</option>
-                    <option value="consolidamento">
-                      Consolidamento Debiti
-                    </option>
-                    <option value="matrimonio">Matrimonio</option>
-                    <option value="viaggio">Viaggio</option>
-                    <option value="spese-mediche">Spese Mediche</option>
-                    <option value="investimento">Investimento</option>
-                    <option value="emergenza">Emergenza</option>
-                    <option value="altro">Altro</option>
-                  </select>
+                  />
                 </div>
 
                 {formData.importo && formData.durata && (
@@ -624,30 +626,15 @@ const RichiestaPrestito: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Occupazione *
                     </label>
-                    <select
+                    <input
+                      type="text"
                       name="occupazione"
                       value={formData.occupazione}
                       onChange={handleInputChange}
+                      placeholder="Es: Dipendente, Autonomo, Imprenditore..."
                       className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                       required
-                    >
-                      <option value="">Seleziona occupazione</option>
-                      <option value="dipendente-tempo-indeterminato">
-                        Dipendente Tempo Indeterminato
-                      </option>
-                      <option value="dipendente-tempo-determinato">
-                        Dipendente Tempo Determinato
-                      </option>
-                      <option value="lavoratore-autonomo">
-                        Lavoratore Autonomo
-                      </option>
-                      <option value="libero-professionista">
-                        Libero Professionista
-                      </option>
-                      <option value="imprenditore">Imprenditore</option>
-                      <option value="pensionato">Pensionato</option>
-                      <option value="altro">Altro</option>
-                    </select>
+                    />
                   </div>
 
                   <div>
