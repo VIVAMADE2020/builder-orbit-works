@@ -18,7 +18,7 @@ const PrestitoAuto: React.FC = () => {
   const [activeVehicle, setActiveVehicle] = useState("auto");
 
   const features = [
-    "Finanziamento da €5.000 a €100.000",
+    "Finanziamento fino a €100.000",
     "Durata da 12 a 84 mesi",
     "Tasso fisso 2% annuo",
     "Auto nuove e usate",

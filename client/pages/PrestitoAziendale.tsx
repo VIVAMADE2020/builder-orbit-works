@@ -15,7 +15,7 @@ import LoanCalculator from "../components/LoanCalculator";
 const PrestitoAziendale: React.FC = () => {
   const navigate = useNavigate();
   const features = [
-    "Importi da €10.000 a €500.000",
+    "Importi fino a €500.000",
     "Durata da 6 a 240 mesi",
     "Tasso fisso 2% annuo",
     "Nessuna garanzia richiesta fino a €50.000",
@@ -342,7 +342,7 @@ const PrestitoAziendale: React.FC = () => {
             </div>
 
             <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="text-4xl mb-4">🛒</div>
+              <div className="text-4xl mb-4">���</div>
               <h4 className="text-xl font-bold text-primary mb-3">
                 TechShop GmbH
               </h4>
@@ -356,7 +356,7 @@ const PrestitoAziendale: React.FC = () => {
             </div>
 
             <div className="bg-white p-8 rounded-xl shadow-lg">
-              <div className="text-4xl mb-4">🍕</div>
+              <div className="text-4xl mb-4">����</div>
               <h4 className="text-xl font-bold text-primary mb-3">
                 Ristorante Europa
               </h4>

@@ -6,7 +6,7 @@ import LoanCalculator from "../components/LoanCalculator";
 const PrestitoPersonale: React.FC = () => {
   const navigate = useNavigate();
   const features = [
-    "Importi da €5.000 a €75.000",
+    "Importi fino a €75.000",
     "Durata da 1 a 240 mesi",
     "Tasso fisso 2% annuo",
     "Nessuna commissione nascosta",

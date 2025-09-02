@@ -31,7 +31,7 @@ const Index: React.FC = () => {
         "https://images.pexels.com/photos/5816286/pexels-photo-5816286.jpeg",
       path: "/prestito-personale",
       features: [
-        "Importi da €5.000 a €75.000",
+        "Importi fino a €75.000",
         "Durata fino a 240 mesi",
         "Tasso fisso 2%",
       ],
@@ -43,7 +43,7 @@ const Index: React.FC = () => {
         "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg",
       path: "/prestito-aziendale",
       features: [
-        "Importi da €10.000 a €500.000",
+        "Importi fino a €500.000",
         "Tempi di erogazione rapidi",
         "Consulenza dedicata",
       ],

@@ -15,10 +15,10 @@ import LoanCalculator from "../components/LoanCalculator";
 
 const PrestitoIstantaneo: React.FC = () => {
   const navigate = useNavigate();
-  const [loanAmount, setLoanAmount] = useState(5000);
+  const [loanAmount, setLoanAmount] = useState(3000);
 
   const features = [
-    "Importi da €500 a €15.000",
+    "Importi fino a €15.000",
     "Approvazione in 15 minuti",
     "Erogazione immediata",
     "Solo documento d'identità",
@@ -313,7 +313,7 @@ const PrestitoIstantaneo: React.FC = () => {
                 </label>
                 <input
                   type="range"
-                  min="500"
+                  min="0"
                   max="15000"
                   step="500"
                   value={loanAmount}
@@ -321,7 +321,7 @@ const PrestitoIstantaneo: React.FC = () => {
                   className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                 />
                 <div className="flex justify-between text-sm text-gray-500 mt-2">
-                  <span>€500</span>
+                  <span>€0</span>
                   <span className="text-2xl font-bold text-secondary">
                     €{loanAmount.toLocaleString()}
                   </span>

@@ -214,7 +214,7 @@ const Calcolatore: React.FC = () => {
               <ul className="space-y-3">
                 <li className="flex justify-between">
                   <span className="text-gray-600">Importo Minimo:</span>
-                  <span className="font-semibold">€5.000</span>
+                  <span className="font-semibold">Nessuno</span>
                 </li>
                 <li className="flex justify-between">
                   <span className="text-gray-600">Importo Massimo:</span>

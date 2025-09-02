@@ -531,13 +531,13 @@ const RichiestaPrestito: React.FC = () => {
                       name="importo"
                       value={formData.importo}
                       onChange={handleInputChange}
-                      min="5000"
+                      min="0"
                       placeholder="Esempio: 12750"
                       className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                       required
                     />
                     <p className="text-sm text-gray-500 mt-1">
-                      Minimo €5.000 - Inserisci qualsiasi importo
+                      Inserisci qualsiasi importo
                     </p>
                   </div>
 
