@@ -4,6 +4,6 @@
   "main": "cloudflare/worker.ts",
   "assets": {
     "directory": "dist/spa",
-    "binding": "ASSETS"
-  }
+    "binding": "ASSETS",
+  },
 }
