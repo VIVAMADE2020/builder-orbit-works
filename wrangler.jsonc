@@ -1,0 +1,9 @@
+{
+  "name": "fusion-starter",
+  "compatibility_date": "2025-10-06",
+  "main": "cloudflare/worker.ts",
+  "assets": {
+    "directory": "dist/spa",
+    "binding": "ASSETS"
+  }
+}
