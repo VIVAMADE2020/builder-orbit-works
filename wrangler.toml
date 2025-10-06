@@ -1,0 +1,4 @@
+name = "fusion-starter"
+main = "cloudflare/worker.ts"
+compatibility_date = "2025-10-06"
+assets = { directory = "dist/spa", binding = "ASSETS" }
