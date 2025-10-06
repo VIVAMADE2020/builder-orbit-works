@@ -1,5 +1,9 @@
 export default {
-  async fetch(request: Request, env: { ASSETS: Fetcher }, _ctx: ExecutionContext): Promise<Response> {
+  async fetch(
+    request: Request,
+    env: { ASSETS: Fetcher },
+    _ctx: ExecutionContext,
+  ): Promise<Response> {
     const url = new URL(request.url);
 
     // Try to serve the static asset first
@@ -10,7 +14,10 @@ export default {
       const hasExtension = /\.[a-zA-Z0-9]+$/.test(url.pathname);
       const isApi = url.pathname.startsWith("/api");
       if (!hasExtension && !isApi) {
-        const indexReq = new Request(new URL("/index.html", url).toString(), request);
+        const indexReq = new Request(
+          new URL("/index.html", url).toString(),
+          request,
+        );
         return env.ASSETS.fetch(indexReq);
       }
     }
